@@ -31,9 +31,9 @@ export function HeroVisual() {
   }, [reduce]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, rotate: -1.5 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-      className="relative mx-auto w-full max-w-[470px] lg:ml-auto"
+    <div
+      style={{ "--d": ".15s" } as React.CSSProperties}
+      className="rise relative mx-auto w-full max-w-[470px] lg:ml-auto"
       aria-label="Exemplu de lecție online"
     >
       <div className="mb-1.5 ml-1.5 flex items-end gap-1">
@@ -94,7 +94,7 @@ export function HeroVisual() {
         </span>
         <span className="ml-auto shrink-0 font-mono text-[0.72rem] text-green">20:14 ✓✓</span>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 

@@ -13,7 +13,7 @@ const STEPS = [
 
 const PEACE: [string, string, string][] = [
   ["📲", "Raport după fiecare lecție", "Scurt, pe înțelesul oricui, cu o poză cu ce a construit. Îl citești într-un minut."],
-  ["🚪", "Poți intra oricând la lecție", "Să vezi cum lucrăm. Iar cu copilul vorbesc doar pe un grup în care ești și tu."],
+  ["☕", "Discuție cu tine la fiecare 6 lecții", "15 minute, doar noi doi: ce știe acum, ce urmează și ce ai observat tu acasă."],
   ["🔧", "Instalările le facem împreună", "Programe și setări, în prima lecție. Tot ce folosim e gratuit."],
   ["🧾", "Factură pentru fiecare plată", "Codito funcționează legal, prin PFA."],
 ];

@@ -156,3 +156,27 @@
   }
   .select-dark option { color: var(--color-ink); background: #fff; }
 }
+
+/* ===== Apariții (fără să aștepte JavaScript-ul aplicației) ===== */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes strike { from { transform: scaleX(0); } }
+.rise { animation: rise .7s cubic-bezier(.22,1,.36,1) both; animation-delay: var(--d, 0s); }
+.strike { transform-origin: left; animation: strike .7s cubic-bezier(.22,1,.36,1) .45s both; }
+
+.js [data-reveal]:not([data-in]) { opacity: 0; transform: translateY(var(--ry, 22px)); }
+.js [data-reveal] { transition: opacity .7s cubic-bezier(.22,1,.36,1) var(--rd, 0s), transform .7s cubic-bezier(.22,1,.36,1) var(--rd, 0s); }
+.js [data-stagger]:not([data-in]) > * { opacity: 0; transform: translateY(18px); }
+.js [data-stagger] > * { transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+[data-stagger] > :nth-child(2) { transition-delay: .08s; }
+[data-stagger] > :nth-child(3) { transition-delay: .16s; }
+[data-stagger] > :nth-child(4) { transition-delay: .24s; }
+[data-stagger] > :nth-child(5) { transition-delay: .32s; }
+[data-stagger] > :nth-child(6) { transition-delay: .4s; }
+[data-stagger] > :nth-child(n+7) { transition-delay: .46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .strike { animation: none; }
+  .js [data-reveal], .js [data-stagger] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+.qa .rise, .qa .strike { animation: none !important; }
+.qa [data-reveal], .qa [data-stagger] > * { transition: none !important; }

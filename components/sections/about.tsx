@@ -41,10 +41,26 @@ export function About() {
         <div className="grid items-start gap-10 lg:grid-cols-[340px_1fr] lg:gap-16">
           {/* cartonașul profesorului */}
           <Reveal className="mx-auto w-full max-w-[460px] lg:sticky lg:top-24">
-            <div className="relative grid aspect-[4/5] w-full place-items-center overflow-hidden rounded-2xl bg-coral">
-              <span className="font-display text-[5rem] font-bold text-white/90">L</span>
-              <Photo />
-            </div>
+            {CONFIG.video ? (
+              <div className="overflow-hidden rounded-2xl bg-ink">
+                <video src={CONFIG.video} poster={CONFIG.videoPoster || undefined} controls playsInline preload="none" className="aspect-[4/5] w-full object-cover" aria-label="Leonard se prezintă, 60 de secunde" />
+              </div>
+            ) : (
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-night p-6 font-mono text-[0.95rem] leading-[1.9] text-[#c3c8dd] sm:p-7" aria-label="Leonard Pădurean: predau Python, C++ și AI copiilor de 9–17 ani, 1:1">
+                <div className="mb-5 flex gap-1.5" aria-hidden><i className="size-2.5 rounded-full bg-[#ff5f57]" /><i className="size-2.5 rounded-full bg-[#febc2e]" /><i className="size-2.5 rounded-full bg-[#28c840]" /></div>
+                <div aria-hidden>
+                  <p><span className="text-coral">$</span> whoami</p>
+                  <p className="text-white">Leonard Pădurean</p>
+                  <p className="mt-3"><span className="text-coral">$</span> cat predau.txt</p>
+                  <p className="text-[#9be7be]">Python · C++ · AI</p>
+                  <p className="text-[#9be7be]">copii 9–17 ani, 1:1</p>
+                  <p className="mt-3"><span className="text-coral">$</span> cat motto.txt</p>
+                  <p className="text-sun">„Ecranul e pentru construit.”</p>
+                  <p className="mt-3"><span className="text-coral">$</span> <i className="inline-block h-[1.1em] w-[0.55em] translate-y-[3px] animate-blink bg-coral" /></p>
+                </div>
+                <Photo />
+              </div>
+            )}
             <h3 className="mt-5 text-[1.45rem] font-semibold">Leonard Pădurean</h3>
             <p className="mt-1 text-[0.95rem] font-medium text-coral-t">Fondatorul Codito · profesorul de la fiecare lecție</p>
             {CONFIG.integrityCert && (

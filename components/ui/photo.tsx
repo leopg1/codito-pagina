@@ -1,16 +1,8 @@
-"use client";
+import { CONFIG } from "@/lib/config";
 
-import { useEffect, useState } from "react";
-
-/** Afișează /poza.jpg doar dacă există. Altfel rămâne ce e dedesubt (inițiala). */
+/** Poza ta, dacă e setată în config (`photo`). Altfel rămâne ce e dedesubt. */
 export function Photo({ className = "", alt = "Leonard Pădurean" }: { className?: string; alt?: string }) {
-  const [ok, setOk] = useState(false);
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setOk(true);
-    img.src = "/poza.jpg";
-  }, []);
-  if (!ok) return null;
+  if (!CONFIG.photo) return null;
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src="/poza.jpg" alt={alt} className={`absolute inset-0 size-full object-cover ${className}`} />;
+  return <img src={CONFIG.photo} alt={alt} className={`absolute inset-0 size-full object-cover ${className}`} />;
 }

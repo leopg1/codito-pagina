@@ -13,6 +13,8 @@ import { FreeLesson, Price } from "@/components/sections/offer";
 import { Quiz } from "@/components/sections/quiz";
 import { Faq } from "@/components/sections/faq";
 import { Closing } from "@/components/sections/closing";
+import { Trust } from "@/components/sections/trust";
+import { Proof } from "@/components/sections/proof";
 
 export default function Home() {
   return (
@@ -24,9 +26,11 @@ export default function Home() {
         <QuickFacts />
         <Problem />
         <Demo />
-        <Journey />
         <About />
+        <Journey />
         <How />
+        <Trust />
+        <Proof />
         <FreeLesson />
         <Price />
         <Quiz />

@@ -4,11 +4,12 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { CONFIG, WA_HELLO, waLink } from "@/lib/config";
+import { CONFIG, WA_HELLO, shareLink, telLink, waLink } from "@/lib/config";
 import { KidName, useKid } from "../kid-context";
 import { SectionHead } from "../ui/section-head";
 import { EASE, Reveal } from "../ui/motion";
 import { WaIcon } from "../ui/button";
+import { track } from "@/lib/track";
 import { E, EBadge } from "../ui/emoji";
 
 type Opt = { v: string; label: string; e: string };
@@ -58,6 +59,7 @@ export function Quiz() {
   const pick = (key: string, v: string) => {
     setAns((a) => ({ ...a, [key]: v }));
     setDir(1);
+    if (step === STEPS.length - 1) track("Formular completat", { age: ans.age || v, like: ans.like || "" });
     setTimeout(() => setStep((s) => s + 1), 220);
   };
 
@@ -122,7 +124,7 @@ export function Quiz() {
                   {[
                     ["🎯", "Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
                     ["🧭", "Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
-                    ["⏱️", "Ritm recomandat", `o lecție pe săptămână, ${young ? "de 60 de minute" : "de 90 de minute"}.`],
+                    ["⏱️", "Ritm recomandat", `o lecție pe săptămână, de 90 de minute, ${young ? "cu pauze scurte și multă practică" : "cu o pauză scurtă la mijloc"}.`],
                     ["💡", "Ce urmărim", `${ans.goal || "progres vizibil"}, cu un raport pentru tine după fiecare lecție.`],
                   ].map(([e, b, t]) => (
                     <div key={b} className="flex gap-3 leading-normal"><E e={e} className="mt-0.5 text-[1.2rem]" /><span><b>{b}:</b> {t}</span></div>
@@ -145,12 +147,19 @@ export function Quiz() {
                     ))}
                   </ol>
                 </div>
+                <a href={shareLink(`Uite ce lecții de programare am găsit pentru ${kid.name || "copil"}: prima e gratuită, 45 de minute, unu la unu. Ce zici? ${CONFIG.siteUrl}`)} target="_blank" rel="noopener" className="mt-5 flex items-center justify-center gap-2 rounded-full border-2 border-line px-5 py-3 text-[0.95rem] font-semibold text-ink-2 transition hover:border-coral hover:text-coral-t">
+                  <E e="👪" /> Decideți împreună? Trimite pagina celuilalt părinte
+                </a>
                 <button onClick={() => { setAns({}); setDir(-1); setStep(0); }} className="mt-5 text-[0.9rem] text-muted underline-offset-4 hover:text-coral-t hover:underline">Reia întrebările</button>
               </motion.div>
             )}
           </AnimatePresence>
         </Reveal>
-        <p className="mt-5 text-center text-ink-2">Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie-mi pe WhatsApp</a></p>
+        <p className="mt-5 text-center leading-relaxed text-ink-2">
+          Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie-mi pe WhatsApp</a>
+          {" "}sau sună-mă: <a href={telLink} className="whitespace-nowrap font-semibold text-coral-t underline underline-offset-4">{CONFIG.phone}</a>
+          {CONFIG.calUrl && <>. Sau <a href={CONFIG.calUrl} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">alege singur o oră în calendar</a></>}
+        </p>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
-import { WA_HELLO } from "@/lib/config";
+import { CONFIG, WA_HELLO, shareLink, waLink } from "@/lib/config";
+import { E } from "../ui/emoji";
 import { KidName } from "../kid-context";
 import { Reveal } from "../ui/motion";
 import { ButtonLink, WaIcon } from "../ui/button";
@@ -25,7 +26,23 @@ export function Closing() {
             <span key={t} className="inline-flex items-center gap-1.5"><Check className="size-4 text-[#5be3a7]" strokeWidth={3} />{t}</span>
           ))}
         </Reveal>
-        <Reveal delay={0.2} className="mx-auto mt-14 max-w-[640px] border-t border-white/15 pt-7 text-left text-[1.02rem] text-[#c3c8dd]">
+        <Reveal delay={0.2} className="mx-auto mt-12 grid max-w-[640px] gap-3 text-left">
+          <p className="text-[0.95rem] font-semibold text-white">Nu sunteți hotărâți încă? E în regulă.</p>
+          <a href={shareLink(`Uite ce lecții de programare am găsit pentru copil: unu la unu, online, prima lecție e gratuită. Ce zici? ${CONFIG.siteUrl}`)} target="_blank" rel="noopener" className="flex items-center gap-3 rounded-xl bg-white/[.06] px-4 py-3 text-[0.95rem] text-[#d3d8ea] ring-1 ring-white/10 transition hover:bg-white/10">
+            <E e="👪" className="text-[1.2rem]" /><span><b className="text-white">Trimite pagina celuilalt părinte</b> pe WhatsApp, ca să decideți împreună.</span>
+          </a>
+          {CONFIG.workshop.date && (
+            <a href={waLink(`Bună, Leonard! Aș vrea să înscriu copilul la atelierul gratuit din ${CONFIG.workshop.date}.`)} target="_blank" rel="noopener" className="flex items-center gap-3 rounded-xl bg-white/[.06] px-4 py-3 text-[0.95rem] text-[#d3d8ea] ring-1 ring-white/10 transition hover:bg-white/10">
+              <E e="🧪" className="text-[1.2rem]" /><span><b className="text-white">Atelier gratuit, {CONFIG.workshop.date}</b>{CONFIG.workshop.note ? `: ${CONFIG.workshop.note}` : ""}. Înscrie copilul pe WhatsApp.</span>
+            </a>
+          )}
+          {CONFIG.whatsappChannel && (
+            <a href={CONFIG.whatsappChannel} target="_blank" rel="noopener" className="flex items-center gap-3 rounded-xl bg-white/[.06] px-4 py-3 text-[0.95rem] text-[#d3d8ea] ring-1 ring-white/10 transition hover:bg-white/10">
+              <E e="📬" className="text-[1.2rem]" /><span><b className="text-white">Urmărește canalul de WhatsApp:</b> un proiect mic pe săptămână, de făcut acasă cu copilul.</span>
+            </a>
+          )}
+        </Reveal>
+        <Reveal delay={0.2} className="mx-auto mt-12 max-w-[640px] border-t border-white/15 pt-7 text-left text-[1.02rem] text-[#c3c8dd]">
           <b className="text-white">P.S.</b> Cel mai rău lucru care se poate întâmpla la lecția gratuită? <KidName cap /> petrece 45 de minute construind primul lui program, în loc să se uite la clipuri. Nu sună chiar rău, nu? 🙂
         </Reveal>
       </div>

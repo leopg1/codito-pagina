@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { CONFIG, WA_HELLO, telLink } from "@/lib/config";
 import { LogoMark, Wordmark } from "./logo";
+import { TOPICS } from "@/lib/topics";
 
 export function Footer() {
   const c = CONFIG.company;
   return (
     <footer className="bg-ink pb-28 pt-14 text-[0.9rem] text-[#a3aac4] sm:pb-14">
-      <div className="wrap grid gap-9 sm:grid-cols-2 lg:grid-cols-[1.1fr_.9fr_1.5fr_1.1fr]">
+      <div className="wrap grid gap-9 sm:grid-cols-2 lg:grid-cols-[1.1fr_1fr_.9fr_1.4fr_1.1fr]">
         <div className="space-y-3">
           <div className="flex items-center gap-3"><LogoMark className="size-9 text-[1.3rem]" /><Wordmark light /></div>
           <p>Programare & AI pentru copii și adolescenți. Lecții 1:1, online.</p>
         </div>
+        <FootCol title="Lecții">
+          {TOPICS.map((t) => <Link key={t.slug} href={`/${t.slug}/`} className="hover:text-white">{t.eyebrow}</Link>)}
+        </FootCol>
         <FootCol title="Contact">
           <a href={telLink} className="hover:text-white">{CONFIG.phone}</a>
           <a href={WA_HELLO} target="_blank" rel="noopener" className="hover:text-white">WhatsApp: scrie-mi direct</a>

@@ -1,3 +1,5 @@
+import { CONFIG } from "./config";
+
 export type AgeKey = "10" | "13" | "15";
 
 /** Cratimă care nu se rupe la capăt de rând („AI-ul”, „să-și”, „Joacă-te”). */
@@ -18,8 +20,8 @@ export const BUBBLES = nbDeep([
 
 export const TRACKS: Record<AgeKey, [string, string, string][]> = nbDeep({
   "10": [
-    ["Primele programe", "Învață să dea comenzi calculatorului, pas cu pas. Face un joc de ghicit și un quiz despre subiectul lui preferat.", "Primul lui joc, jucat de toată familia."],
-    ["Joc cu grafică", "Personaje care se mișcă, scor, niveluri. Aici învață, fără să-și dea seama, logică și puțină matematică.", "Un joc „adevărat”, cu imagini și sunet."],
+    ["Primele programe", "Pornim de la ce îl pasionează (Minecraft, Roblox, YouTube). Învață să dea comenzi calculatorului, pas cu pas, și face un joc de ghicit și un quiz despre subiectul lui preferat.", "Primul lui joc, jucat de toată familia."],
+    ["Joc cu grafică", "Personaje care se mișcă, scor, niveluri, în stilul jocurilor pe care le joacă. Aici învață, fără să-și dea seama, logică și puțină matematică.", "Un joc „adevărat”, cu imagini și sunet."],
     ["Proiectul lui, publicat", "Termină jocul ales de el și îl pune pe internet. Prima întâlnire cu AI-ul: cum îi ceri o explicație, nu temele gata făcute.", "Un link pe care îl trimite prietenilor. Și o prezentare doar pentru voi."],
   ],
   "13": [
@@ -38,7 +40,7 @@ export const LEVELS = nbDeep([
   {
     n: 1, name: "Explorator", meta: "9–12 ani sau începători · aproximativ 4–6 luni",
     learn: ["Cum „gândește” un calculator: pași, ordine, logică", "Bazele Python: variabile, condiții, bucle, funcții, liste", "Grafică și animații din cod", "Să găsească singur greșelile și să le repare"],
-    build: ["Jocuri: ghicitori, quiz-uri, jocuri cu personaje și scor", "Desene și animații generate din cod", "Primul lui proiect, publicat cu link"],
+    build: ["Jocuri: ghicitori, quiz-uri, jocuri cu personaje și scor", "Jocuri inspirate din Minecraft și Roblox, făcute de el", "Desene și animații generate din cod", "Primul lui proiect, publicat cu link"],
     outcome: "scrie singur programe mici, să explice cum funcționează și să ducă un proiect de la idee până la final.",
   },
   {
@@ -57,16 +59,25 @@ export const LEVELS = nbDeep([
 
 export const FAQ: [string, string][] = nbDeep<[string, string][]>([
   ["Copilul meu nu a programat niciodată. Poate să înceapă?", "Da, e chiar ideal. Pornim de la zero, cu pași mici. În prima lecție scrie deja un program care funcționează. Pentru că lucrăm unu la unu, mergem exact în ritmul lui."],
-  ["Ce se întâmplă după lecția gratuită?", "Îți trimit o părere scurtă, în scris: de unde pornește copilul și ce i s-ar potrivi. Dacă vreți să continuați, stabilim ziua și ora fixă din săptămână. Dacă nu, nu mai primiți niciun mesaj de la mine. Promit."],
+  ["Ce se întâmplă după lecția gratuită? O să fiu sunat insistent?", "Nu. În aceeași zi îți trimit evaluarea, în scris: de unde pornește copilul, ce i s-ar potrivi și cum ar arăta prima lună. Dacă vreți să continuați, îmi scrieți voi și stabilim ziua și ora fixă din săptămână. Dacă nu, nu mai primiți niciun mesaj de la mine."],
   ["Online chiar funcționează? Nu se plictisește?", "Lecțiile nu sunt „prelegeri”. Copilul scrie, încearcă, greșește și repară tot timpul. Lucrăm cu camera pornită și cu ecranul partajat, iar eu explic desenând pe o tabletă grafică. Fiind doar noi doi, văd imediat când îi scade atenția și schimb ritmul."],
-  ["Eu nu mă pricep deloc la calculatoare. E o problemă?", "Deloc. Nu trebuie să știi nimic tehnic. Instalăm totul împreună cu copilul în prima lecție, iar rapoartele mele sunt scrise pe înțelesul oricui, fără termeni complicați."],
   ["Pot să asist și eu la lecții?", "Oricând. Poți sta lângă copil la orice lecție sau doar să intri câteva minute. Comunicarea cu copilul are loc doar pe un grup de WhatsApp în care ești și tu."],
   ["Ce îi trebuie copilului?", "Un laptop sau un calculator (nu trebuie să fie nou sau performant), internet și, ideal, căști cu microfon. Atât. Toate programele pe care le folosim sunt gratuite."],
-  ["Nu e prea mult 90 de minute?", "Pentru proiecte adevărate, o oră se termină exact când copilul „s-a încălzit”. Avem și o pauză scurtă la mijloc. Pentru cei de 9–11 ani putem face lecții de 60 de minute."],
+  ["Nu e prea mult 90 de minute?", "Pentru proiecte adevărate, o oră se termină exact când copilul „s-a încălzit”. Avem o pauză scurtă la mijloc, iar cu cei de 9–11 ani alternăm des: explic puțin, construiește, testăm împreună. Așa timpul trece repede."],
   ["Ce se întâmplă dacă lipsim la o lecție?", "Dacă anunți cu cel puțin 24 de ore înainte, o mutăm în altă zi din aceeași lună, fără costuri. Programul e flexibil: după-amiaza, seara sau în weekend."],
   ["Cum plătesc? Primesc factură?", "Plata se face prin transfer bancar, la începutul fiecărei luni. Lucrez cu PFA, deci primești factură pentru fiecare plată. Fără contract pe termen lung: te poți opri oricând."],
+  ["Ce înseamnă „familie fondatoare”?", `Sunt primele ${CONFIG.founding.total} familii care încep lecțiile. Ele plătesc ${CONFIG.price.month} lei pe lună și păstrează prețul ăsta ${CONFIG.founding.lockMonths} luni, chiar dacă prețul crește pentru familiile care vin după. În schimb, îți cer o părere sinceră după prima lună, bună sau rea.`],
+  ["Aveți reduceri?", `Da: ${CONFIG.discounts.sibling}% pentru al doilea copil din familie și ${CONFIG.discounts.prepay3}% dacă plătești 3 luni deodată. Dacă recomanzi Codito unei alte familii și ea începe lecțiile, primiți amândoi câte o lecție gratuită.`],
+  ["Pot face lecțiile cadou?", "Da. Îți pregătesc un voucher pentru o lună de lecții (4 lecții), cu numele copilului, pe care îl poți tipări sau trimite. E un cadou bun de ziua lui sau de sărbători. Scrie-mi pe WhatsApp și îl primești în aceeași zi."],
   ["Ajutați și la informatica de la școală sau la bac?", "Da. Predau și C++, limbajul folosit la liceu. Putem combina pregătirea pentru școală cu un proiect personal care îl ține motivat."],
-  ["Ce e Codito? Cine ține lecțiile?", "Codito e numele lecțiilor mele 1:1. Nu e o școală cu mulți profesori: sunt eu, Leonard, la fiecare lecție, cu fiecare copil. Așa știu exact unde a rămas copilul tău și ce îl motivează."],
   ["Cum sunt protejate datele copilului?", "Folosesc datele doar ca să programăm și să ținem lecțiile. Nu le dau nimănui și nu fac poze sau înregistrări fără acordul tău scris. Detalii în politica de confidențialitate."],
   ["Locuim în străinătate. Putem lucra?", "Sigur. Totul e online și predau în română, deci e potrivit și pentru familiile de români din diaspora. Ne adaptăm la fusul orar."],
 ]);
+
+/* ===== Dovezi: se afișează automat pe pagină doar când adaugi elemente ===== */
+
+/** Păreri reale de la părinți, cu acordul lor. Ex.: { name: "Ana, mama lui Matei", detail: "Matei, 11 ani · 2 luni de lecții", text: "..." } */
+export const TESTIMONIALS: { name: string; detail: string; text: string }[] = [];
+
+/** Proiecte reale ale copiilor, cu acordul părinților. Imaginea în /public/proiecte/. Ex.: { title: "Jocul cu dragoni", kid: "Matei, 11 ani", img: "/proiecte/matei.png", link: "https://..." } */
+export const PROJECTS: { title: string; kid: string; img: string; link?: string; note?: string }[] = [];

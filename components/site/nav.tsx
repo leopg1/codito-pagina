@@ -7,8 +7,8 @@ import { LogoMark, Wordmark } from "./logo";
 import { E } from "../ui/emoji";
 
 const LINKS = [
-  ["#traseu", "Ce construiește"],
   ["#despre", "Despre mine"],
+  ["#traseu", "Ce construiește"],
   ["#pret", "Preț"],
   ["#intrebari", "Întrebări"],
 ] as const;
