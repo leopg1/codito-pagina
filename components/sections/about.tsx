@@ -9,7 +9,7 @@ const FACTS = [
   [Users, "Predau programare copiilor de peste un an. Construim împreună aplicații reale, nu doar teorie"],
   [ScrollText, "Pregătire în pedagogie: știu cum învață copiii și cum să le explic pe înțelesul lor"],
   [GraduationCap, "Student la inginerie, în domeniul Calculatoare"],
-  [Laptop, "Programator și cercetător: dezvolt proiecte reale, folosite zilnic de firme și de oamenii lor"],
+  [Laptop, "Programator software de 5 ani, angajat în domeniu, și cercetător"],
   [MapPin, "Lucrez online cu familii din toată țara și din diaspora"],
 ] as const;
 
@@ -21,8 +21,8 @@ const TRAITS: [string, string, string][] = [
 ];
 
 const BUILT: [string, string, string, string][] = [
-  ["🔌", "Proiecte reale", "Electronică și tehnologie pentru mașini", "Am lucrat în embedded, adică aparatele electronice „inteligente”, și în automotive, tehnologia din mașinile moderne."],
-  ["💻", "Software", "Site-uri și aplicații cu inteligență artificială", "Construiesc aplicații pe care firmele și oamenii lor le folosesc în fiecare zi."],
+  ["💻", "Experiență", "5 ani ca programator software", "Sunt angajat în domeniu și scriu zilnic cod pentru aplicații folosite de oameni reali. Copiii învață de la cineva care face asta în fiecare zi."],
+  ["🧑‍🏫", "Predare", "Peste un an alături de copii", "Am lucrat cu copii de 9–17 ani, de la primul lor program până la proiecte terminate și prezentate cu mândrie."],
   ["🏆", "Concursuri", "Premii naționale și internaționale", "Proiectele mele au luat premii la concursuri de tehnologie, în țară și în afara ei."],
   ["🔬", "Cercetare", "Lucrări premiate la conferințe", "Ca cercetător, am prezentat lucrări la conferințe științifice, unde au fost premiate."],
 ];
