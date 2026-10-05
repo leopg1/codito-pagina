@@ -1,7 +1,6 @@
 "use client";
 
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
-import { E, EBadge } from "../ui/emoji";
 import { useEffect, useState } from "react";
 import { KidName } from "../kid-context";
 import { Reveal } from "../ui/motion";
@@ -23,8 +22,8 @@ export function Calculator() {
   const pct = ((1.5 * 52) / year) * 100;
 
   return (
-    <Reveal className="relative mt-14 overflow-hidden rounded-[28px] border-2 border-dashed border-[#ebd8c2] bg-paper p-6 sm:p-10">
-      <h3 className="text-[1.35rem] font-semibold sm:text-[1.55rem]"><E e="⏳" className="mr-2" />Hai să facem un calcul rapid</h3>
+    <Reveal className="relative mt-16 overflow-hidden rounded-2xl border border-line bg-paper p-6 sm:p-10">
+      <h3 className="text-[1.35rem] font-semibold sm:text-[1.55rem]">Un calcul rapid</h3>
       <p className="mt-1.5 text-ink-2">Câte ore pe zi crezi că stă <KidName /> pe telefon, tabletă sau calculator?</p>
 
       <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:gap-6">
@@ -40,13 +39,13 @@ export function Calculator() {
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <div className="rounded-[20px] bg-cream p-5 sm:p-6">
+        <div className="rounded-xl bg-cream p-5 sm:p-6">
           <span className="block font-display text-[2.2rem] font-bold leading-none tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={year} format={(n) => `${Math.round(n).toLocaleString("ro-RO")} ore`} />
           </span>
           <p className="mt-2.5 text-[0.98rem] text-ink-2">petrece pe ecran într-un singur an. Adică <b>{days} de zile</b> întregi, zi și noapte.</p>
         </div>
-        <div className="rounded-[20px] bg-mint p-5 sm:p-6">
+        <div className="rounded-xl bg-mint p-5 sm:p-6">
           <span className="block font-display text-[2.2rem] font-bold leading-none text-green tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={pct} format={(n) => (n < 1 ? "<1%" : `${Math.round(n)}%`)} />
           </span>

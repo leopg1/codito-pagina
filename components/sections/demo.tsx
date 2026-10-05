@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { E, EBadge } from "../ui/emoji";
 import { useRef, useState } from "react";
 import { RotateCcw } from "lucide-react";
 import { KidGen } from "../kid-context";
@@ -31,20 +30,19 @@ export function Demo() {
   const again = () => { setSecret(rnd()); setTries(0); setWon(false); setVal(""); setMsg("Scrie un număr și apasă „Încearcă”"); input.current?.focus(); };
 
   return (
-    <section id="cum" className="section relative overflow-hidden bg-ink text-white">
-      <div aria-hidden className="pointer-events-none absolute -left-40 top-10 size-[480px] rounded-full bg-[radial-gradient(circle,rgb(240_100_58/.18),transparent_65%)]" />
+    <section id="cum" className="section bg-ink text-white">
       <div className="wrap relative">
         <SectionHead dark kicker="Încearcă și tu" title="Ce poate face un copil după doar 2 lecții?" lead="Ceva de genul ăsta. Joacă‑te puțin: e un joc adevărat, scris în doar 11 rânduri de cod." />
 
         <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
-          <Reveal className="flex flex-col overflow-hidden rounded-[26px] bg-[#262d52] text-center text-white ring-1 ring-white/10 shadow-[0_30px_60px_-30px_rgb(0_0_0/.5)]">
+          <Reveal className="flex flex-col overflow-hidden rounded-2xl bg-[#262d52] text-center text-white ring-1 ring-white/10 shadow-[0_30px_60px_-30px_rgb(0_0_0/.5)]">
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 font-sans text-[0.78rem] font-medium text-[#a3aac4]">
               <span className="flex items-center gap-2"><i className="size-2 rounded-full bg-[#5be3a7] shadow-[0_0_0_3px_rgb(91_227_167/.2)]" /> joc.py · rulează</span>
               <span>consolă</span>
             </div>
             <div className="flex flex-1 flex-col justify-center p-7 sm:p-9">
             <h3 className="flex items-center justify-center gap-2 text-[1.3rem] font-semibold text-white">
-              <E e="🎯" /> Jocul <KidGen />
+              Jocul <KidGen />
             </h3>
             <p className="mt-1 text-[#c3c8dd]">M-am gândit la un număr între 1 și 100. Îl ghicești?</p>
             <div className="my-5 grid min-h-[3.4em] place-items-center rounded-2xl bg-night/60 px-4 py-3 font-mono text-[1rem] text-[#9be7be]" aria-live="polite">
@@ -72,7 +70,7 @@ export function Demo() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="overflow-x-auto rounded-[26px] bg-night p-6 font-mono text-[0.78rem] leading-[1.8] text-[#d8def5] ring-1 ring-white/5 sm:p-7 sm:text-[0.9rem]">
+          <Reveal delay={0.1} className="overflow-x-auto rounded-2xl bg-night p-6 font-mono text-[0.78rem] leading-[1.8] text-[#d8def5] ring-1 ring-white/5 sm:p-7 sm:text-[0.9rem]">
             <div className="mb-3.5 flex justify-between gap-2 font-sans text-[0.78rem] font-medium text-[#8e97ba]">
               <span>joc.py · scris de copil, lecția 2</span><span>Python 🐍</span>
             </div>
@@ -82,8 +80,8 @@ export function Demo() {
           </Reveal>
         </div>
 
-        <Reveal className="mt-9 text-center font-hand text-[1.45rem] font-bold leading-snug text-sun sm:text-[1.75rem]">
-          ↑ Python e limbajul folosit de Google, NASA și în inteligența artificială.<br />Și da, se poate învăța de la 9 ani.
+        <Reveal className="mx-auto mt-8 max-w-[620px] text-center text-[0.98rem] leading-relaxed text-[#a3aac4]">
+          Python e limbajul folosit de Google, NASA și în inteligența artificială. Și se poate învăța de la 9 ani.
         </Reveal>
       </div>
     </section>

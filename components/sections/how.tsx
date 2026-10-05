@@ -1,53 +1,54 @@
-import { DoorOpen, Hammer, Hand, Lightbulb, MessageSquareText, PartyPopper, Receipt, Wrench } from "lucide-react";
-import { E, EBadge } from "../ui/emoji";
 import { SectionHead } from "../ui/section-head";
-import { Reveal, Stagger, StaggerItem } from "../ui/motion";
+import { Reveal } from "../ui/motion";
 import { CtaInline } from "../ui/cta-inline";
 import { KidSample } from "../kid-context";
 
 const STEPS = [
-  ["👋", "0–10 min", "Ne salutăm", "Vorbim despre ce a făcut între lecții și ce îl entuziasmează."],
-  ["✏️", "10–35 min", "O idee nouă", "O explic pe tableta grafică, desenat, cu exemple din lumea lui."],
-  ["🛠️", "35–80 min", "Construiește el", "Scrie cod cu mâna lui. Eu ghidez, nu fac în locul lui. (+ o pauză scurtă)"],
-  ["🎉", "80–90 min", "Arată ce a făcut", "Rulează proiectul și îmi explică el cum funcționează."],
-  ["📲", "după lecție", "Tu primești raportul", "Pe WhatsApp: ce a făcut, ce a înțeles, ce urmează."],
+  ["0–10", "Ne salutăm", "Vorbim despre ce a făcut între lecții și ce îl entuziasmează."],
+  ["10–35", "O idee nouă", "O explic pe tableta grafică, desenat, cu exemple din lumea lui."],
+  ["35–80", "Construiește el", "Scrie cod cu mâna lui, cu o pauză scurtă la mijloc. Eu ghidez, el scrie."],
+  ["80–90", "Arată ce a făcut", "Rulează proiectul și îmi explică el cum funcționează."],
 ] as const;
 
-const PEACE = [
-  [MessageSquareText, "Raport după fiecare lecție", "Scurt, pe înțelesul oricui, cu o poză cu ce a construit. Citești în 1 minut."],
-  [DoorOpen, "Ușa e mereu deschisă", "Poți intra oricând la lecție să vezi cum lucrăm. Comunicarea cu copilul are loc doar pe un grup în care ești și tu."],
-  [Wrench, "Partea tehnică e rezolvată", "Instalări, programe, setări: le facem împreună în prima lecție. Tot ce folosim e gratuit."],
-  [Receipt, "Totul în regulă, cu acte", "Codito funcționează legal, prin PFA. Primești factură pentru fiecare plată."],
-] as const;
+const PEACE: [string, string][] = [
+  ["Raport după fiecare lecție", "Scurt, pe înțelesul oricui, cu o poză cu ce a construit. Îl citești într-un minut."],
+  ["Poți intra oricând la lecție", "Să vezi cum lucrăm. Iar cu copilul vorbesc doar pe un grup în care ești și tu."],
+  ["Instalările le facem împreună", "Programe și setări, în prima lecție. Tot ce folosim e gratuit."],
+  ["Factură pentru fiecare plată", "Codito funcționează legal, prin PFA."],
+];
 
 export function How() {
   return (
     <section id="cum-lucram" className="section bg-sand">
       <div className="wrap">
-        <SectionHead kicker="Cum lucrăm" title="Cum arată o lecție, minut cu minut" lead="90 de minute, online, de acasă. Cu camera pornită și cu ecranul partajat, ca și cum am sta unul lângă altul." />
+        <SectionHead center={false} title="Cum arată o lecție, minut cu minut" lead="90 de minute, online, de acasă. Cu camera pornită și ecranul partajat, ca și cum am sta unul lângă altul." />
 
-        <Stagger className="mt-12 grid overflow-hidden rounded-[22px] border border-[#ead9c3] md:grid-cols-5">
-          {STEPS.map(([e, t, b, p], k) => (
-            <StaggerItem key={b} className={`grid grid-cols-[auto_1fr] gap-x-3.5 p-5 md:block md:p-6 ${k < 4 ? "border-b border-[#ead9c3] bg-paper md:border-b-0 md:border-r" : "bg-mint"}`}>
-              <EBadge e={e} className={`row-span-3 mb-3 size-12 rounded-xl text-[1.45rem] ${k < 4 ? "bg-cream" : "bg-white/70"}`} />
-              <span className="block font-mono text-[0.78rem] font-semibold text-coral-t">{t}</span>
-              <b className="mt-1 block text-[1.02rem]">{b}</b>
-              <p className="mt-1 text-[0.92rem] leading-normal text-ink-2">{p}</p>
-            </StaggerItem>
-          ))}
-        </Stagger>
+        <Reveal className="mt-12">
+          <ol className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+            {STEPS.map(([t, b, p]) => (
+              <li key={b} className="border-t-2 border-ink/80 py-5">
+                <span className="font-mono text-[0.8rem] font-semibold text-coral-t">min {t}</span>
+                <b className="mt-1.5 block text-[1.08rem]">{b}</b>
+                <p className="mt-1 text-[0.95rem] leading-relaxed text-ink-2">{p}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-2 text-[0.98rem] text-ink-2"><b className="text-ink">După lecție,</b> primești pe WhatsApp un raport: ce a făcut, ce a înțeles și ce urmează.</p>
+        </Reveal>
 
-        <div className="mt-16 grid items-center gap-12 border-t border-dashed border-[#e3d3bd] pt-16 lg:grid-cols-[1.1fr_.9fr]">
+        <div className="mt-20 grid items-center gap-12 sm:mt-24 lg:grid-cols-[1.1fr_.9fr]">
           <div>
-            <SectionHead center={false} kicker="Pentru liniștea ta" title="Știi mereu ce face. Chiar dacă nu te pricepi deloc la calculatoare." />
-            <Stagger className="mt-8 grid gap-5">
-              {PEACE.map(([I, b, p]) => (
-                <StaggerItem key={b} className="grid grid-cols-[48px_1fr] gap-4">
-                  <span className="grid size-12 place-items-center rounded-2xl border border-line bg-paper text-coral-t"><I className="size-5" aria-hidden /></span>
-                  <span className="leading-relaxed text-ink-2"><b className="mb-0.5 block text-[1.06rem] leading-snug text-ink">{b}</b>{p}</span>
-                </StaggerItem>
-              ))}
-            </Stagger>
+            <SectionHead center={false} title="Știi mereu ce face, chiar dacă nu te pricepi la calculatoare." />
+            <Reveal className="mt-8 max-w-[560px]">
+              <dl>
+                {PEACE.map(([b, p]) => (
+                  <div key={b} className="border-t border-[#e3d3bd] py-4 first:border-t-0 first:pt-0">
+                    <dt className="text-[1.06rem] font-semibold text-ink">{b}</dt>
+                    <dd className="mt-0.5 leading-relaxed text-ink-2">{p}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
           </div>
 
           <Reveal delay={0.1}>
@@ -65,7 +66,7 @@ export function How() {
               </div>
               <div className="ml-auto mt-2.5 max-w-[82%] rounded-xl rounded-br-sm bg-[#dcf8c6] px-3.5 py-2.5 text-[0.86rem] shadow-sm">Mulțumim! Ne-a arătat și nouă la cină, era foarte mândru 😄</div>
             </div>
-            <p className="mt-4 text-center font-hand text-[1.45rem] font-bold text-coral-t">↑ așa arată un raport</p>
+            <p className="mt-4 text-center text-[0.9rem] text-muted">Un raport, așa cum îl primești după lecție.</p>
           </Reveal>
         </div>
 

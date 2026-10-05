@@ -7,11 +7,7 @@ import { HeroVisual } from "./hero-visual";
 
 export function Hero() {
   return (
-    <header id="top" className="relative overflow-hidden pb-14 pt-8 sm:pt-14 lg:pb-20">
-      {/* fundal: puncte + pete calde */}
-      <div aria-hidden className="dots pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_70%_30%,black_20%,transparent_70%)]" />
-      <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[560px] rounded-full bg-[radial-gradient(circle,rgb(240_100_58/.18),transparent_65%)]" />
-      <div aria-hidden className="pointer-events-none absolute -left-52 top-40 size-[520px] rounded-full bg-[radial-gradient(circle,rgb(255_224_138/.35),transparent_65%)]" />
+    <header id="top" className="relative overflow-hidden pb-14 pt-8 sm:pt-16 lg:pb-20">
 
       <div className="wrap relative grid items-center gap-12 lg:grid-cols-[1.12fr_.88fr] lg:gap-14">
         <div>

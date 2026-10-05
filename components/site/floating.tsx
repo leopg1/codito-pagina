@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { E, EBadge } from "../ui/emoji";
 import { useEffect, useState } from "react";
 import { WA_HELLO } from "@/lib/config";
 import { WaIcon } from "../ui/button";
@@ -38,7 +37,7 @@ export function Floating() {
             style={{ bottom: "calc(10px + env(safe-area-inset-bottom, 0px))" }}
           >
             <a href="#plan" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-coral py-4 font-semibold text-white shadow-coral">
-              <E e="🎁" /> Lecția gratuită 1:1
+              Lecția gratuită 1:1
             </a>
             <a href={WA_HELLO} target="_blank" rel="noopener" aria-label="Scrie-mi pe WhatsApp" className="grid w-[58px] place-items-center rounded-full bg-wa text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.7)]">
               <WaIcon className="size-7" />

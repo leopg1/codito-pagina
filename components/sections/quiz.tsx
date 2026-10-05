@@ -9,7 +9,7 @@ import { KidName, useKid } from "../kid-context";
 import { SectionHead } from "../ui/section-head";
 import { EASE, Reveal } from "../ui/motion";
 import { WaIcon } from "../ui/button";
-import { E, EBadge } from "../ui/emoji";
+import { EBadge } from "../ui/emoji";
 
 type Opt = { v: string; label: string; e: string };
 const STEPS: { key: string; q: React.ReactNode; hint: string; opts: Opt[] }[] = [
@@ -71,7 +71,7 @@ export function Quiz() {
   );
 
   return (
-    <section id="plan" className="section bg-gradient-to-b from-[#fff1e8] to-peach">
+    <section id="plan" className="section bg-[#fff1e8]">
       <div className="wrap">
         <SectionHead
           kicker="Rezervă lecția gratuită 1:1"
@@ -80,17 +80,16 @@ export function Quiz() {
         />
 
         <Reveal className="mx-auto mt-8 grid max-w-[720px] gap-3 sm:grid-cols-2">
-          {[["🗓️", "Când țin lecții", CONFIG.schedule], ["⚡", "Cât de repede răspund", CONFIG.reply]].map(([e, b, t]) => (
-            <div key={b} className="flex items-start gap-3 rounded-2xl border border-[#f3d6c6] bg-white/70 px-4 py-3.5 text-[0.92rem] leading-snug text-ink-2 backdrop-blur">
-              <E e={e} className="mt-0.5 text-[1.25rem]" />
-              <span><b className="block text-[0.95rem] text-ink">{b}</b>{t.split(" · ").map((x) => <span key={x} className="block">{x}</span>)}</span>
+          {[["Când țin lecții", CONFIG.schedule], ["Cât de repede răspund", CONFIG.reply]].map(([b, t]) => (
+            <div key={b} className="text-center text-[0.92rem] leading-snug text-ink-2 sm:text-left">
+              <b className="block text-[0.95rem] text-ink">{b}</b>{t.split(" · ").map((x) => <span key={x} className="block">{x}</span>)}
             </div>
           ))}
         </Reveal>
 
-        <Reveal className="mx-auto mt-4 max-w-[720px] overflow-hidden rounded-[28px] bg-paper p-6 shadow-lift sm:p-9">
+        <Reveal className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-2xl bg-paper p-6 shadow-lift sm:p-9">
           <div className="mb-7 h-2 overflow-hidden rounded-full bg-sand" aria-hidden>
-            <motion.div className="h-full rounded-full bg-gradient-to-r from-coral to-[#ff8a5c]" animate={{ width: `${(Math.min(step + 1, STEPS.length + 1) / (STEPS.length + 1)) * 100}%` }} transition={{ duration: 0.4, ease: EASE }} />
+            <motion.div className="h-full rounded-full bg-coral" animate={{ width: `${(Math.min(step + 1, STEPS.length + 1) / (STEPS.length + 1)) * 100}%` }} transition={{ duration: 0.4, ease: EASE }} />
           </div>
 
           <AnimatePresence mode="wait" custom={dir}>
@@ -117,15 +116,15 @@ export function Quiz() {
               </motion.div>
             ) : (
               <motion.div key="done" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, ease: EASE }}>
-                <h3 className="flex items-center gap-2 text-[1.45rem] font-semibold sm:text-[1.6rem]"><E e="🎉" /> Planul recomandat pentru <KidName /></h3>
-                <div className="my-5 grid gap-3 rounded-[18px] bg-cream p-5 sm:p-6">
+                <h3 className="text-[1.45rem] font-semibold sm:text-[1.6rem]">Planul recomandat pentru <KidName /></h3>
+                <div className="my-5 grid gap-3 rounded-xl bg-cream p-5 sm:p-6">
                   {[
-                    ["🎯", "Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
-                    ["🧭", "Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
-                    ["⏱️", "Ritm recomandat", `o lecție pe săptămână, ${young ? "de 60 de minute" : "de 90 de minute"}.`],
-                    ["💡", "Ce urmărim", `${ans.goal || "progres vizibil"}, cu un raport pentru tine după fiecare lecție.`],
-                  ].map(([e, b, t]) => (
-                    <div key={b} className="flex gap-3 leading-normal"><E e={e} className="mt-0.5 text-[1.2rem]" /><span><b>{b}:</b> {t}</span></div>
+                    ["Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
+                    ["Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
+                    ["Ritm recomandat", `o lecție pe săptămână, ${young ? "de 60 de minute" : "de 90 de minute"}.`],
+                    ["Ce urmărim", `${ans.goal || "progres vizibil"}, cu un raport pentru tine după fiecare lecție.`],
+                  ].map(([b, t]) => (
+                    <p key={b} className="leading-normal"><b>{b}:</b> {t}</p>
                   ))}
                 </div>
                 <a href={waLink(msg)} target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2.5 rounded-full bg-wa px-6 py-4 font-semibold text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.65)] transition hover:-translate-y-0.5 hover:bg-[#1ebe5a]">
@@ -134,7 +133,7 @@ export function Quiz() {
                 <p className="mt-3 text-center text-[0.86rem] text-muted">
                   Se deschide WhatsApp cu mesajul gata scris. Doar apeși „Trimite”. Trimițând mesajul, ești de acord cu <a href="/termeni/" className="text-coral-t underline">termenii</a> și <a href="/confidentialitate/" className="text-coral-t underline">politica de confidențialitate</a>.
                 </p>
-                <div className="mt-6 border-t border-dashed border-line pt-5">
+                <div className="mt-6 border-t border-line pt-5">
                   <b className="mb-3 block font-display text-[1.05rem] font-semibold">Ce urmează după ce trimiți mesajul</b>
                   <ol className="grid gap-3">
                     {[["Îți scriu în maximum 2 ore", "și alegem împreună ora lecției."], ["Primești linkul de Google Meet", "și o listă scurtă: laptop, căști, 2 minute de pregătire."], ["Lecția gratuită, 45 de minute.", "La final, copilul îți arată ce a construit și primești părerea mea, în scris."]].map(([b, t], k) => (
