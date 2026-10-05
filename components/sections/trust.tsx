@@ -6,7 +6,7 @@ import { E } from "../ui/emoji";
 const ONLINE: [string, string, string][] = [
   ["👀", "Văd fiecare rând pe care îl scrie", "Cu ecranul partajat, observ greșeala în clipa în care apare, mai repede decât dacă aș sta lângă el."],
   ["💻", "Lucrează pe calculatorul lui", "Tot ce construiește rămâne la el. Între lecții poate continua singur, cu programele pe care le știe deja."],
-  ["🚗", "Fără drum și fără trafic", "90 de minute de lecție înseamnă 90 de minute, nu o după-amiază întreagă cu tot cu drumul."],
+  ["🚗", "Fără drum și fără trafic", "90 de minute de lecție înseamnă 90 de minute, nu o după‑amiază întreagă cu tot cu drumul."],
 ];
 
 const SAFE: [string, string][] = [
@@ -43,7 +43,7 @@ export function Trust() {
         </div>
 
         <Reveal className="self-start rounded-2xl bg-mint/60 p-5 ring-1 ring-[#c6e9d6] sm:p-9">
-          <h2 className="flex items-center gap-2.5 text-[clamp(1.5rem,3vw,1.95rem)] font-semibold"><E e="🛡️" /> Siguranța copilului</h2>
+          <h2 className="flex items-start gap-2.5 text-[clamp(1.5rem,3vw,1.95rem)] font-semibold"><E e="🛡️" className="mt-1 shrink-0" /> Siguranța copilului</h2>
           <p className="mt-3 leading-relaxed text-ink-2">Regulile mele, aceleași pentru fiecare familie. Sunt scrise și în <a href="/termeni/" className="font-semibold text-coral-t underline underline-offset-2">termenii și condițiile</a> pe care le primești.</p>
           <ul className="mt-6 grid gap-4">
             {SAFE.map(([b, t]) => (

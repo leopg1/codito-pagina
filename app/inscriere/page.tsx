@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { CONFIG } from "@/lib/config";
 import { LogoMark, Wordmark } from "@/components/site/logo";
 import { Footer } from "@/components/site/footer";
-import { Countdown, Seats, SignupForm } from "@/components/signup/signup-form";
+import { Countdown, SignupForm } from "@/components/signup/signup-form";
 import { Photo } from "@/components/ui/photo";
 
 const W = CONFIG.workshop;
@@ -27,9 +27,9 @@ const FACTS: [string, string][] = [
 ];
 
 const STEPS: [string, string][] = [
-  ["Te contactez în aceeași zi", "ca să confirm locul și să-ți spun ce urmează."],
+  ["Te contactez în aceeași zi", "ca să confirm locul și să‑ți spun ce urmează."],
   ["Cu o zi înainte primești linkul", "de conectare și un pas mic de pregătire, de 2 minute."],
-  ["Sâmbătă, copilul se conectează", "și își face jocul. În ultimele minute vi-l arată."],
+  ["Sâmbătă, copilul se conectează", "și își face jocul. În ultimele minute vi‑l arată."],
 ];
 
 const FAQ: [string, string][] = [
@@ -39,41 +39,60 @@ const FAQ: [string, string][] = [
   ["Trebuie să stau lângă copil?", "Nu e nevoie. Dacă vrei, poți sta lângă el, iar în ultimele minute vă invit pe toți să vedeți jocul."],
 ];
 
+const eventLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  name: "Lecție gratuită de programare pentru copii",
+  description,
+  startDate: W.start,
+  endDate: new Date(new Date(W.start).getTime() + W.minutes * 60000).toISOString(),
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+  location: { "@type": "VirtualLocation", url: `${CONFIG.siteUrl}/inscriere/` },
+  isAccessibleForFree: true,
+  inLanguage: "ro",
+  maximumAttendeeCapacity: W.total,
+  remainingAttendeeCapacity: Math.max(0, W.total - W.taken),
+  image: `${CONFIG.siteUrl}/og.png`,
+  organizer: { "@type": "Organization", name: "Codito", url: `${CONFIG.siteUrl}/` },
+  performer: { "@type": "Person", name: "Leonard Pădurean" },
+  offers: { "@type": "Offer", price: "0", priceCurrency: "RON", availability: W.taken < W.total ? "https://schema.org/InStock" : "https://schema.org/SoldOut", url: `${CONFIG.siteUrl}/inscriere/`, validFrom: "2026-10-01" },
+};
+
 export default function Page() {
   return (
     <>
       <nav className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-xl">
-        <div className="wrap flex h-16 items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Codito, pagina principală"><LogoMark className="size-9 text-[1.3rem]" /><Wordmark className="text-[1.3rem]" /></Link>
+        <div className="wrap flex h-16 items-center justify-between gap-3 [@media(max-height:480px)]:h-14">
+          <Link href="/" className="flex min-h-11 items-center gap-2.5" aria-label="Codito, pagina principală"><LogoMark className="size-9 text-[1.3rem]" /><Wordmark className="text-[1.3rem]" /></Link>
           <Link href="/" className="-mr-2 inline-flex items-center gap-1.5 whitespace-nowrap px-2 py-3 text-[0.92rem] font-semibold text-ink-2 hover:text-coral-t"><ArrowLeft className="size-4" /> Despre lecții</Link>
         </div>
       </nav>
 
       <main>
-        <section className="wrap grid items-start gap-8 pb-16 pt-8 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8 lg:pb-24">
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+        <section className="wrap grid items-start gap-6 pb-16 pt-6 sm:gap-8 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8 lg:pb-24">
+          <div className="min-w-0 md:mx-auto md:w-full md:max-w-[560px] lg:mx-0 lg:max-w-none lg:col-start-1 lg:row-start-1">
             <p className="text-[0.95rem] font-semibold text-coral-t">Lecție gratuită de programare</p>
             <h1 className="mt-3 text-[clamp(2.1rem,6vw,3.5rem)] font-semibold leading-[1.06]">
               Sâmbătă, copilul tău își face <em className="not-italic text-coral">primul joc</em> pe calculator.
             </h1>
             <p className="mt-5 max-w-[34rem] text-[1.12rem] leading-relaxed text-ink-2">
-              De la zero, scris de el, în {W.minutes} de minute. La final vi-l arată și îl puteți juca împreună.
+              De la zero, scris de el, în {W.minutes} de minute. La final vi‑l arată și îl puteți juca împreună.
             </p>
-            <p className="mt-6 border-l-[3px] border-coral pl-4 text-[1.05rem] leading-snug">
+            <p className="mt-4 border-l-[3px] border-coral pl-4 sm:mt-6 text-[1.05rem] leading-snug">
               <b className="block text-ink first-letter:uppercase">{W.date}</b>
               <span className="text-ink-2">Online · gratuit</span>
             </p>
           </div>
 
           {/* formularul: pe telefon vine imediat după titlu */}
-          <div id="formular" className="scroll-mt-20 lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <div id="formular" className="w-full md:mx-auto md:max-w-[560px] lg:mx-0 lg:max-w-none lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <div className="rounded-2xl bg-paper p-5 shadow-lift ring-1 ring-line sm:p-8">
-              <Seats />
-              <div className="mt-6"><SignupForm /></div>
+              <SignupForm />
             </div>
           </div>
 
-          <div className="min-w-0 lg:col-start-1 lg:row-start-2">
+          <div className="min-w-0 md:mx-auto md:w-full md:max-w-[560px] lg:mx-0 lg:max-w-none lg:col-start-1 lg:row-start-2">
             <h2 className="text-[1.15rem] font-semibold">Pe scurt</h2>
             <dl className="mt-3 border-t border-line">
               {FACTS.map(([k, v]) => (
@@ -93,7 +112,7 @@ export default function Page() {
             <ol className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-3">
               {STEPS.map(([b, t], k) => (
                 <li key={b} className="border-t-2 border-ink/80 pt-4">
-                  <span className="font-display text-[1.6rem] font-bold text-coral">{k + 1}</span>
+                  <span className="font-display text-[1.6rem] font-bold text-coral-t">{k + 1}</span>
                   <p className="mt-1 leading-relaxed text-ink-2"><b className="text-ink">{b}</b> {t}</p>
                 </li>
               ))}
@@ -103,7 +122,7 @@ export default function Page() {
 
         <section className="py-14 sm:py-20">
           <div className="wrap grid items-start gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-            <div className="flex items-start gap-5">
+            <div className="flex flex-col items-start gap-4 min-[380px]:flex-row min-[380px]:gap-5">
               <span className="relative grid size-20 shrink-0 place-items-center overflow-hidden rounded-full bg-coral font-display text-[1.8rem] font-bold text-white ring-4 ring-peach">
                 L<Photo className="scale-[1.5] object-[50%_42%]" />
               </span>
@@ -126,14 +145,15 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="bg-ink py-14 text-center text-white sm:py-16">
+        <section className="border-b border-white/10 bg-ink py-14 text-center text-white sm:py-16">
           <div className="wrap">
-            <h2 className="mx-auto max-w-[620px] text-[clamp(1.6rem,3.6vw,2.2rem)] font-semibold text-white">Grupa are doar 5 locuri. Înscrierea durează 30 de secunde.</h2>
-            <a href="#formular" className="mt-7 inline-flex items-center gap-2 rounded-full bg-coral px-7 py-4 font-semibold text-white shadow-coral transition hover:bg-coral-d">Rezervă locul gratuit</a>
+            <h2 className="mx-auto max-w-[620px] text-[clamp(1.6rem,3.6vw,2.2rem)] font-semibold text-white">{W.taken > 0 && W.taken < W.total ? `Mai sunt ${W.total - W.taken} locuri.` : `Grupa are doar ${W.total} locuri.`} Înscrierea durează 30 de secunde.</h2>
+            <a href="#formular" className="mt-7 inline-flex items-center gap-2 rounded-full bg-cta px-7 py-4 font-semibold text-white shadow-coral transition hover:bg-cta-d">Rezervă locul gratuit</a>
           </div>
         </section>
       </main>
       <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventLd) }} />
     </>
   );
 }

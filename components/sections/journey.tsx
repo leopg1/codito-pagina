@@ -24,7 +24,7 @@ export function Journey() {
         <div className="lg:sticky lg:top-24 lg:self-start">
           <Reveal>
             <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Ce va construi <KidName /> în primele 3 luni</h2>
-            <p className="mt-4 text-[1.1rem] leading-relaxed text-ink-2">Un plan concret, lună cu lună. Alege vârsta sau scrie‑i prenumele și planul se potrivește cu el.</p>
+            <p className="mt-4 text-[1.1rem] leading-relaxed text-ink-2">Un plan concret, lună cu lună. Alege vârsta sau scrie‑i prenumele și planul se potrivește.</p>
           </Reveal>
           <Personalizer />
           <Reveal className="mt-6 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap" role="tablist" aria-label="Vârsta">
@@ -50,9 +50,9 @@ export function Journey() {
                   key={age + i}
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                   transition={{ duration: 0.3, ease: EASE }}
-                  className="relative grid grid-cols-[48px_1fr] items-start gap-3.5 sm:grid-cols-[56px_1fr] sm:gap-5"
+                  className="relative grid grid-cols-[52px_1fr] items-start gap-3.5 sm:grid-cols-[56px_1fr] sm:gap-5"
                 >
-                  <div className={clsx("z-[1] grid size-12 place-items-center rounded-full border-2 border-coral text-center text-[0.58rem] font-bold uppercase leading-none tracking-wide sm:size-14 sm:text-[0.64rem]", i === 2 ? "bg-coral text-white" : "bg-cream text-coral-t")}>
+                  <div className={clsx("z-[1] grid size-[52px] place-items-center rounded-full border-2 border-coral text-center text-[0.7rem] font-bold uppercase leading-none tracking-wide sm:size-14 sm:text-[0.64rem]", i === 2 ? "bg-cta text-white border-cta" : "bg-cream text-coral-t")}>
                     <span><b className="block font-display text-[1.15rem] sm:text-[1.3rem]">{i + 1}</b>luna</span>
                   </div>
                   <div className="border-b border-line pb-6 pt-2">
@@ -93,13 +93,13 @@ function Personalizer() {
 
   return (
     <Reveal className="mt-8 rounded-2xl bg-ink p-5 text-white sm:p-6">
-      <h3 className="flex items-center gap-2 text-[1.15rem] font-semibold text-white"><E e="✨" /> Vezi planul pentru copilul tău</h3>
+      <h3 className="flex items-start gap-2 text-[1.15rem] font-semibold text-white"><E e="✨" className="mt-0.5 shrink-0" /> Vezi planul pentru copilul tău</h3>
       <div className="mt-4">
         <AnimatePresence mode="wait">
           {kid.name ? (
             <motion.p key="done" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="text-[1.05rem]">
-              Gata. Planul de alături e pentru <b className="text-sun">{kid.name}</b>.
-              <button onClick={() => { reset(); setName(""); }} className="ml-2 text-[0.9rem] text-[#c3c8dd] underline underline-offset-4 hover:text-white">schimbă</button>
+              Gata. Planul e acum pentru <b className="text-sun">{kid.name}</b>.
+              <button onClick={() => { reset(); setName(""); }} className="ml-2 py-2 text-[0.9rem] text-[#c3c8dd] underline underline-offset-4 hover:text-white">schimbă</button>
             </motion.p>
           ) : (
             <motion.form key="form" onSubmit={submit} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -8 }} className="flex flex-wrap gap-2.5" autoComplete="off">
@@ -110,7 +110,7 @@ function Personalizer() {
               <div className="flex flex-[1_1_170px] rounded-xl bg-white/[.07] p-1 ring-1 ring-white/15" role="group" aria-label="Băiat sau fată">
                 {(["m", "f"] as const).map((v) => (
                   <button key={v} type="button" onClick={() => setG(v)} aria-pressed={g === v}
-                    className={clsx("flex-1 rounded-lg py-2 text-[0.95rem] font-semibold transition", g === v ? "bg-white/15 text-white ring-1 ring-white/20" : "text-[#a3aac4] hover:text-white")}>
+                    className={clsx("min-h-11 flex-1 rounded-lg py-2.5 text-[0.95rem] font-semibold transition", g === v ? "bg-white/15 text-white ring-1 ring-white/20" : "text-[#a3aac4] hover:text-white")}>
                     {v === "m" ? "Băiat" : "Fată"}
                   </button>
                 ))}
@@ -120,7 +120,7 @@ function Personalizer() {
                 <option value="">Vârsta…</option>
                 {AGES.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
               </select>
-              <button className="w-full rounded-full bg-coral py-3.5 font-semibold text-white transition hover:bg-coral-d">Arată‑mi planul</button>
+              <button className="w-full rounded-full bg-cta py-3.5 font-semibold text-white transition hover:bg-cta-d">Arată‑mi planul</button>
             </motion.form>
           )}
         </AnimatePresence>
@@ -142,10 +142,10 @@ function Curriculum() {
           return (
             <div key={l.n} className={clsx("overflow-hidden rounded-2xl border transition-colors", isOpen ? "border-coral/40 bg-paper" : "border-line bg-paper")}>
               <button onClick={() => setOpen(isOpen ? null : l.n)} aria-expanded={isOpen} className="flex w-full items-center gap-3.5 px-4 py-4 text-left sm:px-5">
-                <span className={clsx("grid size-9 shrink-0 place-items-center rounded-full font-display font-bold text-white transition-colors", isOpen ? "bg-coral" : "bg-ink")}>{l.n}</span>
+                <span className={clsx("grid size-9 shrink-0 place-items-center rounded-full font-display font-bold text-white transition-colors", isOpen ? "bg-cta" : "bg-ink")}>{l.n}</span>
                 <span className="min-w-0">
                   <b className="block font-display text-[1.15rem] font-semibold">{l.name} <E e={["🧭", "🔨", "🚀"][l.n - 1]} className="ml-0.5 text-[1rem]" /></b>
-                  <small className="text-[0.86rem] text-muted">{l.meta}</small>
+                  <small className="mt-0.5 block text-[0.86rem] leading-snug text-muted">{l.meta}</small>
                 </span>
                 <motion.span animate={{ rotate: isOpen ? 45 : 0 }} className="ml-auto text-coral"><Plus className="size-6" aria-hidden /></motion.span>
               </button>
@@ -168,7 +168,7 @@ function Curriculum() {
         })}
       </div>
       <p className="mt-5 text-[0.98rem] leading-relaxed text-ink-2">
-        <E e="💚" className="mr-1.5" /><b className="text-ink">La fiecare nivel, mereu:</b> gândire logică · AI folosit corect · prezentarea proiectului în fața familiei · raport pentru părinte după fiecare lecție
+        <E e="💚" /> <b className="text-ink">La fiecare nivel, mereu:</b> gândire logică · AI folosit corect · prezentarea proiectului în fața familiei · raport pentru părinte după fiecare lecție
       </p>
     </Reveal>
   );

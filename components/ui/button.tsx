@@ -5,10 +5,10 @@ import type { ReactNode } from "react";
 type Variant = "main" | "wa" | "ghost" | "light";
 
 const base =
-  "group max-[400px]:!px-5 inline-flex items-center justify-center gap-2.5 rounded-full font-semibold text-[1.02rem] leading-tight transition-all duration-200 ease-out active:scale-[.98] text-center";
+  "group max-[400px]:!px-5 [text-wrap:balance] inline-flex items-center justify-center gap-2.5 rounded-full font-semibold text-[1.02rem] leading-tight transition-all duration-200 ease-out active:scale-[.98] text-center";
 const variants: Record<Variant, string> = {
-  main: "bg-coral text-white shadow-coral hover:bg-coral-d hover:-translate-y-0.5 px-7 py-[17px]",
-  wa: "bg-wa text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.65)] hover:bg-[#1ebe5a] hover:-translate-y-0.5 px-7 py-[17px]",
+  main: "bg-cta text-white shadow-coral hover:bg-cta-d hover:-translate-y-0.5 px-7 py-[17px]",
+  wa: "bg-wa text-white shadow-[0_12px_28px_-10px_rgb(17_128_69/.45)] hover:bg-[#0d6a38] hover:-translate-y-0.5 px-7 py-[17px]",
   ghost: "text-ink hover:text-coral-t px-3 py-[17px]",
   light: "bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/15 px-7 py-[17px]",
 };
@@ -26,7 +26,7 @@ export function ButtonLink({
       {...rest}
     >
       {children}
-      {arrow && <ArrowRight className="size-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden />}
+      {arrow && <ArrowRight className="size-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1 max-[359px]:hidden" aria-hidden />}
     </a>
   );
 }

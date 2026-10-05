@@ -23,7 +23,7 @@ export function Calculator() {
   const pct = ((1.5 * 52) / year) * 100;
 
   return (
-    <Reveal className="relative mt-16 overflow-hidden rounded-2xl border border-line bg-paper p-6 sm:p-10">
+    <Reveal className="relative mt-16 overflow-hidden rounded-2xl border border-line bg-paper p-5 sm:p-10">
       <h3 className="text-[1.35rem] font-semibold sm:text-[1.55rem]"><E e="⏳" className="mr-2" />Un calcul rapid</h3>
       <p className="mt-1.5 text-ink-2">Câte ore pe zi crezi că stă <KidName /> pe telefon, tabletă sau calculator?</p>
 
@@ -31,7 +31,7 @@ export function Calculator() {
         <input
           type="range" min={1} max={7} step={0.5} value={h} onChange={(e) => setH(+e.target.value)}
           aria-label="Ore pe zi"
-          className="range my-3 flex-1"
+          className="range my-3 w-full sm:flex-1"
           style={{ ["--p" as string]: `${((h - 1) / 6) * 100}%` }}
         />
         <span className="min-w-[120px] font-display text-[1.7rem] font-bold text-coral-t tabular-nums">
@@ -40,14 +40,14 @@ export function Calculator() {
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <div className="rounded-xl bg-cream p-5 sm:p-6">
+        <div className="rounded-xl bg-cream p-4 sm:p-6">
           <span className="block font-display text-[2.2rem] font-bold leading-none tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={year} format={(n) => `${Math.round(n).toLocaleString("ro-RO")} ore`} />
           </span>
-          <p className="mt-2.5 text-[0.98rem] text-ink-2">petrece pe ecran într‑un singur an. Adică <b>{days} de zile</b> întregi, zi și noapte.</p>
+          <p className="mt-2.5 text-[0.98rem] text-ink-2">petrece pe ecran într‑un singur an. Adică <b className="whitespace-nowrap">{days} de zile</b> întregi, zi și noapte.</p>
         </div>
-        <div className="rounded-xl bg-mint p-5 sm:p-6">
-          <span className="block font-display text-[2.2rem] font-bold leading-none text-green tabular-nums sm:text-[2.5rem]">
+        <div className="rounded-xl bg-mint p-4 sm:p-6">
+          <span className="block font-display text-[2.2rem] font-bold leading-none text-[#15784d] tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={pct} format={(n) => (n < 1 ? "<1%" : `${Math.round(n)}%`)} />
           </span>
           <p className="mt-2.5 text-[0.98rem] text-ink-2">

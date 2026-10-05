@@ -11,8 +11,16 @@ export function TopicPage({ t }: { t: Topic }) {
   const others = TOPICS.filter((o) => o.slug !== t.slug);
   const faqLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: t.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+    "@graph": [
+      { "@type": "FAQPage", mainEntity: t.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+      { "@type": "Course", name: t.title, description: t.description, inLanguage: "ro", provider: { "@type": "Organization", name: "Codito", url: CONFIG.siteUrl },
+        offers: { "@type": "Offer", price: String(CONFIG.price.month), priceCurrency: "RON", category: "Abonament lunar" },
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: "PT1H30M" } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Codito", item: `${CONFIG.siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: t.eyebrow, item: `${CONFIG.siteUrl}/${t.slug}/` },
+      ] },
+    ],
   };
   return (
     <>
@@ -29,7 +37,7 @@ export function TopicPage({ t }: { t: Topic }) {
           <h1 className="max-w-[820px] text-[clamp(2.1rem,5vw,3.4rem)] font-semibold leading-[1.08]">{t.title}</h1>
           <p className="mt-6 max-w-[680px] text-[1.15rem] leading-relaxed text-ink-2">{t.lead}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/#plan" arrow>Vreau lecția gratuită 1:1</ButtonLink>
+            <ButtonLink href="/#plan" arrow>Vreau lecția gratuită 1:1</ButtonLink>
             <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Întreabă‑mă pe WhatsApp</ButtonLink>
           </div>
           <p className="mt-4 text-[0.92rem] text-muted">Prima lecție (45 de minute) e gratuită. Fără card, fără obligații.</p>

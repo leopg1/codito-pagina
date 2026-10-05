@@ -12,6 +12,7 @@ const LINKS = [
   ["#traseu", "Ce construiește"],
   ["#pret", "Preț"],
   ["#intrebari", "Întrebări"],
+  ["/blog/", "Blog"],
 ] as const;
 
 export function TopBar() {
@@ -25,9 +26,9 @@ export function TopBar() {
     return (
       <a href="/inscriere/" className="block bg-ink px-4 py-2.5 text-center text-[0.88rem] text-white transition-colors hover:bg-night">
         <E e="🎮" className="mr-1.5" />
-        Lecție <b className="text-sun">gratuită</b> de grup, {CONFIG.workshop.date}
+        Lecție <b className="text-sun">gratuită</b> de grup, <span className="whitespace-nowrap">{CONFIG.workshop.date}</span>
         {CONFIG.workshop.taken > 0 && <span className="hidden sm:inline"> · mai sunt {CONFIG.workshop.total - CONFIG.workshop.taken} locuri</span>}
-        <span className="ml-1.5 font-semibold underline underline-offset-2">Înscrie-te</span>
+        <span className="ml-1.5 font-semibold underline underline-offset-2">Înscrie‑te</span>
       </a>
     );
   }
@@ -59,12 +60,12 @@ export function Nav() {
         scrolled ? "border-line bg-cream/85 shadow-[0_8px_30px_-20px_rgb(30_36_66/.35)] backdrop-blur-xl" : "border-transparent bg-cream/60 backdrop-blur-md"
       )}
     >
-      <div className="wrap flex h-[68px] items-center gap-4">
-        <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="Codito, programare și AI pentru copii și adolescenți">
+      <div className="wrap flex h-[68px] items-center gap-4 [@media(max-height:480px)]:h-14">
+        <a href="#top" className="flex min-h-11 min-w-0 items-center gap-3" aria-label="Codito, programare și AI pentru copii și adolescenți">
           <LogoMark />
           <span className="flex min-w-0 flex-col gap-[5px] leading-none">
             <Wordmark className="block" />
-            <small className="block text-[0.7rem] leading-tight text-muted min-[380px]:text-[0.74rem] sm:text-[0.78rem]">Programare & AI pentru copii și adolescenți</small>
+            <small className="block text-[0.72rem] leading-tight text-muted min-[380px]:text-[0.75rem] sm:text-[0.78rem] [@media(max-height:480px)]:hidden">Programare & AI pentru copii și adolescenți</small>
           </span>
         </a>
         <div className="ml-auto hidden items-center gap-7 text-[0.95rem] font-medium text-ink-2 lg:flex">
@@ -74,9 +75,10 @@ export function Nav() {
             </a>
           ))}
         </div>
+        <a href="/blog/" className="ml-auto px-2 py-3 text-[0.95rem] font-medium text-ink-2 transition-colors hover:text-coral-t lg:hidden">Blog</a>
         <a
           href="#plan"
-          className="ml-auto hidden shrink-0 rounded-full bg-coral px-5 py-3 text-[0.94rem] font-semibold text-white shadow-coral transition hover:-translate-y-0.5 hover:bg-coral-d sm:inline-flex lg:ml-6"
+          className="hidden shrink-0 rounded-full bg-cta px-5 py-3 text-[0.94rem] font-semibold text-white shadow-coral transition hover:-translate-y-0.5 hover:bg-cta-d sm:inline-flex lg:ml-6"
         >
           Lecția gratuită
         </a>

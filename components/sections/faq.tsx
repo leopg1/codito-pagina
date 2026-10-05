@@ -16,7 +16,7 @@ export function Faq() {
         <div className="grid items-start gap-10 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
           <div className="lg:sticky lg:top-24">
             <SectionHead center={false} title="Întrebări frecvente" />
-            <p className="mt-4 max-w-[34ch] text-[1.06rem] leading-relaxed text-ink-2">Nu găsești ce cauți? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie‑mi pe WhatsApp</a>, îți răspund personal.</p>
+            <p className="mt-4 max-w-[34ch] text-[1.06rem] leading-relaxed text-ink-2">Nu găsești ce cauți? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4"><span className="whitespace-nowrap">Scrie‑mi pe WhatsApp</span></a>, îți răspund personal.</p>
           </div>
         <Reveal className="border-t border-line">
           {FAQ.map(([q, a], i) => {

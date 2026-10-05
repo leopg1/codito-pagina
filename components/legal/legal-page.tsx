@@ -3,6 +3,9 @@ import { ArrowLeft } from "lucide-react";
 import { LogoMark, Wordmark } from "../site/logo";
 import { Footer } from "../site/footer";
 
+/** Cratimă care nu se rupe la capăt de rând, doar în text (nu în atribute). */
+const nbHtml = (h: string) => h.replace(/>([^<]+)</g, (_, t: string) => ">" + t.replace(/(\p{L})-(\p{L})/gu, "$1\u2011$2").replace(/(\d) (lei|zile|de|minute|luni|ani|ore)\b/g, "$1\u00a0$2") + "<");
+
 export function LegalPage({ html }: { html: string }) {
   return (
     <>
@@ -13,7 +16,7 @@ export function LegalPage({ html }: { html: string }) {
         </div>
       </nav>
       <main className="mx-auto max-w-[860px] px-4 pb-20 pt-8 sm:px-[18px] sm:pt-10">
-        <article className="legal rounded-[24px] border border-line bg-paper p-6 text-[16px] leading-[1.7] sm:p-12 sm:text-[17px]" dangerouslySetInnerHTML={{ __html: html }} />
+        <article className="legal text-[16px] leading-[1.7] sm:rounded-[24px] sm:border sm:border-line sm:bg-paper sm:p-12 sm:text-[17px]" dangerouslySetInnerHTML={{ __html: nbHtml(html) }} />
       </main>
       <Footer />
     </>

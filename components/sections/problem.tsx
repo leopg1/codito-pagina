@@ -30,7 +30,7 @@ export function Problem() {
             {BUBBLES.map((b, i) => (
               <StaggerItem as="p"
                 key={b}
-                className={`flex w-fit max-w-[34rem] items-start gap-3 rounded-[20px] border border-line bg-paper px-4 py-3.5 text-[1.02rem] leading-snug text-ink-2 sm:px-5 ${
+                className={`flex w-fit max-w-[88%] items-start gap-3 sm:max-w-[34rem] rounded-[20px] border border-line bg-paper px-4 py-3.5 text-[1.02rem] leading-snug text-ink-2 sm:px-5 ${
                   i % 2 ? "ml-auto rounded-br-md" : "rounded-bl-md"
                 }`}
               >
@@ -42,7 +42,7 @@ export function Problem() {
         </div>
 
         {/* 2 · ideea centrală + comparația */}
-        <div className="mt-24 sm:mt-32">
+        <div className="mt-16 sm:mt-32">
           <Reveal className="max-w-[760px]">
             <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">
               Problema nu e calculatorul. E că îl folosește doar ca să consume.
@@ -55,12 +55,12 @@ export function Problem() {
           <Reveal className="mt-10 overflow-hidden rounded-2xl border border-line bg-paper">
             <div className="grid grid-cols-2 border-b border-line text-[0.82rem] font-semibold uppercase tracking-[0.08em]">
               <div className="px-4 py-3 text-muted sm:px-6"><E e="📱" className="mr-1.5 text-[1rem]" />Acum</div>
-              <div className="border-l border-line bg-mint/60 px-4 py-3 text-green sm:px-6"><E e="🛠️" className="mr-1.5 text-[1rem]" />Cu lecții Codito</div>
+              <div className="border-l border-line bg-mint/60 px-3 py-3 text-[#15784d] sm:px-6"><E e="🛠️" className="mr-1.5 text-[1rem]" /><span className="sm:hidden">Cu Codito</span><span className="hidden sm:inline">Cu lecții Codito</span></div>
             </div>
             {PAIRS.map(([a, b], k) => (
               <div key={a} className={`grid grid-cols-2 ${k ? "border-t border-line" : ""}`}>
-                <div className="px-4 py-4 text-[0.98rem] leading-snug text-ink-2 sm:px-6 sm:text-[1.04rem]">{a}</div>
-                <div className="flex gap-2 border-l border-line bg-mint/30 px-4 py-4 text-[0.98rem] font-medium leading-snug text-ink sm:px-6 sm:text-[1.04rem]">
+                <div className="px-3 py-4 text-[0.94rem] leading-snug text-ink-2 sm:px-6 sm:text-[1.04rem]">{a}</div>
+                <div className="flex gap-2 border-l border-line bg-mint/30 px-3 py-4 text-[0.94rem] font-medium leading-snug text-ink sm:px-6 sm:text-[1.04rem]">
                   <ArrowRight className="mt-[3px] hidden size-4 shrink-0 text-green sm:block" aria-hidden />
                   {b}
                 </div>
@@ -72,7 +72,7 @@ export function Problem() {
           <Stagger className="mt-12 grid gap-6 border-t border-line pt-8 md:grid-cols-3 md:gap-10">
             <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🤖" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">AI‑ul intră în toate meseriile.</b>Medic, inginer sau designer: contează cine știe să‑l folosească bine.</StaggerItem>
             <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🧠" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Programarea învață gândirea.</b>Pași mici, răbdare, să cauți greșeala și să nu renunți.</StaggerItem>
-            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🌱" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Cu cât mai devreme, cu atât mai ușor.</b>La 12 ani, un copil învață asta jucându-se.</StaggerItem>
+            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🌱" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Cu cât mai devreme, cu atât mai ușor.</b>La 12 ani, un copil învață asta jucându‑se.</StaggerItem>
           </Stagger>
 
           <Reveal className="mt-10 max-w-[760px] border-l-[3px] border-coral pl-5 sm:pl-7">

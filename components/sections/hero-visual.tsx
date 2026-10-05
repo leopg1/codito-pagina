@@ -52,7 +52,7 @@ export function HeroVisual() {
           <span className="font-mono tabular-nums">52:14</span>
         </div>
 
-        <div className="min-h-[188px] overflow-hidden rounded-2xl bg-night px-[18px] pb-4 pt-[18px] font-mono text-[0.72rem] leading-[1.75] text-[#d8def5] sm:text-[0.82rem]">
+        <div className="min-h-[170px] overflow-hidden rounded-2xl bg-night px-3.5 pb-4 pt-[18px] min-[360px]:px-[18px] font-mono text-[0.72rem] leading-[1.75] text-[#d8def5] sm:text-[0.82rem]">
           <pre className="whitespace-pre">
             {LINES.slice(0, shown).map((line, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25 }}>
@@ -89,7 +89,7 @@ export function HeroVisual() {
       >
         <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-mint text-green"><MessageSquareText className="size-[18px]" aria-hidden /></span>
         <span className="min-w-0 leading-tight">
-          <b className="block text-[0.9rem]">Raport trimis părintelui</b>
+          <b className="block text-[0.85rem] min-[360px]:text-[0.9rem]">Raport trimis părintelui</b>
           <small className="text-[0.78rem] text-muted">după fiecare lecție</small>
         </span>
         <span className="ml-auto shrink-0 font-mono text-[0.72rem] text-green">20:14 ✓✓</span>
@@ -100,12 +100,12 @@ export function HeroVisual() {
 
 function Tile({ name, initial, color, speaking = false, photo = false }: { name: React.ReactNode; initial: string; color: string; speaking?: boolean; photo?: boolean }) {
   return (
-    <div className="relative grid aspect-video place-items-center overflow-hidden rounded-2xl bg-[#2a3156]">
+    <div className="relative grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-[#2a3156] max-[399px]:pb-7 min-[400px]:aspect-video">
       <span className={`relative grid size-12 place-items-center rounded-full ${color} font-display text-[1.25rem] font-bold text-white ${speaking ? "animate-pulse-ring" : ""}`}>
         {initial}
         {photo && <span className="absolute inset-0 overflow-hidden rounded-full"><Photo className="scale-[1.6] object-[50%_42%]" /></span>}
       </span>
-      <span className="absolute bottom-2 left-2 z-[1] rounded-md bg-night/70 px-2 py-1 text-[0.72rem] font-semibold leading-none text-white">{name}</span>
+      <span className="absolute bottom-1.5 left-1.5 z-[1] rounded-md bg-night/70 px-1.5 py-1 text-[0.72rem] font-semibold leading-none text-white">{name}</span>
     </div>
   );
 }

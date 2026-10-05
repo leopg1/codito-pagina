@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { CONFIG } from "@/lib/config";
+import { FAQ } from "@/lib/content";
 import { KidProvider } from "@/components/kid-context";
 import { Nav, TopBar } from "@/components/site/nav";
 import { Floating } from "@/components/site/floating";
@@ -15,6 +18,35 @@ import { Faq } from "@/components/sections/faq";
 import { Closing } from "@/components/sections/closing";
 import { Trust } from "@/components/sections/trust";
 import { Proof } from "@/components/sections/proof";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+const strip = (t: string) => t.replace(/\u2011/g, "-").replace(/\u2060/g, "");
+const homeLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `${CONFIG.siteUrl}/#lectii`,
+      name: "Lecții online 1:1 de programare și inteligență artificială pentru copii",
+      serviceType: "Lecții de programare pentru copii",
+      provider: { "@id": `${CONFIG.siteUrl}/#org` },
+      areaServed: { "@type": "Country", name: "România" },
+      audience: { "@type": "EducationalAudience", educationalRole: "student", audienceType: "Copii și adolescenți" },
+      availableChannel: { "@type": "ServiceChannel", serviceUrl: `${CONFIG.siteUrl}/`, availableLanguage: "ro" },
+      offers: [
+        { "@type": "Offer", name: "Prima lecție (45 de minute)", price: "0", priceCurrency: "RON", availability: "https://schema.org/InStock" },
+        { "@type": "Offer", name: "Abonament lunar: 4 lecții de 90 de minute", price: String(CONFIG.price.month), priceCurrency: "RON" },
+        { "@type": "Offer", name: "Lecție individuală (90 de minute)", price: String(CONFIG.price.single), priceCurrency: "RON" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${CONFIG.siteUrl}/#intrebari`,
+      mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: strip(q), acceptedAnswer: { "@type": "Answer", text: strip(a) } })),
+    },
+  ],
+};
 
 export default function Home() {
   return (
@@ -37,8 +69,9 @@ export default function Home() {
         <Faq />
         <Closing />
       </main>
-      <Footer />
+      <Footer pad />
       <Floating />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeLd) }} />
     </KidProvider>
   );
 }

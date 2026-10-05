@@ -38,19 +38,19 @@ export const TRACKS: Record<AgeKey, [string, string, string][]> = nbDeep({
 
 export const LEVELS = nbDeep([
   {
-    n: 1, name: "Explorator", meta: "9–12 ani sau începători · aproximativ 4–6 luni",
+    n: 1, name: "Explorator", meta: "9–12 ani sau începători · aproximativ 4–6 luni",
     learn: ["Cum „gândește” un calculator: pași, ordine, logică", "Bazele Python: variabile, condiții, bucle, funcții, liste", "Grafică și animații din cod", "Să găsească singur greșelile și să le repare"],
     build: ["Jocuri: ghicitori, quiz-uri, jocuri cu personaje și scor", "Jocuri inspirate din Minecraft și Roblox, făcute de el", "Desene și animații generate din cod", "Primul lui proiect, publicat cu link"],
     outcome: "scrie singur programe mici, să explice cum funcționează și să ducă un proiect de la idee până la final.",
   },
   {
-    n: 2, name: "Constructor", meta: "12–15 ani sau după nivelul 1 · aproximativ 4–6 luni",
+    n: 2, name: "Constructor", meta: "12–15 ani sau după nivelul 1 · aproximativ 4–6 luni",
     learn: ["Python mai serios: fișiere, date, proiecte mai mari", "Cum se face un site: HTML, CSS și puțin JavaScript", "Cum folosește aplicația lui date reale de pe internet", "AI folosit corect: cum îi ceri explicații, cum verifici ce spune"],
     build: ["Site-ul lui personal, publicat pe internet", "Un chatbot sau asistent AI pentru hobby-ul lui", "Aplicații cu date reale: vreme, sport, jocuri"],
     outcome: "construiască și să publice un site și o aplicație mică, folosind AI-ul ca asistent, nu ca să copieze.",
   },
   {
-    n: 3, name: "Creator", meta: "14–17 ani sau după nivelul 2 · 6 luni și mai mult",
+    n: 3, name: "Creator", meta: "14–17 ani sau după nivelul 2 · 6 luni și mai mult",
     learn: ["Aplicații web complete: conturi, bază de date, interfață", "Integrarea inteligenței artificiale în propriile aplicații", "Git și GitHub: cum lucrează programatorii adevărați", "Opțional: C++ și algoritmi pentru informatica de liceu, bac sau olimpiadă"],
     build: ["O aplicație web reală, cu AI integrat", "Proiecte de portofoliu, publicate pe GitHub"],
     outcome: "gândească și să lucreze ca un programator junior și are un portofoliu cu care iese în evidență.",

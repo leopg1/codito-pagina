@@ -43,7 +43,7 @@ export function Hero() {
             style={{ "--d": ".4s" } as React.CSSProperties}
             className="rise mt-8 flex flex-col gap-2 sm:flex-row sm:items-center"
           >
-            <ButtonLink href="#plan" arrow>Vreau lecția gratuită 1:1</ButtonLink>
+            <ButtonLink href="#plan" arrow>Vreau lecția gratuită 1:1</ButtonLink>
             <ButtonLink href="#traseu" variant="ghost">Ce va construi copilul? ↓</ButtonLink>
           </div>
           <p style={{ "--d": ".5s" } as React.CSSProperties} className="rise mt-4 text-[0.95rem] text-muted">

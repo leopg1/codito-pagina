@@ -33,6 +33,7 @@ export const CONFIG = {
   },
   formspree: "https://formspree.io/f/mlgzkzpr", // ex. "https://formspree.io/f/abcdwxyz" · unde ajung înscrierile (pe email). Gol = se trimit pe WhatsApp
   plausibleDomain: "", // ex. "codito.ro" · statistici fără cookie‑uri (plausible.io)
+  googleVerification: "", // codul din Google Search Console (metoda „Etichetă HTML”), ex. "AbCdEf123..."
 
   company: {
     name: "Pădurean Gabriel-Leonard PFA",
@@ -45,13 +46,13 @@ export const CONFIG = {
 
 const session = CONFIG.price.month / 4;
 export const PRICES = {
-  month: `${CONFIG.price.month} lei`,
-  later: `${CONFIG.price.later} lei`,
-  single: `${CONFIG.price.single} lei`,
-  session: `${session} lei`,
-  hour: `${Math.round(session / 1.5)} lei pe oră`,
+  month: `${CONFIG.price.month}\u00a0lei`,
+  later: `${CONFIG.price.later}\u00a0lei`,
+  single: `${CONFIG.price.single}\u00a0lei`,
+  session: `${session}\u00a0lei`,
+  hour: `${Math.round(session / 1.5)}\u00a0lei pe oră`,
   hourN: Math.round(session / 1.5),
-  day: `${Math.round(CONFIG.price.month / 30)} lei`,
+  day: `${Math.round(CONFIG.price.month / 30)}\u00a0lei`,
 };
 
 export const FOUNDING_FREE = Math.max(0, CONFIG.founding.total - CONFIG.founding.taken);

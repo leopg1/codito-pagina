@@ -38,6 +38,11 @@ export function About() {
   return (
     <section id="despre" className="section border-y border-line bg-paper">
       <div className="wrap">
+        {/* pe telefon, titlul vine înaintea pozei */}
+        <Reveal className="mb-8 lg:hidden">
+          <span className="kicker mb-4">Cine lucrează cu copilul tău</span>
+          <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Bună, sunt <span className="whitespace-nowrap">Leonard <E e="👋" className="text-[0.85em]" /></span><br />Eu țin fiecare lecție.</h2>
+        </Reveal>
         <div className="grid items-start gap-10 lg:grid-cols-[340px_1fr] lg:gap-16">
           {/* cartonașul profesorului */}
           <Reveal className="mx-auto w-full max-w-[460px] lg:sticky lg:top-24">
@@ -45,24 +50,38 @@ export function About() {
               <div className="overflow-hidden rounded-2xl bg-ink">
                 <video src={CONFIG.video} poster={CONFIG.videoPoster || undefined} controls playsInline preload="none" className="aspect-[4/5] w-full object-cover" aria-label="Leonard se prezintă, 60 de secunde" />
               </div>
+            ) : CONFIG.photo ? (
+              /* pe telefon: card de profil compact (poză mică + nume); de la tabletă în sus: poză mare */
+              <div className="flex items-center gap-4 sm:block">
+                <div className="relative size-24 shrink-0 overflow-hidden rounded-2xl bg-coral border-4 border-peach min-[400px]:size-28 sm:aspect-[4/5] sm:size-auto sm:w-full sm:border-0">
+                  <Photo className="object-[50%_35%] max-sm:scale-[1.35] max-sm:object-[50%_45%]" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-[1.3rem] font-semibold leading-tight sm:mt-5 sm:text-[1.45rem]">Leonard Pădurean</h3>
+                  <p className="mt-1 text-[0.92rem] font-medium leading-snug text-coral-t sm:text-[0.95rem]">Fondatorul Codito · <span className="sm:whitespace-nowrap">profesorul de la fiecare lecție</span></p>
+                </div>
+              </div>
             ) : (
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-night p-6 font-mono text-[0.95rem] leading-[1.9] text-[#c3c8dd] sm:p-7" aria-label="Leonard Pădurean: predau Python, C++ și AI copiilor de 9–17 ani, 1:1">
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-night p-6 font-mono text-[0.95rem] leading-[1.9] text-[#c3c8dd] sm:aspect-[4/5] sm:p-7" aria-label="Leonard Pădurean: predau Python, C++ și AI copiilor, 1:1">
                 <div className="mb-5 flex gap-1.5" aria-hidden><i className="size-2.5 rounded-full bg-[#ff5f57]" /><i className="size-2.5 rounded-full bg-[#febc2e]" /><i className="size-2.5 rounded-full bg-[#28c840]" /></div>
                 <div aria-hidden>
                   <p><span className="text-coral">$</span> whoami</p>
                   <p className="text-white">Leonard Pădurean</p>
                   <p className="mt-3"><span className="text-coral">$</span> cat predau.txt</p>
                   <p className="text-[#9be7be]">Python · C++ · AI</p>
-                  <p className="text-[#9be7be]">copii 9–17 ani, 1:1</p>
+                  <p className="text-[#9be7be]">copii și adolescenți, 1:1</p>
                   <p className="mt-3"><span className="text-coral">$</span> cat motto.txt</p>
                   <p className="text-sun">„Ecranul e pentru construit.”</p>
                   <p className="mt-3"><span className="text-coral">$</span> <i className="inline-block h-[1.1em] w-[0.55em] translate-y-[3px] animate-blink bg-coral" /></p>
                 </div>
-                <Photo />
               </div>
             )}
-            <h3 className="mt-5 text-[1.45rem] font-semibold">Leonard Pădurean</h3>
-            <p className="mt-1 text-[0.95rem] font-medium text-coral-t">Fondatorul Codito · profesorul de la fiecare lecție</p>
+            {!CONFIG.photo && (
+              <>
+                <h3 className="mt-5 text-[1.45rem] font-semibold">Leonard Pădurean</h3>
+                <p className="mt-1 text-[0.95rem] font-medium text-coral-t">Fondatorul Codito · <span className="whitespace-nowrap">profesorul de la fiecare lecție</span></p>
+              </>
+            )}
             {CONFIG.integrityCert && (
               <p className="mt-3 inline-flex items-center gap-1.5 text-[0.88rem] font-semibold text-green">
                 <ShieldCheck className="size-4" /> Certificat de integritate comportamentală
@@ -79,11 +98,11 @@ export function About() {
 
           {/* povestea */}
           <div className="min-w-0">
-            <Reveal>
+            <Reveal className="hidden lg:block">
               <span className="kicker mb-4">Cine lucrează cu copilul tău</span>
-              <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Bună, sunt Leonard <E e="👋" className="text-[0.85em]" /><br />Eu țin fiecare lecție.</h2>
+              <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Bună, sunt <span className="whitespace-nowrap">Leonard <E e="👋" className="text-[0.85em]" /></span><br />Eu țin fiecare lecție.</h2>
             </Reveal>
-            <Reveal className="mt-6 grid max-w-[680px] gap-4 text-[1.08rem] leading-[1.75] text-ink-2">
+            <Reveal className="grid lg:mt-6 max-w-[680px] gap-4 text-[1.08rem] leading-[1.75] text-ink-2">
               <p>Predau programare copiilor de peste un an și am observat un lucru: <strong className="text-ink">copiii învață enorm atunci când cineva are timp doar pentru ei</strong>. Când pot întreba orice fără să le fie rușine și când construiesc ceva care e al lor.</p>
               <p>Într‑o grupă, timpul ăsta nu există. De aceea am pornit Codito și lucrez doar unu la unu: 90 de minute în care copilul tău are toată atenția mea.</p>
               <p className="border-l-[3px] border-coral pl-5 text-ink">
@@ -108,7 +127,7 @@ export function About() {
         </div>
 
         {/* realizări: listă, ca într‑un CV */}
-        <Reveal className="mt-20 sm:mt-24">
+        <Reveal className="mt-14 sm:mt-24">
           <h3 className="text-[1.3rem] font-semibold">Ce am construit eu, ca să știi cu cine lucrezi</h3>
           <Stagger as="ul" className="mt-4 grid gap-x-10 md:grid-cols-2">
             {BUILT.map(([e, badge, b, p]) => (
@@ -122,7 +141,7 @@ export function About() {
           </Stagger>
         </Reveal>
 
-        <Reveal className="mt-12 grid items-start gap-6 rounded-2xl bg-ink p-7 text-white sm:p-10 md:grid-cols-[.8fr_1.2fr] md:gap-10">
+        <Reveal className="mt-12 grid items-start gap-6 rounded-2xl bg-ink p-6 text-white sm:p-10 md:grid-cols-[.8fr_1.2fr] md:gap-10">
           <h3 className="text-[1.45rem] font-semibold text-white sm:text-[1.65rem]">Ce poți aștepta de la mine, mereu</h3>
           <ul className="grid gap-3.5">
             {PROMISES.map(([b, t]) => (

@@ -23,10 +23,9 @@ export function Demo() {
     const v = parseInt(val, 10);
     if (!(v >= 1 && v <= 100)) { setMsg("Un număr între 1 și 100 🙂"); return; }
     const t = tries + 1; setTries(t);
-    if (v < secret) setMsg(`${v}? Mai mare! ⬆️`);
-    else if (v > secret) setMsg(`${v}? Mai mic! ⬇️`);
-    else { setMsg(`🎉 Ai ghicit în ${t} încercări!`); setWon(true); }
-    input.current?.select();
+    if (v < secret) { setMsg(`${v}? Mai mare! ⬆️`); input.current?.select(); }
+    else if (v > secret) { setMsg(`${v}? Mai mic! ⬇️`); input.current?.select(); }
+    else { setMsg(`🎉 Ai ghicit în ${t} încercări!`); setWon(true); input.current?.blur(); }
   };
   const again = () => { setSecret(rnd()); setTries(0); setWon(false); setVal(""); setMsg("Scrie un număr și apasă „Încearcă”"); input.current?.focus(); };
 
@@ -41,11 +40,11 @@ export function Demo() {
               <span className="flex items-center gap-2"><i className="size-2 rounded-full bg-[#5be3a7] shadow-[0_0_0_3px_rgb(91_227_167/.2)]" /> joc.py · rulează</span>
               <span>consolă</span>
             </div>
-            <div className="flex flex-1 flex-col justify-center p-7 sm:p-9">
+            <div className="flex flex-1 flex-col justify-center p-5 sm:p-9">
             <h3 className="flex items-center justify-center gap-2 text-[1.3rem] font-semibold text-white">
               <E e="🎯" /> Jocul <KidGen />
             </h3>
-            <p className="mt-1 text-[#c3c8dd]">M‑am gândit la un număr între 1 și 100. Îl ghicești?</p>
+            <p className="mt-1 text-[#c3c8dd]">M‑am gândit la un număr între 1 și 100. Îl ghicești?</p>
             <div className="my-5 grid min-h-[3.4em] place-items-center rounded-2xl bg-night/60 px-4 py-3 font-mono text-[1rem] text-[#9be7be]" aria-live="polite">
               <AnimatePresence mode="wait">
                 <motion.span key={msg} initial={{ opacity: 0, y: 8, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
@@ -60,7 +59,7 @@ export function Demo() {
                 aria-label="Numărul tău"
                 className="w-28 rounded-2xl border-2 border-white/15 bg-night px-3 py-3 text-center font-display text-[1.6rem] font-bold text-white outline-none transition placeholder:text-white/30 focus:border-coral disabled:opacity-50"
               />
-              <button disabled={won} className="rounded-full bg-coral px-6 font-semibold text-white shadow-coral transition hover:bg-coral-d disabled:opacity-50">Încearcă</button>
+              <button disabled={won} className="rounded-full bg-cta px-6 font-semibold text-white shadow-coral transition hover:bg-cta-d disabled:opacity-50">Încearcă</button>
             </form>
             <div className="mt-4 text-[0.9rem] text-[#a3aac4]">Încercări: {tries}</div>
             {won && (
@@ -71,9 +70,9 @@ export function Demo() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="overflow-x-auto rounded-2xl bg-night p-6 font-mono text-[0.78rem] leading-[1.8] text-[#d8def5] ring-1 ring-white/5 sm:p-7 sm:text-[0.9rem]">
+          <Reveal delay={0.1} className="overflow-x-auto rounded-2xl bg-night p-4 font-mono text-[0.7rem] leading-[1.8] text-[#d8def5] ring-1 ring-white/5 min-[360px]:p-5 min-[360px]:text-[0.76rem] sm:p-7 sm:text-[0.9rem]">
             <div className="mb-3.5 flex justify-between gap-2 font-sans text-[0.78rem] font-medium text-[#8e97ba]">
-              <span>joc.py · scris de copil, lecția 2</span><span>Python 🐍</span>
+              <span className="whitespace-nowrap">joc.py · scris de copil, lecția 2</span><span className="hidden whitespace-nowrap min-[400px]:inline">Python 🐍</span>
             </div>
             <pre className="whitespace-pre">
 <K>import</K> random{"\n\n"}numar = random.randint(<N>1</N>, <N>100</N>){"\n\n"}<K>while</K> <K>True</K>:{"\n"}    ghicit = int(input(<S>&quot;Ghicește: &quot;</S>)){"\n"}    <K>if</K> ghicit &lt; numar:{"\n"}        print(<S>&quot;Mai mare! ⬆️&quot;</S>){"\n"}    <K>elif</K> ghicit &gt; numar:{"\n"}        print(<S>&quot;Mai mic! ⬇️&quot;</S>){"\n"}    <K>else</K>:{"\n"}        print(<S>&quot;🎉 Ai ghicit!&quot;</S>){"\n"}        <K>break</K>

@@ -23,9 +23,9 @@ export function FreeLesson() {
         />
         <Reveal className="mx-auto mt-12 max-w-[900px]">
           <div className="overflow-hidden rounded-2xl bg-paper shadow-lift ring-1 ring-line">
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-coral px-6 py-5 text-white sm:px-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-cta px-6 py-5 text-white sm:px-8">
               <span className="flex items-center gap-2 font-semibold"><E e="🎁" className="text-[1.3rem]" /> Invitație · 45 de minute</span>
-              <span className="flex items-baseline gap-3"><s className="opacity-75">{PRICES.session}</s><b className="font-display text-[2rem] leading-none sm:text-[2.3rem]">0 lei</b></span>
+              <span className="flex items-baseline gap-3"><s>{PRICES.session}</s><b className="font-display text-[2rem] leading-none sm:text-[2.3rem]">0 lei</b></span>
             </div>
 
             {/* scenariul lecției: părintele știe dinainte ce se întâmplă */}
@@ -52,7 +52,7 @@ export function FreeLesson() {
               ))}
             </ol>
             <div className="grid justify-items-center gap-3 px-6 pb-8 pt-7 text-center">
-              <ButtonLink href="#plan" arrow className="w-full sm:w-auto">Vreau lecția gratuită 1:1</ButtonLink>
+              <ButtonLink href="#plan" arrow className="w-full sm:w-auto">Vreau lecția gratuită 1:1</ButtonLink>
               <p className="text-[0.92rem] text-muted">Fără card, fără contract, fără obligații.</p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function FreeLesson() {
         {/* după lecție: fără presiune + exemplu de evaluare */}
         <div className="mx-auto mt-16 grid max-w-[900px] items-center gap-10 md:grid-cols-[1fr_1.05fr]">
           <Reveal>
-            <h3 className="text-[clamp(1.45rem,3vw,1.85rem)] font-semibold">După lecție decizi tu. Fără presiune.</h3>
+            <h3 className="text-[clamp(1.45rem,3vw,1.85rem)] font-semibold">După lecție decizi tu. Fără presiune.</h3>
             <p className="mt-4 leading-relaxed text-ink-2">Știu cum arată multe „lecții demo”: la final urmează o ofertă și telefoane insistente. La mine nu.</p>
             <ul className="mt-5 grid gap-3">
               {[
@@ -91,11 +91,11 @@ function Evaluation() {
           <span className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-coral-t">Evaluare scrisă</span>
           <b className="mt-1 block font-display text-[1.2rem] text-ink"><KidSample />, 10 ani</b>
         </div>
-        <span className="rounded-md bg-mint px-2 py-1 text-[0.72rem] font-semibold text-green">exemplu</span>
+        <span className="rounded-md bg-mint px-2 py-1 text-[0.78rem] font-semibold text-[#15784d]">exemplu</span>
       </div>
       <dl className="mt-4 grid gap-3">
         <div><dt className="font-semibold text-ink">De unde pornește</dt><dd>Nu a mai programat, dar înțelege repede ordinea pașilor. A scris un joc de ghicit în 25 de minute, fără ajutor.</dd></div>
-        <div><dt className="font-semibold text-ink">Ce l‑a entuziasmat</dt><dd>Când jocul a început să răspundă la ce scria el. Vrea un joc cu personaje din Minecraft.</dd></div>
+        <div><dt className="font-semibold text-ink">Ce i‑a plăcut cel mai mult</dt><dd>Când jocul a început să răspundă la ce scria el. Vrea un joc cu personaje din Minecraft.</dd></div>
         <div><dt className="font-semibold text-ink">Recomandarea mea</dt><dd>Python de la zero, nivelul Explorator, câte o lecție pe săptămână.</dd></div>
         <div><dt className="font-semibold text-ink">Prima lună</dt><dd>Un joc cu scor și niveluri, pe care îl poate juca toată familia.</dd></div>
       </dl>
@@ -158,9 +158,9 @@ export function Price() {
 
         <div className="mt-20 sm:mt-24">
           <SectionHead center={false} title="Cât costă" />
-          <Reveal className="mt-10 grid overflow-hidden rounded-2xl shadow-lift ring-1 ring-line md:grid-cols-2">
+          <Reveal className="mt-10 grid grid-cols-[minmax(0,1fr)] overflow-hidden rounded-2xl shadow-lift ring-1 ring-line md:grid-cols-2">
             <div className="bg-paper p-5 sm:p-10">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-peach px-3 py-1.5 text-[0.8rem] font-bold text-coral-t"><E e="🌱" /> {FOUNDING_FREE > 0 ? "Preț pentru familiile fondatoare" : "Abonament lunar"}</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-cream px-3 py-1.5 text-[0.8rem] font-bold text-coral-t ring-1 ring-line"><E e="🌱" /> {FOUNDING_FREE > 0 ? "Preț pentru familiile fondatoare" : "Abonament lunar"}</span>
               <h3 className="mt-4 text-[1.6rem] font-semibold">Abonament lunar</h3>
               <div className="mt-2 flex flex-wrap items-baseline gap-2">
                 <b className="font-display text-[3.3rem] leading-none">{FOUNDING_FREE > 0 ? PRICES.month : PRICES.later}</b>
@@ -169,11 +169,11 @@ export function Price() {
               <p className="mt-2 text-ink-2">4 lecții × 90 de minute, una pe săptămână. Adică <span className="whitespace-nowrap">{PRICES.session}</span> pe lecție.</p>
               {FOUNDING_FREE > 0 && <p className="mt-1 text-[0.9rem] text-muted">Blocat {f.lockMonths} luni. Pentru familiile care vin după: {PRICES.later} pe lună.</p>}
               <ul className="my-7 grid gap-2.5">
-                {["Prima lecție gratuită, ca să vedeți dacă vă place", "Plan personalizat, pornit de la ce îi place", "Raport pe WhatsApp după fiecare lecție", "Discuție cu tine la fiecare 6 lecții", "Diplomă și prezentare în fața familiei la final de nivel", "Te oprești oricând, fără penalități"].map((t) => (
+                {["Prima lecție gratuită, ca să vedeți dacă vă place", "Plan personalizat, pornit de la ce îi place", "Raport pe WhatsApp după fiecare lecție", "Discuție cu tine la fiecare 6 lecții", "Diplomă și prezentare în fața familiei la final de nivel", "Te oprești oricând, fără penalități"].map((t) => (
                   <li key={t} className="flex gap-2.5"><Check className="mt-1 size-[18px] shrink-0 text-green" strokeWidth={3} aria-hidden />{t}</li>
                 ))}
               </ul>
-              <ButtonLink href="#plan" arrow className="w-full whitespace-nowrap">Începem cu lecția gratuită</ButtonLink>
+              <ButtonLink href="#plan" arrow className="w-full">Începem cu lecția gratuită</ButtonLink>
             </div>
             <div className="bg-ink p-5 text-white sm:p-10">
               <h3 className="text-[1.3rem] font-semibold text-white">Ca să ai o comparație</h3>
@@ -181,16 +181,16 @@ export function Price() {
               <ul className="mt-5 grid gap-3">
                 {COMPARE.map(([name, who, len, hour, us]) => (
                   <li key={name} className={`rounded-xl px-4 py-3 ${us ? "bg-white/10 ring-1 ring-[#5be3a7]/50" : "bg-white/[.04]"}`}>
-                    <b className={`block text-[0.98rem] leading-snug ${us ? "text-white" : "text-[#d3d8ea]"}`}>{name}</b>
-                    <span className="mt-1 flex items-baseline justify-between gap-3">
-                      <small className="min-w-0 text-[0.82rem] leading-snug text-[#a3aac4]">{who} · {len}</small>
-                      <span className={`whitespace-nowrap font-display text-[1.15rem] font-semibold tabular-nums ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="ml-1 font-sans text-[0.72rem] font-normal text-[#a3aac4]">/oră</small></span>
+                    <span className="flex items-baseline justify-between gap-3">
+                      <b className={`min-w-0 text-[0.98rem] leading-snug ${us ? "text-white" : "text-[#d3d8ea]"}`}>{name}</b>
+                      <span className={`shrink-0 whitespace-nowrap font-display text-[1.15rem] font-semibold tabular-nums ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="ml-1 font-sans text-[0.78rem] font-normal text-[#a3aac4]">/oră</small></span>
                     </span>
+                    <small className="mt-1 block text-[0.84rem] leading-snug text-[#a3aac4]">{who} · {len}</small>
                   </li>
                 ))}
               </ul>
               <div className="mt-7 border-t border-white/15 pt-6">
-                <b className="flex items-start gap-2 font-display text-[1.15rem] font-semibold text-sun"><E e="🛡️" className="mt-0.5" /> Garanția „merită sau nu plătești”</b>
+                <b className="flex items-start gap-2 font-display text-[1.15rem] font-semibold text-sun"><E e="🛡️" className="mt-0.5" /> Garanția „merită sau nu plătești”</b>
                 <p className="mt-1.5 text-[0.95rem] text-[#d3d8ea]">Dacă după primele 2 lecții plătite simți că nu merită, îți dau banii înapoi pe ele. Integral, fără explicații.</p>
               </div>
             </div>
@@ -201,10 +201,10 @@ export function Price() {
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="👫" /> Frați</b><p className="mt-1 text-[0.93rem] text-ink-2">{CONFIG.discounts.sibling}% reducere pentru al doilea copil.</p></StaggerItem>
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="📅" /> Plată pe 3 luni</b><p className="mt-1 text-[0.93rem] text-ink-2">{CONFIG.discounts.prepay3}% reducere dacă plătești 3 luni deodată.</p></StaggerItem>
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🤝" /> Recomandare</b><p className="mt-1 text-[0.93rem] text-ink-2">Recomanzi o familie care începe: primiți amândoi o lecție gratuită.</p></StaggerItem>
-            <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🎁" /> Cadou</b><p className="mt-1 text-[0.93rem] text-ink-2">Voucher pentru o lună de lecții. <a href={VOUCHER} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-2">Cere‑l pe WhatsApp</a></p></StaggerItem>
+            <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🎁" /> Cadou</b><p className="mt-1 text-[0.93rem] text-ink-2">Voucher pentru o lună de lecții. <a href={VOUCHER} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-2"><span className="whitespace-nowrap">Cere‑l pe WhatsApp</span></a></p></StaggerItem>
           </Stagger>
           <Reveal className="mt-8 text-[0.98rem] text-muted">
-            <E e="💡" className="mr-1" /> Ai nevoie doar de ajutor punctual (informatică la școală, bac, un proiect)? Lecție individuală: <b className="text-ink">{PRICES.single}</b>.
+            <E e="💡" />  Ai nevoie doar de ajutor punctual (informatică la școală, bac, un proiect)? Lecție individuală: <b className="text-ink">{PRICES.single}</b>.
           </Reveal>
         </div>
       </div>

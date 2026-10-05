@@ -76,7 +76,7 @@ export function Quiz() {
     <section id="plan" className="section bg-[#fff1e8]">
       <div className="wrap">
         <SectionHead
-          kicker="Rezervă lecția gratuită 1:1"
+          kicker="Rezervă lecția gratuită 1:1"
           title={<>Hai să pregătim prima lecție pentru <KidName /></>}
           lead="5 întrebări simple, ca să pregătesc lecția exact pentru el. La final îmi trimiți răspunsurile pe WhatsApp și alegem împreună ora."
         />
@@ -90,7 +90,7 @@ export function Quiz() {
           ))}
         </Reveal>
 
-        <Reveal className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-2xl bg-paper p-5 shadow-lift sm:p-9">
+        <Reveal className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-2xl bg-paper p-4 shadow-lift min-[360px]:p-5 sm:p-9">
           <div className="mb-7 h-2 overflow-hidden rounded-full bg-sand" aria-hidden>
             <motion.div className="h-full rounded-full bg-coral" animate={{ width: `${(Math.min(step + 1, STEPS.length + 1) / (STEPS.length + 1)) * 100}%` }} transition={{ duration: 0.4, ease: EASE }} />
           </div>
@@ -100,14 +100,14 @@ export function Quiz() {
               <motion.div key={step} custom={dir}
                 initial={{ opacity: 0, x: 30 * dir }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 * dir }} transition={{ duration: 0.3, ease: EASE }}>
                 <h3 className="text-[1.3rem] font-semibold sm:text-[1.45rem]">{STEPS[step].q}</h3>
-                <p className="mb-5 mt-1 text-[0.95rem] text-muted">{STEPS[step].hint} · {step + 1} din {STEPS.length}</p>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <p className="mb-5 mt-1 text-[0.95rem] text-muted">{STEPS[step].hint} <span className="whitespace-nowrap">· {step + 1} din {STEPS.length}</span></p>
+                <div className={clsx("grid gap-3 sm:grid-cols-2", STEPS[step].key === "age" && "min-[400px]:grid-cols-2")}>
                   {STEPS[step].opts.map(({ v, label, e }) => (
                     <button key={v} onClick={() => pick(STEPS[step].key, v)}
-                      className={clsx("group flex items-center gap-3 rounded-2xl border-2 px-4 py-4 text-left text-[1rem] font-medium transition",
+                      className={clsx("group flex min-h-[64px] items-center gap-3 rounded-2xl border-2 px-3.5 py-3 text-left text-[1rem] font-medium leading-snug transition sm:px-4",
                         ans[STEPS[step].key] === v ? "border-coral bg-peach" : "border-line bg-cream hover:-translate-y-0.5 hover:border-coral")}>
-                      <EBadge e={e} className="size-10 rounded-xl bg-paper text-[1.3rem] transition group-hover:scale-110" />
-                      {label}
+                      <EBadge e={e} className="size-10 shrink-0 rounded-xl bg-paper text-[1.3rem] transition group-hover:scale-110" />
+                      <span className={STEPS[step].key === "age" ? "whitespace-nowrap" : undefined}>{label}</span>
                     </button>
                   ))}
                 </div>
@@ -119,8 +119,8 @@ export function Quiz() {
               </motion.div>
             ) : (
               <motion.div key="done" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, ease: EASE }}>
-                <h3 className="flex items-center gap-2 text-[1.45rem] font-semibold sm:text-[1.6rem]"><E e="🎉" /> Planul recomandat pentru <KidName /></h3>
-                <div className="my-5 grid gap-3 rounded-xl bg-cream p-4 sm:p-6">
+                <h3 className="flex items-start gap-2 text-[1.45rem] font-semibold sm:text-[1.6rem]"><E e="🎉" className="mt-0.5 shrink-0" /> Planul recomandat pentru <KidName /></h3>
+                <div className="my-5 grid gap-3 rounded-xl bg-cream p-3 text-[0.95rem] sm:p-6 sm:text-base">
                   {[
                     ["🎯", "Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
                     ["🧭", "Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
@@ -130,14 +130,14 @@ export function Quiz() {
                     <div key={b} className="flex gap-3 leading-normal"><E e={e} className="mt-0.5 text-[1.2rem]" /><span><b>{b}:</b> {t}</span></div>
                   ))}
                 </div>
-                <a href={waLink(msg)} target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2.5 rounded-full bg-wa px-6 py-4 font-semibold text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.65)] transition hover:-translate-y-0.5 hover:bg-[#1ebe5a]">
+                <a href={waLink(msg)} target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-wa px-4 py-4 font-semibold sm:px-6 text-white shadow-[0_12px_28px_-10px_rgb(17_128_69/.45)] transition hover:-translate-y-0.5 hover:bg-[#0d6a38]">
                   <WaIcon className="size-5 shrink-0" /> <span className="sm:hidden">Rezervă pe WhatsApp</span><span className="hidden sm:inline">Rezervă lecția gratuită pe WhatsApp</span>
                 </a>
                 <p className="mt-3 text-center text-[0.86rem] text-muted">
                   Se deschide WhatsApp cu mesajul gata scris. Doar apeși „Trimite”. Trimițând mesajul, ești de acord cu <a href="/termeni/" className="text-coral-t underline">termenii</a> și <a href="/confidentialitate/" className="text-coral-t underline">politica de confidențialitate</a>.
                 </p>
                 <div className="mt-6 border-t border-line pt-5">
-                  <b className="mb-3 block font-display text-[1.05rem] font-semibold">Ce urmează după ce trimiți mesajul</b>
+                  <b className="mb-3 block font-display text-[1.05rem] font-semibold leading-snug">Ce urmează după ce trimiți mesajul</b>
                   <ol className="grid gap-3">
                     {[["Îți scriu în maximum 2 ore", "și alegem împreună ora lecției."], ["Primești linkul de Google Meet", "și o listă scurtă: laptop, căști, 2 minute de pregătire."], ["Lecția gratuită, 45 de minute.", "La final, copilul îți arată ce a construit și primești părerea mea, în scris."]].map(([b, t], k) => (
                       <li key={b} className="flex gap-3 text-[0.95rem] leading-normal text-ink-2">
@@ -147,16 +147,16 @@ export function Quiz() {
                     ))}
                   </ol>
                 </div>
-                <a href={shareLink(`Uite ce lecții de programare am găsit pentru ${kid.name || "copil"}: prima e gratuită, 45 de minute, unu la unu. Ce zici? ${CONFIG.siteUrl}`)} target="_blank" rel="noopener" className="mt-5 flex items-center justify-center gap-2 rounded-full border-2 border-line px-5 py-3 text-[0.95rem] font-semibold text-ink-2 transition hover:border-coral hover:text-coral-t">
-                  <E e="👪" /> Decideți împreună? Trimite pagina celuilalt părinte
+                <a href={shareLink(`Uite ce lecții de programare am găsit pentru ${kid.name || "copil"}: prima e gratuită, 45 de minute, unu la unu. Ce zici? ${CONFIG.siteUrl}`)} target="_blank" rel="noopener" className="mt-5 flex items-center justify-center text-center gap-2 rounded-2xl border-2 border-line px-5 py-3 text-[0.95rem] font-semibold text-ink-2 transition hover:border-coral hover:text-coral-t">
+                  <E e="👪" className="shrink-0" /> <span className="max-[359px]:hidden">Trimite pagina celuilalt părinte</span><span className="min-[360px]:hidden">Trimite‑o celuilalt părinte</span>
                 </a>
-                <button onClick={() => { setAns({}); setDir(-1); setStep(0); }} className="mt-5 text-[0.9rem] text-muted underline-offset-4 hover:text-coral-t hover:underline">Reia întrebările</button>
+                <button onClick={() => { setAns({}); setDir(-1); setStep(0); }} className="mx-auto mt-3 block py-2 text-[0.9rem] text-muted underline-offset-4 hover:text-coral-t hover:underline">Reia întrebările</button>
               </motion.div>
             )}
           </AnimatePresence>
         </Reveal>
         <p className="mt-5 text-center leading-relaxed text-ink-2">
-          Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie‑mi pe WhatsApp</a>
+          Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4"><span className="whitespace-nowrap">Scrie‑mi pe WhatsApp</span></a>
           {" "}sau sună‑mă: <a href={telLink} className="whitespace-nowrap font-semibold text-coral-t underline underline-offset-4">{CONFIG.phone}</a>
           {CONFIG.calUrl && <>. Sau <a href={CONFIG.calUrl} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">alege singur o oră în calendar</a></>}
         </p>
