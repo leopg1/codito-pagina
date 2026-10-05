@@ -30,11 +30,11 @@ export function Problem() {
             {BUBBLES.map((b, i) => (
               <StaggerItem as="p"
                 key={b}
-                className={`flex w-fit max-w-[88%] items-start gap-3 sm:max-w-[34rem] rounded-[20px] border border-line bg-paper px-4 py-3.5 text-[1.02rem] leading-snug text-ink-2 sm:px-5 ${
-                  i % 2 ? "ml-auto rounded-br-md" : "rounded-bl-md"
+                className={`flex w-full items-start gap-3 rounded-[20px] border border-line bg-paper px-4 py-3.5 text-[1.02rem] leading-snug text-ink-2 sm:w-fit sm:max-w-[34rem] sm:px-5 ${
+                  i % 2 ? "rounded-br-md sm:ml-auto" : "rounded-bl-md"
                 }`}
               >
-                <E e={BUBBLE_EMOJI[i]} className="mt-0.5 text-[1.15rem]" />
+                <E e={BUBBLE_EMOJI[i]} className="mt-0.5 shrink-0 text-[1.15rem]" />
                 <span>{b}</span>
               </StaggerItem>
             ))}
