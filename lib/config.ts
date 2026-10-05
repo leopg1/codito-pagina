@@ -15,7 +15,7 @@ export const CONFIG = {
   integrityCert: false, // pune true după ce obții certificatul de integritate comportamentală
 
   /* Se afișează automat doar după ce le completezi (vezi README) */
-  photo: "", // ex. "/poza.jpg" · poza ta (pune fișierul în /public)
+  photo: "/poza.jpg", // ex. "/poza.jpg" · poza ta (pune fișierul în /public)
   video: "", // ex. "/prezentare.mp4" · video de 60–90 s cu tine (pune fișierul în /public)
   videoPoster: "", // ex. "/prezentare.jpg" · imaginea afișată înainte de pornirea videoului
   lessonClip: "", // ex. "/fragment-lectie.mp4" · 20–30 s dintr-o lecție reală, filmat de pe ecran

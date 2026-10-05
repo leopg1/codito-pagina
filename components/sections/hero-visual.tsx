@@ -102,7 +102,7 @@ function Tile({ name, initial, color, speaking = false, photo = false }: { name:
   return (
     <div className="relative grid aspect-video place-items-center overflow-hidden rounded-2xl bg-[#2a3156]">
       <span className={`grid size-12 place-items-center rounded-full ${color} font-display text-[1.25rem] font-bold text-white ${speaking ? "animate-pulse-ring" : ""}`}>{initial}</span>
-      {photo && <Photo />}
+      {photo && <Photo className="object-[50%_45%]" />}
       <span className="absolute bottom-2 left-2 z-[1] rounded-md bg-night/70 px-2 py-1 text-[0.72rem] font-semibold leading-none text-white">{name}</span>
     </div>
   );
