@@ -5,7 +5,6 @@ import { CONFIG } from "@/lib/config";
 import { LogoMark, Wordmark } from "@/components/site/logo";
 import { Footer } from "@/components/site/footer";
 import { Countdown, Seats, SignupForm } from "@/components/signup/signup-form";
-import { E } from "@/components/ui/emoji";
 import { Photo } from "@/components/ui/photo";
 
 const W = CONFIG.workshop;
@@ -19,12 +18,12 @@ export const metadata: Metadata = {
   openGraph: { title: `Lecție gratuită de programare · ${W.date}`, description, images: ["/og.png"] },
 };
 
-const FACTS: [string, string, string][] = [
-  ["📅", "Când", W.date],
-  ["💻", "Unde", `online, de acasă · ${W.minutes} de minute`],
-  ["🧒", "Pentru cine", W.ages ? `copii de ${W.ages}, fără experiență` : "copii și adolescenți, fără experiență"],
-  ["🎮", "Ce face copilul", "își face primul joc pe calculator"],
-  ["🔌", "Ce îi trebuie", "un laptop sau calculator cu internet"],
+const FACTS: [string, string][] = [
+  ["Unde", `Online, de acasă, pe Google Meet`],
+  ["Durată", `${W.minutes} de minute`],
+  ["Pentru cine", W.ages ? `Copii de ${W.ages}, fără experiență` : "Copii și adolescenți, fără experiență"],
+  ["Grupă", `Maximum ${W.total} copii`],
+  ["Ce îi trebuie", "Un laptop sau calculator cu internet"],
 ];
 
 const STEPS: [string, string][] = [
@@ -53,22 +52,16 @@ export default function Page() {
       <main>
         <section className="wrap grid items-start gap-8 pb-16 pt-8 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8 lg:pb-24">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-peach px-3.5 py-1.5 text-[0.85rem] font-bold text-coral-t"><E e="🎁" /> Lecție gratuită · grupă de {W.total} copii</span>
-              {W.taken > 0 && W.taken < W.total && (
-                <a href="#formular" className="inline-flex items-center gap-2 rounded-full bg-coral px-3.5 py-1.5 text-[0.85rem] font-bold text-white shadow-coral">
-                  <E e="🔥" /> {W.total - W.taken === 1 ? "A mai rămas 1 loc" : `Doar ${W.total - W.taken} locuri rămase`}
-                </a>
-              )}
-            </div>
-            <h1 className="mt-5 text-[clamp(2.1rem,6vw,3.5rem)] font-semibold leading-[1.06]">
+            <p className="text-[0.95rem] font-semibold text-coral-t">Lecție gratuită de programare</p>
+            <h1 className="mt-3 text-[clamp(2.1rem,6vw,3.5rem)] font-semibold leading-[1.06]">
               Sâmbătă, copilul tău își face <em className="not-italic text-coral">primul joc</em> pe calculator.
             </h1>
             <p className="mt-5 max-w-[34rem] text-[1.12rem] leading-relaxed text-ink-2">
-              O lecție online de programare, gratuită, pentru {W.ages ? `copii de ${W.ages}` : "copii și adolescenți"}. De la zero, cu mâna lui, în {W.minutes} de minute.
+              De la zero, scris de el, în {W.minutes} de minute. La final vi-l arată și îl puteți juca împreună.
             </p>
-            <p className="mt-5 flex w-fit items-center gap-2.5 rounded-xl bg-ink px-4 py-3 font-semibold text-white lg:hidden">
-              <E e="📅" className="shrink-0" /><span className="min-w-0 first-letter:uppercase">{W.date}</span>
+            <p className="mt-6 border-l-[3px] border-coral pl-4 text-[1.05rem] leading-snug">
+              <b className="block text-ink first-letter:uppercase">{W.date}</b>
+              <span className="text-ink-2">Online · gratuit</span>
             </p>
           </div>
 
@@ -81,16 +74,16 @@ export default function Page() {
           </div>
 
           <div className="min-w-0 lg:col-start-1 lg:row-start-2">
-            <dl className="grid rounded-2xl bg-paper ring-1 ring-line">
-              {FACTS.map(([e, k, v], i) => (
-                <div key={k} className={`grid grid-cols-[auto_1fr] items-center gap-x-3.5 px-5 py-3.5 ${i ? "border-t border-line" : ""}`}>
-                  <E e={e} className="row-span-2 text-[1.35rem]" />
-                  <dt className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-muted">{k}</dt>
+            <h2 className="text-[1.15rem] font-semibold">Pe scurt</h2>
+            <dl className="mt-3 border-t border-line">
+              {FACTS.map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[8.5rem_1fr] gap-x-4 border-b border-line py-3 max-[380px]:grid-cols-1">
+                  <dt className="text-[0.95rem] text-muted">{k}</dt>
                   <dd className="font-semibold leading-snug text-ink">{v}</dd>
                 </div>
               ))}
             </dl>
-            <div className="mt-6"><Countdown /></div>
+            <div className="mt-8"><Countdown /></div>
           </div>
         </section>
 

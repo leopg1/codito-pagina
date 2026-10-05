@@ -28,7 +28,7 @@ export function useWorkshopState() {
 export function Seats({ dark = false }: { dark?: boolean }) {
   const left = Math.max(0, W.total - W.taken);
   return (
-    <div className={clsx("rounded-xl p-4", dark ? "bg-white/[.06] ring-1 ring-white/10" : left > 0 && left <= 2 ? "bg-peach ring-2 ring-coral/40" : "bg-cream ring-1 ring-line")}>
+    <div className={clsx("rounded-xl p-4", dark ? "bg-white/[.06] ring-1 ring-white/10" : "bg-cream ring-1 ring-line")}>
       <div className="flex items-baseline justify-between gap-3 text-[0.95rem] font-semibold">
         <span className={dark ? "text-white" : "text-ink"}>{W.taken > 0 ? "Locuri ocupate" : "Locuri în grupă"}</span>
         <span className={clsx("whitespace-nowrap tabular-nums", dark ? "text-[#ffb08f]" : "text-coral-t")}>
@@ -41,7 +41,7 @@ export function Seats({ dark = false }: { dark?: boolean }) {
         ))}
       </div>
       <p className={clsx("mt-2.5 text-[0.86rem]", dark ? "text-[#c3c8dd]" : "text-muted")}>
-        {left === 0 ? "Toate locurile s‑au ocupat." : left === 1 ? "🔥 A mai rămas un singur loc." : left <= 2 ? `🔥 Mai sunt doar ${left} locuri. Se ocupă în ordinea înscrierilor.` : `Mai sunt ${left} locuri. Se ocupă în ordinea înscrierilor.`}
+        {left === 0 ? "Toate locurile s‑au ocupat." : left === 1 ? "A mai rămas un singur loc." : `Mai sunt ${left} locuri. Se ocupă în ordinea înscrierilor.`}
       </p>
     </div>
   );
