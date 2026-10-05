@@ -137,7 +137,7 @@ export function Quiz() {
                   Se deschide WhatsApp cu mesajul gata scris. Doar apeși „Trimite”. Trimițând mesajul, ești de acord cu <a href="/termeni/" className="text-coral-t underline">termenii</a> și <a href="/confidentialitate/" className="text-coral-t underline">politica de confidențialitate</a>.
                 </p>
                 <div className="mt-6 border-t border-line pt-5">
-                  <b className="mb-3 block font-display text-[1.05rem] font-semibold leading-snug">Ce urmează după ce trimiți mesajul</b>
+                  <b className="mb-3 block font-display text-[1.05rem] font-semibold leading-snug [text-wrap:balance]">Ce urmează după ce trimiți mesajul</b>
                   <ol className="grid gap-3">
                     {[["Îți scriu în maximum 2 ore", "și alegem împreună ora lecției."], ["Primești linkul de Google Meet", "și o listă scurtă: laptop, căști, 2 minute de pregătire."], ["Lecția gratuită, 45 de minute.", "La final, copilul îți arată ce a construit și primești părerea mea, în scris."]].map(([b, t], k) => (
                       <li key={b} className="flex gap-3 text-[0.95rem] leading-normal text-ink-2">
@@ -148,7 +148,7 @@ export function Quiz() {
                   </ol>
                 </div>
                 <a href={shareLink(`Uite ce lecții de programare am găsit pentru ${kid.name || "copil"}: prima e gratuită, 45 de minute, unu la unu. Ce zici? ${CONFIG.siteUrl}`)} target="_blank" rel="noopener" className="mt-5 flex items-center justify-center text-center gap-2 rounded-2xl border-2 border-line px-5 py-3 text-[0.95rem] font-semibold text-ink-2 transition hover:border-coral hover:text-coral-t">
-                  <E e="👪" className="shrink-0" /> <span className="max-[359px]:hidden">Trimite pagina celuilalt părinte</span><span className="min-[360px]:hidden">Trimite‑o celuilalt părinte</span>
+                  <E e="👪" className="shrink-0" /> <span className="max-[399px]:hidden whitespace-nowrap max-[399px]:px-3">Trimite pagina celuilalt părinte</span><span className="min-[400px]:hidden">Trimite celuilalt părinte</span>
                 </a>
                 <button onClick={() => { setAns({}); setDir(-1); setStep(0); }} className="mx-auto mt-3 block py-2 text-[0.9rem] text-muted underline-offset-4 hover:text-coral-t hover:underline">Reia întrebările</button>
               </motion.div>

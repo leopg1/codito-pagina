@@ -4,13 +4,14 @@ description: Întrebările concrete pe care să le pui oricărui curs sau profes
 excerpt: Grupă sau unu la unu, online sau fizic, ce primești ca părinte. Șapte întrebări simple care te ajută să alegi un curs bun pentru copilul tău.
 date: 2026-10-01
 category: Pentru părinți
+seoTitle: Cum alegi un curs de programare pentru copil
 ---
 
-Ofertele de cursuri de programare pentru copii sunt tot mai multe: școli mari cu grupe, academii locale, meditatori independenți, platforme online. Prețurile și formatele diferă mult, iar pe site-uri toate par la fel de bune. Iată 7 întrebări care fac diferența.
+Ofertele de cursuri de programare pentru copii sunt tot mai multe: școli mari cu grupe, academii locale, meditatori independenți, platforme online. Prețurile și formatele diferă mult, iar pe site-uri toate par la fel de bune. Pune-le aceste 7 întrebări înainte să plătești.
 
 ## 1. Câți copii sunt la o lecție?
 
-Într-o grupă de 10–12 copii, profesorul are în medie câteva minute pentru fiecare. Copiii timizi nu întreabă, iar cei rapizi se plictisesc. La lecțiile unu la unu, ritmul e al copilului tău. Întreabă exact câți copii sunt în grupă, nu „grupe mici”.
+Într-o grupă de 10–12 copii, profesorul are în medie câteva minute pentru fiecare. Copiii timizi nu întreabă, iar cei rapizi se plictisesc. La lecțiile unu la unu, ritmul e al copilului tău. Am scris mai multe despre diferență în pagina despre [lecțiile de programare pentru copii](/programare-copii-online/). Întreabă exact câți copii sunt în grupă, nu „grupe mici”.
 
 ## 2. Copilul are mereu același profesor?
 
@@ -32,7 +33,7 @@ Compară prețul pe oră de lecție, nu pe lună. O lecție de 50 de minute și 
 
 ## 6. Pot să mă opresc oricând?
 
-Contractele pe un an întreg sunt riscante pentru un copil care abia descoperă ce îi place. Un curs bun te lasă să te oprești lunar, fără penalități, pentru că se bazează pe faptul că rămâneți fiindcă vă place.
+Contractele pe un an întreg sunt riscante pentru un copil care abia descoperă ce îi place. Un curs bun te lasă să te oprești lunar, fără penalități, și mizează pe faptul că veți rămâne pentru că vă place.
 
 ## 7. Există o lecție de probă, fără presiune?
 

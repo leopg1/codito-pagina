@@ -15,7 +15,7 @@ export function GET() {
       <guid isPermaLink="true">${CONFIG.siteUrl}/blog/${p.slug}/</guid>
       <description>${esc(p.description)}</description>
       <category>${esc(p.category)}</category>
-      <pubDate>${new Date(p.date).toUTCString()}</pubDate>
+      <pubDate>${new Date(`${p.date}T09:00:00+03:00`).toUTCString()}</pubDate>
     </item>`).join("");
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

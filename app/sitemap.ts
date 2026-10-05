@@ -6,7 +6,7 @@ import { getPosts } from "@/lib/blog";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = new Date("2026-10-05"); // actualizează data când schimbi conținutul paginilor
   const u = (p: string) => `${CONFIG.siteUrl}/${p}`;
   const posts = getPosts();
   const latest = posts[0] ? new Date(posts[0].updated) : now;

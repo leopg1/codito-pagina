@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Pagina nu există", robots: { index: false, follow: true } };
+export const metadata: Metadata = { title: "Pagina nu există" };
 
 export default function NotFound() {
   return (

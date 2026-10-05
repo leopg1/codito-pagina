@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
   const { topic } = await params;
   const t = TOPICS.find((x) => x.slug === topic);
   if (!t) return {};
-  return { title: t.title, description: t.description, alternates: { canonical: `/${t.slug}/` }, openGraph: { title: t.title, description: t.description, images: ["/og.png"] } };
+  return { title: t.title, description: t.description, openGraph: { type: "website", url: `/${t.slug}/`, siteName: "Codito", locale: "ro_RO", title: t.title, description: t.description, images: ["/og.png"] }, alternates: { canonical: `/${t.slug}/`, types: { "application/rss+xml": "/blog/rss.xml" } } };
 }
 
 export default async function Page({ params }: { params: Promise<{ topic: string }> }) {

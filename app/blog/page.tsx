@@ -6,7 +6,7 @@ import { formatDate, getPosts } from "@/lib/blog";
 import { SiteHeader } from "@/components/site/site-header";
 import { Footer } from "@/components/site/footer";
 
-const title = "Blog pentru părinți: programare, AI și timpul pe ecran";
+const title = "Blog pentru părinți: programare, AI și ecrane";
 const description = "Articole practice pentru părinți: cu ce să înceapă copilul la programare, cum folosește corect AI-ul și cum faci timpul pe ecran util.";
 
 export const metadata: Metadata = {

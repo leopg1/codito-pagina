@@ -13,9 +13,9 @@ export function TopicPage({ t }: { t: Topic }) {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "FAQPage", mainEntity: t.faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
-      { "@type": "Course", name: t.title, description: t.description, inLanguage: "ro", provider: { "@type": "Organization", name: "Codito", url: CONFIG.siteUrl },
-        offers: { "@type": "Offer", price: String(CONFIG.price.month), priceCurrency: "RON", category: "Abonament lunar" },
-        hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: "PT1H30M" } },
+      { "@type": "Course", "@id": `${CONFIG.siteUrl}/${t.slug}/#course`, url: `${CONFIG.siteUrl}/${t.slug}/`, name: t.title, description: t.description, inLanguage: "ro", provider: { "@id": `${CONFIG.siteUrl}/#org` },
+        offers: { "@type": "Offer", price: String(CONFIG.price.month), priceCurrency: "RON", category: "Subscription", url: `${CONFIG.siteUrl}/${t.slug}/` },
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "Online", courseWorkload: "PT1H30M", courseSchedule: { "@type": "Schedule", repeatFrequency: "P1W", repeatCount: 4 }, instructor: { "@id": `${CONFIG.siteUrl}/#leonard` } } },
       { "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Codito", item: `${CONFIG.siteUrl}/` },
         { "@type": "ListItem", position: 2, name: t.eyebrow, item: `${CONFIG.siteUrl}/${t.slug}/` },

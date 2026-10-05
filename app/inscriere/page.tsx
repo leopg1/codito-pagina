@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/inscriere/" },
-  openGraph: { title: `Lecție gratuită de programare · ${W.date}`, description, images: ["/og.png"] },
+  openGraph: { type: "website", url: "/inscriere/", siteName: "Codito", locale: "ro_RO", title: `Lecție gratuită de programare · ${W.date}`, description, images: ["/og.png"] },
 };
 
 const FACTS: [string, string][] = [
@@ -54,7 +54,7 @@ const eventLd = {
   maximumAttendeeCapacity: W.total,
   remainingAttendeeCapacity: Math.max(0, W.total - W.taken),
   image: `${CONFIG.siteUrl}/og.png`,
-  organizer: { "@type": "Organization", name: "Codito", url: `${CONFIG.siteUrl}/` },
+  organizer: { "@id": `${CONFIG.siteUrl}/#org` },
   performer: { "@type": "Person", name: "Leonard Pădurean" },
   offers: { "@type": "Offer", price: "0", priceCurrency: "RON", availability: W.taken < W.total ? "https://schema.org/InStock" : "https://schema.org/SoldOut", url: `${CONFIG.siteUrl}/inscriere/`, validFrom: "2026-10-01" },
 };

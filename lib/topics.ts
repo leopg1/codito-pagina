@@ -18,7 +18,7 @@ export const TOPICS: Topic[] = [
   {
     slug: "curs-python-copii",
     title: "Curs de Python pentru copii, online, unu la unu",
-    description: `Lecții de Python pentru copii și adolescenți de 9–17 ani, online, 1:1, cu același profesor. 90 de minute pe săptămână, ${p.month / 4} lei lecția. Prima lecție e gratuită.`,
+    description: `Lecții de Python pentru copii și adolescenți, online, 1:1, cu același profesor. 90 de minute pe săptămână, ${p.month / 4} lei lecția. Prima lecție e gratuită.`,
     eyebrow: "Python pentru copii",
     lead: "Python e limbajul cu care se scriu jocuri, site‑uri și aplicații cu inteligență artificială. Se citește aproape ca engleza, așa că un copil de 10 ani își face primul joc chiar din prima lecție.",
     why: [
@@ -37,7 +37,7 @@ export const TOPICS: Topic[] = [
   {
     slug: "programare-copii-online",
     title: "Lecții de programare pentru copii, online, 1:1",
-    description: `Programare pentru copii și adolescenți de 9–17 ani: lecții online unu la unu, 90 de minute, cu raport pentru părinte după fiecare lecție. De la ${p.month / 4} lei lecția. Prima lecție e gratuită.`,
+    description: `Lecții online de programare pentru copii, unu la unu, 90 de minute, cu raport pentru părinte după fiecare lecție. Prima lecție e gratuită.`,
     eyebrow: "Programare pentru copii",
     lead: "Copilul stă oricum ore întregi în fața ecranului. La lecțiile Codito folosește timpul ăsta ca să construiască: jocuri, site‑uri și aplicații pe care le arată cu mândrie familiei.",
     why: [
@@ -56,7 +56,7 @@ export const TOPICS: Topic[] = [
   {
     slug: "inteligenta-artificiala-copii",
     title: "Inteligență artificială pentru copii și adolescenți",
-    description: "Lecții online 1:1 în care copiii de 9–17 ani învață să folosească AI‑ul corect și își construiesc propriile aplicații cu inteligență artificială. Prima lecție e gratuită.",
+    description: "Lecții online 1:1 în care copiii învață să folosească AI‑ul corect și își fac propriile aplicații cu inteligență artificială. Prima lecție e gratuită.",
     eyebrow: "AI pentru copii",
     lead: "Copiii folosesc deja ChatGPT, de multe ori ca să copieze temele. La Codito învață cum funcționează AI‑ul, cum să‑l folosească pentru a înțelege mai bine și cum să‑și construiască propriile aplicații cu el.",
     why: [
@@ -74,7 +74,7 @@ export const TOPICS: Topic[] = [
   },
   {
     slug: "pregatire-bac-informatica",
-    title: "Pregătire online la informatică: C++ pentru liceu și BAC",
+    title: "Pregătire online la informatică: C++ și BAC",
     description: "Meditații online 1:1 la informatică pentru liceeni: C++, algoritmi și subiecte de BAC, explicate răbdător. Lecții de 90 de minute, prima lecție gratuită.",
     eyebrow: "Informatică pentru liceu și BAC",
     lead: "La informatică, mulți elevi se blochează la algoritmi și învață pe de rost. În lecțiile 1:1 lucrăm pe subiecte reale de BAC până când elevul înțelege de ce funcționează o soluție și o poate scrie singur.",

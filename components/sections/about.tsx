@@ -8,7 +8,7 @@ import { Photo } from "../ui/photo";
 const FACTS = [
   [Users, "Predau programare copiilor de peste un an. Construim împreună aplicații reale, nu doar teorie"],
   [ScrollText, "Pregătire în pedagogie: știu cum învață copiii și cum să le explic pe înțelesul lor"],
-  [GraduationCap, "Student la inginerie, în domeniul Calculatoare"],
+  [GraduationCap, "Student la inginerie, în domeniul Calculatoare"],
   [Laptop, "Programator software de 5 ani, angajat în domeniu, și cercetător"],
   [MapPin, "Lucrez online cu familii din toată țara și din diaspora"],
 ] as const;

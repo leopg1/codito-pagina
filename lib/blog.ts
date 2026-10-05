@@ -12,12 +12,14 @@ import { join } from "node:path";
 export type Post = {
   slug: string;
   title: string;
+  seoTitle: string;
   description: string;
   excerpt: string;
   date: string;
   updated: string;
   category: string;
   minutes: number;
+  words: number;
   body: string;
   headings: { id: string; text: string }[];
 };
@@ -42,12 +44,14 @@ function parse(file: string): Post {
   return {
     slug: file.replace(/\.md$/, ""),
     title: meta.title,
+    seoTitle: meta.seoTitle || meta.title,
     description: meta.description,
     excerpt: meta.excerpt || meta.description,
     date: meta.date,
     updated: meta.updated || meta.date,
     category: meta.category || "Pentru părinți",
-    minutes: Math.max(3, Math.round(words / 180)),
+    minutes: Math.max(2, Math.round(words / 180)),
+    words,
     body,
     headings,
   };

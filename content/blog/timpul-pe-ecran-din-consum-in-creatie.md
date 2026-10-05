@@ -1,7 +1,7 @@
 ---
 title: "Timpul pe ecran: cum îl muți de la consum la creație"
 description: Sfaturi practice pentru părinți care vor ca timpul petrecut de copil pe telefon sau calculator să devină util, fără interdicții care se termină cu certuri.
-excerpt: Interdicțiile funcționează rar. Ce merge mai bine: să schimbi ce face copilul pe ecran. Câteva idei concrete, testate cu copii reali.
+excerpt: Interdicțiile funcționează rar. Ce merge mai bine: să schimbi ce face copilul pe ecran. Câteva idei concrete, ușor de aplicat de mâine.
 date: 2026-10-03
 category: Pentru părinți
 ---
@@ -14,7 +14,7 @@ Problema de fond e ce face copilul în timpul ăsta. O oră în care se uită la
 
 Pe ecran, un copil poate fi în două situații:
 
-- **Consumă:** se uită, derulează, joacă jocuri făcute de alții. Creierul primește, dar nu produce nimic.
+- **Consumă:** se uită, derulează, joacă jocuri făcute de alții. Primește, dar nu produce nimic.
 - **Creează:** desenează, compune, scrie, programează. Iese de acolo cu ceva care nu exista înainte.
 
 Copiii simt diferența. După o oră de clipuri sunt adesea iritați și obosiți. După o oră în care au construit ceva, vin să-ți arate.
@@ -27,7 +27,7 @@ Copiii simt diferența. După o oră de clipuri sunt adesea iritați și obosiț
 
 ### 2. Pune o regulă de proporție
 
-O regulă simplă pe care o aplică multe familii: pentru fiecare oră de consum, o oră de creație. Nu trebuie numărate minutele exact. Contează mesajul: ecranul e și pentru făcut lucruri.
+O regulă simplă pe care o poți încerca: pentru fiecare oră de consum, o oră de creație. Nu trebuie numărate minutele exact. Contează mesajul: ecranul e și pentru făcut lucruri.
 
 ### 3. Cere-i să-ți arate
 
@@ -35,11 +35,11 @@ Când copilul face ceva pe calculator, întreabă-l ce a făcut și cere-i să-�
 
 ### 4. Găsește-i un proiect al lui
 
-Un proiect cu un scop clar ține un copil concentrat mult mai bine decât orice regulă: un joc pentru fratele mai mic, un site despre echipa lui, o animație pentru ziua cuiva. Proiectele personale sunt motorul.
+Un proiect cu un scop clar ține un copil concentrat mult mai bine decât orice regulă: un joc pentru fratele mai mic, un site despre echipa lui, o animație pentru ziua cuiva.
 
-### 5. Laudă procesul, nu doar rezultatul
+### 5. Laudă și drumul, pe lângă rezultat
 
-Când găsește singur o greșeală și o repară, spune-i asta. „Ai căutat până ai găsit problema” e o laudă care construiește răbdare, una dintre cele mai rare calități la copiii de azi.
+Când găsește singur o greșeală și o repară, spune-i asta. „Ai căutat până ai găsit problema” e o laudă care construiește răbdare, o calitate care se exersează, ca orice mușchi.
 
 :::cta
 
@@ -51,4 +51,4 @@ Când găsește singur o greșeală și o repară, spune-i asta. „Ai căutat p
 
 ## Pe scurt
 
-Nu toate orele petrecute pe ecran sunt la fel. Scopul nu e ca un copil de azi să stea departe de tehnologie, ci să o folosească pentru a construi. Iar asta se poate învăța, cu răbdare și cu un proiect care îl pasionează.
+Nu toate orele petrecute pe ecran sunt la fel. Scopul e ca un copil să folosească tehnologia ca să construiască ceva. Iar asta se poate învăța, cu răbdare și cu un proiect care îl pasionează.

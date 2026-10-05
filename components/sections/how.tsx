@@ -6,10 +6,10 @@ import { KidGen, KidSample } from "../kid-context";
 import { Photo } from "../ui/photo";
 
 const STEPS = [
-  ["👋", "0–10", "Ne salutăm", "Vorbim despre ce a făcut între lecții și ce îl entuziasmează."],
+  ["👋", "0–10", "Ne salutăm", "Vorbim despre ce a făcut între lecții și ce îl entuziasmează."],
   ["✏️", "10–35", "O idee nouă", "O explic pe tableta grafică, desenat, cu exemple din lumea lui."],
   ["🛠️", "35–80", "Construiește el", "Scrie cod cu mâna lui, cu o pauză scurtă la mijloc. Eu ghidez, el scrie."],
-  ["🎉", "80–90", "Arată ce a făcut", "Rulează proiectul și îmi explică cum funcționează."],
+  ["🎉", "80–90", "Arată ce a făcut", "Rulează proiectul și îmi explică cum funcționează."],
 ] as const;
 
 const PEACE: [string, string, string][] = [

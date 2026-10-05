@@ -7,7 +7,7 @@ import { E } from "../ui/emoji";
 import { KidSample } from "../kid-context";
 
 const TRIAL: [string, string, string][] = [
-  ["0–10 min", "Ne cunoaștem", "Aflu ce îi place, ce a mai încercat și ce l‑ar entuziasma să construiască."],
+  ["0–10 min", "Ne cunoaștem", "Aflu ce îi place, ce a mai încercat și ce l‑ar entuziasma să construiască."],
   ["10–40 min", "Își face primul joc", "Scrie el codul, cu mâna lui. Eu îl ghidez pas cu pas."],
   ["40–45 min", "Ți‑l arată", "Intri și tu: copilul îți arată jocul și îți explică cum funcționează."],
 ];
@@ -41,7 +41,7 @@ export function FreeLesson() {
 
             <div className="grid md:grid-cols-2">
               <TicketCol emoji="🧒" title="Ce primește copilul" items={[<>Își construiește <b className="text-ink">primul program, care chiar funcționează</b></>, "Îl păstrează salvat pe calculatorul lui", "Vede că programarea e mai ușoară și mai distractivă decât credea"]} />
-              <TicketCol emoji="🙋" border title="Ce primești tu" items={[<>O <b className="text-ink">evaluare scrisă, în aceeași zi</b>: de unde pornește și ce i s‑ar potrivi</>, "Un plan pentru prima lună, dacă vreți să continuați", "Răspunsuri la orice întrebare ai, despre lecții sau despre preț"]} />
+              <TicketCol emoji="🙋" border title="Ce primești tu" items={[<>O <b className="text-ink">evaluare scrisă, în aceeași zi</b>: de unde pornește și ce i s‑ar potrivi</>, "Un plan pentru prima lună, dacă vreți să continuați", "Răspunsuri la orice întrebare ai, despre lecții sau despre preț"]} />
             </div>
             <ol className="grid border-t border-line bg-cream md:grid-cols-3">
               {[["Răspunzi la 5 întrebări", "durează un minut"], ["Îți scriu în aceeași zi", "și alegem o oră comodă"], ["Vă conectați de acasă", "pe Google Meet, de pe laptop"]].map(([b, s], k) => (
@@ -96,7 +96,7 @@ function Evaluation() {
       <dl className="mt-4 grid gap-3">
         <div><dt className="font-semibold text-ink">De unde pornește</dt><dd>Nu a mai programat, dar înțelege repede ordinea pașilor. A scris un joc de ghicit în 25 de minute, fără ajutor.</dd></div>
         <div><dt className="font-semibold text-ink">Ce i‑a plăcut cel mai mult</dt><dd>Când jocul a început să răspundă la ce scria el. Vrea un joc cu personaje din Minecraft.</dd></div>
-        <div><dt className="font-semibold text-ink">Recomandarea mea</dt><dd>Python de la zero, nivelul Explorator, câte o lecție pe săptămână.</dd></div>
+        <div><dt className="font-semibold text-ink">Recomandarea mea</dt><dd>Python de la zero, nivelul Explorator, câte o lecție pe săptămână.</dd></div>
         <div><dt className="font-semibold text-ink">Prima lună</dt><dd>Un joc cu scor și niveluri, pe care îl poate juca toată familia.</dd></div>
       </dl>
       <p className="mt-4 border-t border-line pt-3 font-hand text-[1.5rem] leading-none text-coral-t">Leonard</p>
@@ -169,23 +169,23 @@ export function Price() {
               <p className="mt-2 text-ink-2">4 lecții × 90 de minute, una pe săptămână. Adică <span className="whitespace-nowrap">{PRICES.session}</span> pe lecție.</p>
               {FOUNDING_FREE > 0 && <p className="mt-1 text-[0.9rem] text-muted">Blocat {f.lockMonths} luni. Pentru familiile care vin după: {PRICES.later} pe lună.</p>}
               <ul className="my-7 grid gap-2.5">
-                {["Prima lecție gratuită, ca să vedeți dacă vă place", "Plan personalizat, pornit de la ce îi place", "Raport pe WhatsApp după fiecare lecție", "Discuție cu tine la fiecare 6 lecții", "Diplomă și prezentare în fața familiei la final de nivel", "Te oprești oricând, fără penalități"].map((t) => (
+                {["Prima lecție gratuită, ca să vedeți dacă vă place", "Plan personalizat, pornit de la ce îi place", "Raport pe WhatsApp după fiecare lecție", "Discuție cu tine la fiecare 6 lecții", "Diplomă și prezentare în fața familiei la final de nivel", "Te oprești oricând, fără penalități"].map((t) => (
                   <li key={t} className="flex gap-2.5"><Check className="mt-1 size-[18px] shrink-0 text-green" strokeWidth={3} aria-hidden />{t}</li>
                 ))}
               </ul>
               <ButtonLink href="#plan" arrow className="w-full">Începem cu lecția gratuită</ButtonLink>
             </div>
-            <div className="bg-ink p-5 text-white sm:p-10">
+            <div className="bg-ink p-5 text-white max-[359px]:p-4 sm:p-10">
               <h3 className="text-[1.3rem] font-semibold text-white">Ca să ai o comparație</h3>
               <p className="mt-1 text-[0.9rem] text-[#a3aac4]">Prețuri obișnuite în România, pe oră de lecție.</p>
               <ul className="mt-5 grid gap-3">
                 {COMPARE.map(([name, who, len, hour, us]) => (
-                  <li key={name} className={`rounded-xl px-4 py-3 ${us ? "bg-white/10 ring-1 ring-[#5be3a7]/50" : "bg-white/[.04]"}`}>
+                  <li key={name} className={`rounded-xl px-4 py-3 max-[359px]:px-3 ${us ? "bg-white/10 ring-1 ring-[#5be3a7]/50" : "bg-white/[.04]"}`}>
                     <span className="flex items-baseline justify-between gap-3">
                       <b className={`min-w-0 text-[0.98rem] leading-snug ${us ? "text-white" : "text-[#d3d8ea]"}`}>{name}</b>
-                      <span className={`shrink-0 whitespace-nowrap font-display text-[1.15rem] font-semibold tabular-nums ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="ml-1 font-sans text-[0.78rem] font-normal text-[#a3aac4]">/oră</small></span>
+                      <span className={`shrink-0 whitespace-nowrap font-display text-[1.15rem] font-semibold tabular-nums max-[359px]:text-[1.02rem] ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="ml-1 font-sans text-[0.78rem] font-normal text-[#a3aac4] max-[359px]:hidden">/oră</small></span>
                     </span>
-                    <small className="mt-1 block text-[0.84rem] leading-snug text-[#a3aac4]">{who} · {len}</small>
+                    <small className="mt-1 block text-[0.84rem] leading-snug text-[#a3aac4]">{who}<span className="whitespace-nowrap">{"\u00a0"}· {len}</span></small>
                   </li>
                 ))}
               </ul>

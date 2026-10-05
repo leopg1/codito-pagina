@@ -4,9 +4,10 @@ description: Ce poate face un copil la 7, 9, 12 sau 15 ani când vine vorba de p
 excerpt: Nu există o vârstă magică, dar există semne clare că un copil e pregătit. Iată ce poate face la fiecare vârstă și cu ce e bine să înceapă.
 date: 2026-10-05
 category: Primii pași
+seoTitle: La ce vârstă poate începe copilul programarea?
 ---
 
-Una dintre primele întrebări pe care le aud de la părinți este „nu e prea mic?” sau, la cealaltă extremă, „nu e prea târziu?”. Vestea bună: programarea se poate învăța aproape la orice vârstă de școală. Contează mai puțin numărul de ani și mai mult câteva lucruri pe care le poți observa singur acasă.
+Una dintre primele întrebări pe care le aud de la părinți este „nu e prea mic?” sau, la cealaltă extremă, „nu e prea târziu?”. Programarea se poate învăța la aproape orice vârstă școlară. Contează mai puțin numărul de ani și mai mult câteva lucruri pe care le poți observa singur acasă.
 
 ## Semnele că un copil e pregătit
 
@@ -34,13 +35,13 @@ Acum copilul poate lucra la proiecte mai lungi, de câteva săptămâni: un joc 
 
 ### 15–17 ani: direcție și portofoliu
 
-Adolescenții pot învăța programare serios: aplicații web, baze de date, folosirea corectă a AI-ului ca unealtă. Pentru cei de la profil real, se poate combina cu informatica de la școală și cu [pregătirea pentru BAC](/pregatire-bac-informatica/). Mai mult, proiectele lor pot deveni un portofoliu care contează la admitere sau la primul job.
+Adolescenții pot învăța programare serios: aplicații web, baze de date, folosirea corectă a AI-ului ca unealtă. Pentru cei de la profil real, se poate combina cu informatica de la școală și cu [pregătirea pentru BAC](/pregatire-bac-informatica/). Mai mult, proiectele lor pot deveni un portofoliu care contează la un internship, la facultățile din străinătate sau la primul job.
 
 :::cta
 
 ## E vreodată prea târziu?
 
-Nu. Un adolescent de 16 ani care începe de la zero recuperează repede, pentru că gândește deja abstract și are răbdare mai multă. Diferența e doar în tipul de proiecte: unui copil de 9 ani îi arăți un joc, unui adolescent îi arăți ce poate construi pentru el sau pentru alții.
+Nu. Un adolescent de 16 ani care începe de la zero recuperează repede, pentru că gândește deja abstract și are mai multă răbdare. Diferența e doar în tipul de proiecte: unui copil de 9 ani îi arăți un joc, unui adolescent îi arăți ce poate construi pentru el sau pentru alții.
 
 ## Cum începi concret
 

@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = getPost(slug);
   if (!p) return {};
   return {
-    title: p.title,
+    title: p.seoTitle,
     description: p.description,
-    alternates: { canonical: `/blog/${p.slug}/` },
+    alternates: { canonical: `/blog/${p.slug}/`, types: { "application/rss+xml": "/blog/rss.xml" } },
     authors: [{ name: "Leonard Pădurean", url: `${CONFIG.siteUrl}/#despre` }],
     openGraph: {
       type: "article", url: `/blog/${p.slug}/`, title: p.title, description: p.description,
-      publishedTime: p.date, modifiedTime: p.updated, authors: ["Leonard Pădurean"], section: p.category,
+      publishedTime: `${p.date}T09:00:00+03:00`, modifiedTime: `${p.updated}T09:00:00+03:00`, authors: ["Leonard Pădurean"], section: p.category,
       images: [{ url: "/og.png", width: 1200, height: 630, alt: p.title }],
     },
     twitter: { card: "summary_large_image", title: p.title, description: p.description },
@@ -50,7 +50,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
-  const others = getPosts().filter((p) => p.slug !== post.slug).slice(0, 3);
+  const others = getPosts().filter((p) => p.slug !== post.slug).sort((a, b) => Number(b.category === post.category) - Number(a.category === post.category)).slice(0, 3);
   const url = `${CONFIG.siteUrl}/blog/${post.slug}/`;
 
   const ld = {
@@ -61,11 +61,11 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
         "@id": `${url}#article`,
         headline: post.title,
         description: post.description,
-        datePublished: post.date,
-        dateModified: post.updated,
+        datePublished: `${post.date}T09:00:00+03:00`,
+        dateModified: `${post.updated}T09:00:00+03:00`,
         inLanguage: "ro",
         articleSection: post.category,
-        wordCount: post.minutes * 200,
+        wordCount: post.words,
         mainEntityOfPage: url,
         image: `${CONFIG.siteUrl}/og.png`,
         author: { "@type": "Person", "@id": `${CONFIG.siteUrl}/#leonard`, name: "Leonard Pădurean", url: `${CONFIG.siteUrl}/#despre` },
@@ -90,9 +90,9 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
         <article>
           <header className="wrap pb-8 pt-8 sm:pb-12 sm:pt-14">
             <nav aria-label="Navigare" className="text-[0.9rem] text-muted">
-              <Link href="/" className="py-2 hover:text-coral-t">Codito</Link>
+              <Link href="/" className="inline-block py-2.5 hover:text-coral-t">Codito</Link>
               <span className="mx-2" aria-hidden>/</span>
-              <Link href="/blog/" className="py-2 hover:text-coral-t">Blog</Link>
+              <Link href="/blog/" className="inline-block py-2.5 hover:text-coral-t">Blog</Link>
             </nav>
             <p className="mt-6 text-[0.95rem] font-semibold text-coral-t">{post.category}</p>
             <h1 className="mt-3 max-w-[820px] text-[clamp(2rem,5vw,3.2rem)] font-semibold leading-[1.08]">{post.title}</h1>
@@ -112,8 +112,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
 
               <div className="mt-14 rounded-2xl bg-ink p-6 text-white sm:p-9">
                 <p className="font-display text-[1.45rem] font-semibold leading-snug text-white">Prima lecție e gratuită</p>
-                <p className="mt-2 leading-relaxed text-[#c3c8dd]">45 de minute, unu la unu, online. Copilul își face primul program, iar tu primești o evaluare scrisă despre de unde pornește și ce i s‑ar potrivi.</p>
-                <ButtonLink href="/#plan" arrow className="mt-6 w-full sm:w-auto">Programează lecția gratuită</ButtonLink>
+                <p className="mt-2 leading-relaxed text-[#c3c8dd]">45 de minute, unu la unu, online. Copilul își face primul program, iar tu primești o evaluare scrisă: de unde pornește și ce i s‑ar potrivi.</p>
+                <ButtonLink href="/#plan" arrow className="mt-6 w-full sm:w-auto">Vreau lecția gratuită</ButtonLink>
               </div>
 
               <div className="mt-12 border-t border-line pt-8">

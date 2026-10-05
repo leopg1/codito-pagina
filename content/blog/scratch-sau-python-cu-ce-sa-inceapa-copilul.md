@@ -12,13 +12,13 @@ Dacă ai căutat cursuri de programare pentru copii, ai dat sigur de două nume:
 
 Scratch este un mediu gratuit în care copilul nu scrie cod: trage cu mouse-ul blocuri colorate și le lipește unele de altele, ca la Lego. Fiecare bloc e o instrucțiune, de exemplu „mergi 10 pași” sau „repetă de 5 ori”. Rezultatul se vede imediat: un personaj se mișcă, vorbește, sare.
 
-**Avantaje:** nu există greșeli de scriere, totul e vizual, iar copiii mici se prind repede.
+**Avantaje:** nu există greșeli de scriere, totul e vizual, iar copiii mici se prind repede. Pentru ce poate face un copil la fiecare vârstă, vezi și articolul [La ce vârstă poate începe un copil programarea](/blog/la-ce-varsta-poate-incepe-copilul-programarea/).
 
 **Limite:** după câteva luni, mulți copii simt că „se joacă” și nu mai avansează. Proiectele mai complexe devin greu de urmărit, iar Scratch nu se folosește în afara educației.
 
 ## Ce este Python
 
-Python este un limbaj de programare adevărat, folosit de companii mari, în cercetare și în aproape toate proiectele de inteligență artificială. Copilul scrie instrucțiuni într-un editor, de exemplu:
+Python este un limbaj de programare adevărat, folosit de companii mari, în cercetare și în majoritatea proiectelor de inteligență artificială. Copilul scrie instrucțiuni într-un editor, de exemplu:
 
 ```
 nume = input("Cum te cheamă? ")
@@ -27,7 +27,7 @@ print("Salut, " + nume + "!")
 
 **Avantaje:** se citește aproape ca engleza, are reguli puține și clare, iar ce învață copilul rămâne util toată viața. Cu Python poate face jocuri, site-uri, aplicații și proiecte cu AI. Mai multe despre asta găsești pe pagina despre [cursul de Python pentru copii](/curs-python-copii/).
 
-**Limite:** trebuie să citească fluent și să accepte că o virgulă lipsă poate opri programul. Cu un profesor alături, asta devine o lecție bună despre răbdare.
+**Limite:** trebuie să citească fluent și să accepte că un „:” lipsă sau o indentare greșită poate opri programul. Cu un profesor alături, asta devine o lecție bună despre răbdare.
 
 ## Cum alegi
 
@@ -38,10 +38,10 @@ print("Salut, " + nume + "!")
 
 :::cta
 
-## Contează mai puțin limbajul, mai mult proiectul
+## Proiectul contează mai mult decât limbajul
 
 Un copil care face un joc despre animalul lui preferat în Python învață mai mult decât unul care parcurge exerciții plictisitoare în orice limbaj. Când alegi un curs, întreabă ce va construi copilul în prima lună. Răspunsul spune mai mult decât numele limbajului.
 
-## Pe scurt
+## Concluzia mea
 
 Scratch e o rampă de lansare bună pentru cei mici. Python e drumul pe care merge copilul mai departe. Dacă e la vârsta la care citește fluent, nu e nevoie să treacă neapărat prin Scratch: poate porni direct cu un limbaj adevărat, în ritmul lui.

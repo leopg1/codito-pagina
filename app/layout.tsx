@@ -43,7 +43,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@type": "EducationalOrganization",
       "@id": ORG,
       name: "Codito",
       url: `${CONFIG.siteUrl}/`,
@@ -51,7 +51,6 @@ const jsonLd = {
       image: `${CONFIG.siteUrl}/og.png`,
       description,
       telephone: CONFIG.phone,
-      priceRange: "110–150 lei / lecție",
       areaServed: { "@type": "Country", name: "România" },
       address: { "@type": "PostalAddress", addressLocality: "București", addressCountry: "RO" },
       legalName: CONFIG.company.name,
