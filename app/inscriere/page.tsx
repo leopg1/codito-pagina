@@ -10,7 +10,7 @@ import { Photo } from "@/components/ui/photo";
 
 const W = CONFIG.workshop;
 const title = "Înscriere la lecția gratuită de programare";
-const description = `Lecție gratuită de programare pentru copii de 9–14 ani, ${W.date}, online, ${W.minutes} de minute. Copilul își face primul joc pe calculator. Doar ${W.total} locuri.`;
+const description = `Lecție gratuită de programare pentru copii, ${W.date}, online, ${W.minutes} de minute. Copilul își face primul joc pe calculator. Doar ${W.total} locuri.`;
 
 export const metadata: Metadata = {
   title,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const FACTS: [string, string, string][] = [
   ["📅", "Când", W.date],
   ["💻", "Unde", `online, de acasă · ${W.minutes} de minute`],
-  ["🧒", "Pentru cine", `copii de ${W.ages}, fără experiență`],
+  ["🧒", "Pentru cine", W.ages ? `copii de ${W.ages}, fără experiență` : "copii și adolescenți, fără experiență"],
   ["🎮", "Ce face copilul", "își face primul joc pe calculator"],
   ["🔌", "Ce îi trebuie", "un laptop sau calculator cu internet"],
 ];
@@ -53,12 +53,19 @@ export default function Page() {
       <main>
         <section className="wrap grid items-start gap-8 pb-16 pt-8 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8 lg:pb-24">
           <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-            <span className="inline-flex items-center gap-2 rounded-full bg-peach px-3.5 py-1.5 text-[0.85rem] font-bold text-coral-t"><E e="🎁" /> Lecție gratuită · grupă de {W.total} copii</span>
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-peach px-3.5 py-1.5 text-[0.85rem] font-bold text-coral-t"><E e="🎁" /> Lecție gratuită · grupă de {W.total} copii</span>
+              {W.taken > 0 && W.taken < W.total && (
+                <a href="#formular" className="inline-flex items-center gap-2 rounded-full bg-coral px-3.5 py-1.5 text-[0.85rem] font-bold text-white shadow-coral">
+                  <E e="🔥" /> {W.total - W.taken === 1 ? "A mai rămas 1 loc" : `Doar ${W.total - W.taken} locuri rămase`}
+                </a>
+              )}
+            </div>
             <h1 className="mt-5 text-[clamp(2.1rem,6vw,3.5rem)] font-semibold leading-[1.06]">
               Sâmbătă, copilul tău își face <em className="not-italic text-coral">primul joc</em> pe calculator.
             </h1>
             <p className="mt-5 max-w-[34rem] text-[1.12rem] leading-relaxed text-ink-2">
-              O lecție online de programare, gratuită, pentru copii de {W.ages}. De la zero, cu mâna lui, în {W.minutes} de minute.
+              O lecție online de programare, gratuită, pentru {W.ages ? `copii de ${W.ages}` : "copii și adolescenți"}. De la zero, cu mâna lui, în {W.minutes} de minute.
             </p>
             <p className="mt-5 flex w-fit items-center gap-2.5 rounded-xl bg-ink px-4 py-3 font-semibold text-white lg:hidden">
               <E e="📅" className="shrink-0" /><span className="min-w-0 first-letter:uppercase">{W.date}</span>

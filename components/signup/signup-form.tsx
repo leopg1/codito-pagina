@@ -8,7 +8,6 @@ import { track } from "@/lib/track";
 import { E } from "../ui/emoji";
 
 const W = CONFIG.workshop;
-const AGES = ["9", "10", "11", "12", "13", "14"];
 const START = new Date(W.start).getTime();
 const END = START + W.minutes * 60_000;
 
@@ -29,7 +28,7 @@ export function useWorkshopState() {
 export function Seats({ dark = false }: { dark?: boolean }) {
   const left = Math.max(0, W.total - W.taken);
   return (
-    <div className={clsx("rounded-xl p-4", dark ? "bg-white/[.06] ring-1 ring-white/10" : "bg-cream ring-1 ring-line")}>
+    <div className={clsx("rounded-xl p-4", dark ? "bg-white/[.06] ring-1 ring-white/10" : left > 0 && left <= 2 ? "bg-peach ring-2 ring-coral/40" : "bg-cream ring-1 ring-line")}>
       <div className="flex items-baseline justify-between gap-3 text-[0.95rem] font-semibold">
         <span className={dark ? "text-white" : "text-ink"}>{W.taken > 0 ? "Locuri ocupate" : "Locuri în grupă"}</span>
         <span className={clsx("whitespace-nowrap tabular-nums", dark ? "text-[#ffb08f]" : "text-coral-t")}>
@@ -42,7 +41,7 @@ export function Seats({ dark = false }: { dark?: boolean }) {
         ))}
       </div>
       <p className={clsx("mt-2.5 text-[0.86rem]", dark ? "text-[#c3c8dd]" : "text-muted")}>
-        {left === 0 ? "Toate locurile s-au ocupat." : left === 1 ? "A mai rămas un singur loc." : `Mai sunt ${left} locuri. Se ocupă în ordinea înscrierilor.`}
+        {left === 0 ? "Toate locurile s‑au ocupat." : left === 1 ? "🔥 A mai rămas un singur loc." : left <= 2 ? `🔥 Mai sunt doar ${left} locuri. Se ocupă în ordinea înscrierilor.` : `Mai sunt ${left} locuri. Se ocupă în ordinea înscrierilor.`}
       </p>
     </div>
   );
@@ -94,11 +93,11 @@ export function SignupForm() {
   const [state, setState] = useState<"idle" | "sending" | "done">("idle");
 
   const digits = phone.replace(/\D/g, "");
-  const valid = name.trim().length >= 2 && digits.length >= 9 && age && ok;
+  const valid = name.trim().length >= 2 && digits.length >= 9 && !!age && ok;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!valid) { setErr(!name.trim() ? "Scrie-ți prenumele, te rog." : digits.length < 9 ? "Numărul de telefon pare incomplet." : !age ? "Alege vârsta copilului." : "Bifează acordul, ca să te pot contacta."); return; }
+    if (!valid) { setErr(!name.trim() ? "Scrie-ți prenumele, te rog." : digits.length < 9 ? "Numărul de telefon pare incomplet." : !age ? "Scrie vârsta copilului." : "Bifează acordul, ca să te pot contacta."); return; }
     setErr("");
     const what = waitlist ? "lista pentru următoarea lecție gratuită" : `lecția gratuită din ${W.date}`;
     const data = { parinte: name.trim(), telefon: phone.trim(), varsta_copil: `${age} ani`, pentru: what };
@@ -159,17 +158,11 @@ export function SignupForm() {
         <span className="text-[0.82rem] text-muted">Te sun sau îți scriu pe WhatsApp, cum preferi.</span>
       </label>
 
-      <fieldset className="grid gap-2">
-        <legend className="mb-1.5 text-[0.95rem] font-semibold">Câți ani are copilul?</legend>
-        <div className="grid grid-cols-6 gap-1.5">
-          {AGES.map((a) => (
-            <button key={a} type="button" onClick={() => setAge(a)} aria-pressed={age === a}
-              className={clsx("h-12 rounded-xl border-2 font-display text-[1.15rem] font-bold transition", age === a ? "border-coral bg-coral text-white" : "border-line bg-paper text-ink hover:border-coral")}>
-              {a}
-            </button>
-          ))}
-        </div>
-      </fieldset>
+      <label className="grid gap-1.5">
+        <span className="text-[0.95rem] font-semibold">Câți ani are copilul?</span>
+        <input id="varsta" value={age} onChange={(e) => setAge(e.target.value.replace(/\D/g, "").slice(0, 2))} inputMode="numeric" placeholder="ex. 10"
+          className="h-[52px] w-32 rounded-xl border-2 border-line bg-paper px-4 text-[1.05rem] outline-none transition placeholder:text-muted/70 focus:border-coral" />
+      </label>
 
       <label className="flex items-start gap-3 text-[0.88rem] leading-snug text-ink-2">
         <input id="acord" type="checkbox" checked={ok} onChange={(e) => setOk(e.target.checked)} className="mt-0.5 size-5 shrink-0 accent-[#F0643A]" />

@@ -26,6 +26,7 @@ export function TopBar() {
       <a href="/inscriere/" className="block bg-ink px-4 py-2.5 text-center text-[0.88rem] text-white transition-colors hover:bg-night">
         <E e="🎮" className="mr-1.5" />
         Lecție <b className="text-sun">gratuită</b> de grup, {CONFIG.workshop.date}
+        {CONFIG.workshop.taken > 0 && <span className="hidden sm:inline"> · mai sunt {CONFIG.workshop.total - CONFIG.workshop.taken} locuri</span>}
         <span className="ml-1.5 font-semibold underline underline-offset-2">Înscrie-te</span>
       </a>
     );
