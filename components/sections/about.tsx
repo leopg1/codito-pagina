@@ -21,10 +21,10 @@ const TRAITS: [string, string, string][] = [
 ];
 
 const BUILT: [string, string, string, string][] = [
-  ["🦾", "Locul 1 · ELSTUD 2025", "Un braț robotic, construit de la zero", "Lucrare premiată la concursul de lucrări științifice studențești."],
-  ["🚗", "Medalie de aur · ICE-USV 2026", "O platformă care urmărește mașini, cu AI", "Prezentată la salonul de inovație al universității."],
-  ["🔐", "Locul 1 din 18 · CTF 2025", "Concurs internațional de securitate cibernetică", "Primul loc printre echipele universitare."],
-  ["🏆", "Finalist național · UNbreakable 2026", "Competiția națională de securitate cibernetică", "Locul 10 din aproximativ 300 de echipe."],
+  ["🔌", "Proiecte reale", "Electronică și tehnologie pentru mașini", "Am lucrat în embedded, adică aparatele electronice „inteligente”, și în automotive, tehnologia din mașinile moderne."],
+  ["💻", "Software", "Site-uri și aplicații cu inteligență artificială", "Construiesc aplicații pe care firmele și oamenii lor le folosesc în fiecare zi."],
+  ["🏆", "Concursuri", "Premii naționale și internaționale", "Proiectele mele au luat premii la concursuri de tehnologie, în țară și în afara ei."],
+  ["🔬", "Cercetare", "Lucrări premiate la conferințe", "Ca cercetător, am prezentat lucrări la conferințe științifice, unde au fost premiate."],
 ];
 
 const PROMISES: [string, string][] = [
