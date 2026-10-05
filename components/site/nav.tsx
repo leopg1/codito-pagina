@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 import { LogoMark, Wordmark } from "./logo";
 import { E } from "../ui/emoji";
+import { CONFIG } from "@/lib/config";
 
 const LINKS = [
   ["#despre", "Despre mine"],
@@ -14,6 +15,21 @@ const LINKS = [
 ] as const;
 
 export function TopBar() {
+  // dacă lecția de grup e în viitor și mai are locuri, bara trimite la înscriere
+  const [workshop, setWorkshop] = useState(false);
+  useEffect(() => {
+    const w = CONFIG.workshop;
+    setWorkshop(!!w.start && Date.parse(w.start) > Date.now() && w.taken < w.total);
+  }, []);
+  if (workshop) {
+    return (
+      <a href="/inscriere/" className="block bg-ink px-4 py-2.5 text-center text-[0.88rem] text-white transition-colors hover:bg-night">
+        <E e="🎮" className="mr-1.5" />
+        Lecție <b className="text-sun">gratuită</b> de grup, {CONFIG.workshop.date}
+        <span className="ml-1.5 font-semibold underline underline-offset-2">Înscrie-te</span>
+      </a>
+    );
+  }
   return (
     <div className="bg-ink px-4 py-2.5 text-center text-[0.88rem] text-white">
       <E e="🎁" className="mr-1.5" />

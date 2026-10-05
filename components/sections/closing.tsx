@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { CONFIG, WA_HELLO, shareLink, waLink } from "@/lib/config";
+import { CONFIG, WA_HELLO, shareLink } from "@/lib/config";
 import { E } from "../ui/emoji";
 import { KidName } from "../kid-context";
 import { Reveal } from "../ui/motion";
@@ -32,8 +32,8 @@ export function Closing() {
             <E e="👪" className="text-[1.2rem]" /><span><b className="text-white">Trimite pagina celuilalt părinte</b> pe WhatsApp, ca să decideți împreună.</span>
           </a>
           {CONFIG.workshop.date && (
-            <a href={waLink(`Bună, Leonard! Aș vrea să înscriu copilul la atelierul gratuit din ${CONFIG.workshop.date}.`)} target="_blank" rel="noopener" className="flex items-center gap-3 rounded-xl bg-white/[.06] px-4 py-3 text-[0.95rem] text-[#d3d8ea] ring-1 ring-white/10 transition hover:bg-white/10">
-              <E e="🧪" className="text-[1.2rem]" /><span><b className="text-white">Atelier gratuit, {CONFIG.workshop.date}</b>{CONFIG.workshop.note ? `: ${CONFIG.workshop.note}` : ""}. Înscrie copilul pe WhatsApp.</span>
+            <a href="/inscriere/" className="flex items-center gap-3 rounded-xl bg-white/[.06] px-4 py-3 text-[0.95rem] text-[#d3d8ea] ring-1 ring-white/10 transition hover:bg-white/10">
+              <E e="🧪" className="text-[1.2rem]" /><span><b className="text-white">Atelier gratuit, {CONFIG.workshop.date}</b>{CONFIG.workshop.note ? `: ${CONFIG.workshop.note}` : ""}. Înscrie copilul aici.</span>
             </a>
           )}
           {CONFIG.whatsappChannel && (

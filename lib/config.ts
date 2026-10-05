@@ -22,7 +22,16 @@ export const CONFIG = {
   calUrl: "", // ex. "https://cal.com/codito/lectie-gratuita" · calendar pentru rezervare
   googleReviewsUrl: "", // linkul către recenziile Google Business
   whatsappChannel: "", // linkul canalului de WhatsApp (proiecte de făcut acasă)
-  workshop: { date: "sâmbătă, 10 octombrie, ora 14:00", note: "atelier online de 60 de minute pentru copii de 9\u2060–\u206014 ani, doar 5 locuri" }, // ex. { date: "Sâmbătă, 15 noiembrie, 11:00", note: "atelier gratuit online, 8–10 copii" }
+  workshop: {
+    date: "sâmbătă, 10 octombrie, ora 14:00", // cum apare în text
+    start: "2026-10-10T14:00:00+03:00", // data și ora exacte (pentru numărătoarea inversă și calendar)
+    minutes: 60,
+    ages: "9\u2060–\u206014 ani",
+    total: 5, // câte locuri are grupa
+    taken: 0, // actualizează cinstit, după fiecare înscriere confirmată
+    note: "atelier online de 60 de minute pentru copii de 9\u2060–\u206014 ani, doar 5 locuri",
+  },
+  formspree: "", // ex. "https://formspree.io/f/abcdwxyz" · unde ajung înscrierile (pe email). Gol = se trimit pe WhatsApp
   plausibleDomain: "", // ex. "codito.ro" · statistici fără cookie‑uri (plausible.io)
 
   company: {
