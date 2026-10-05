@@ -40,7 +40,7 @@ export function Floating() {
             <a href="#plan" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-coral py-4 font-semibold text-white shadow-coral">
               <E e="🎁" /> Lecția gratuită 1:1
             </a>
-            <a href={WA_HELLO} target="_blank" rel="noopener" aria-label="Scrie-mi pe WhatsApp" className="grid w-[58px] place-items-center rounded-full bg-wa text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.7)]">
+            <a href={WA_HELLO} target="_blank" rel="noopener" aria-label="Scrie‑mi pe WhatsApp" className="grid w-[58px] place-items-center rounded-full bg-wa text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.7)]">
               <WaIcon className="size-7" />
             </a>
           </motion.div>
@@ -52,11 +52,11 @@ export function Floating() {
         <AnimatePresence>
           {tip && (
             <motion.span initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }} className="rounded-2xl bg-paper px-4 py-2.5 text-[0.9rem] shadow-soft">
-              Ai o întrebare? Scrie-mi 👋
+              Ai o întrebare? Scrie‑mi 👋
             </motion.span>
           )}
         </AnimatePresence>
-        <a href={WA_HELLO} target="_blank" rel="noopener" aria-label="Scrie-mi pe WhatsApp"
+        <a href={WA_HELLO} target="_blank" rel="noopener" aria-label="Scrie‑mi pe WhatsApp"
           className="grid size-[62px] place-items-center rounded-full bg-wa text-white shadow-[0_12px_30px_-8px_rgb(37_211_102/.7)] transition hover:scale-105">
           <WaIcon className="size-8" />
         </a>

@@ -36,13 +36,13 @@ export function Trust() {
           </Stagger>
           {CONFIG.lessonClip && (
             <Reveal className="mt-6 overflow-hidden rounded-2xl bg-ink ring-1 ring-line">
-              <video src={CONFIG.lessonClip} controls playsInline preload="none" className="aspect-video w-full" aria-label="Fragment dintr-o lecție reală" />
-              <p className="px-4 py-3 text-[0.88rem] text-[#c3c8dd]">Un fragment dintr-o lecție reală, filmat de pe ecran.</p>
+              <video src={CONFIG.lessonClip} controls playsInline preload="none" className="aspect-video w-full" aria-label="Fragment dintr‑o lecție reală" />
+              <p className="px-4 py-3 text-[0.88rem] text-[#c3c8dd]">Un fragment dintr‑o lecție reală, filmat de pe ecran.</p>
             </Reveal>
           )}
         </div>
 
-        <Reveal className="self-start rounded-2xl bg-mint/60 p-7 ring-1 ring-[#c6e9d6] sm:p-9">
+        <Reveal className="self-start rounded-2xl bg-mint/60 p-5 ring-1 ring-[#c6e9d6] sm:p-9">
           <h2 className="flex items-center gap-2.5 text-[clamp(1.5rem,3vw,1.95rem)] font-semibold"><E e="🛡️" /> Siguranța copilului</h2>
           <p className="mt-3 leading-relaxed text-ink-2">Regulile mele, aceleași pentru fiecare familie. Sunt scrise și în <a href="/termeni/" className="font-semibold text-coral-t underline underline-offset-2">termenii și condițiile</a> pe care le primești.</p>
           <ul className="mt-6 grid gap-4">

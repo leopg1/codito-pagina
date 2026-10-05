@@ -7,7 +7,7 @@ export function E({ e, label, className }: { e: string; label?: string; classNam
     : <span aria-hidden className={clsx("emoji", className)}>{e}</span>;
 }
 
-/** Emoji într-un pătrat moale, ca iconiță prietenoasă. */
+/** Emoji într‑un pătrat moale, ca iconiță prietenoasă. */
 export function EBadge({ e, className = "size-11 text-[1.35rem] bg-cream" }: { e: string; className?: string }) {
   return <span aria-hidden className={clsx("emoji-badge", className)}>{e}</span>;
 }

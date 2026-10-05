@@ -44,14 +44,14 @@ export function Calculator() {
           <span className="block font-display text-[2.2rem] font-bold leading-none tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={year} format={(n) => `${Math.round(n).toLocaleString("ro-RO")} ore`} />
           </span>
-          <p className="mt-2.5 text-[0.98rem] text-ink-2">petrece pe ecran într-un singur an. Adică <b>{days} de zile</b> întregi, zi și noapte.</p>
+          <p className="mt-2.5 text-[0.98rem] text-ink-2">petrece pe ecran într‑un singur an. Adică <b>{days} de zile</b> întregi, zi și noapte.</p>
         </div>
         <div className="rounded-xl bg-mint p-5 sm:p-6">
           <span className="block font-display text-[2.2rem] font-bold leading-none text-green tabular-nums sm:text-[2.5rem]">
             <AnimatedNumber value={pct} format={(n) => (n < 1 ? "<1%" : `${Math.round(n)}%`)} />
           </span>
           <p className="mt-2.5 text-[0.98rem] text-ink-2">
-            Doar atât din timpul ăsta (o lecție de 90 de minute pe săptămână) e nevoie ca, într-un an, să aibă <b>propriul joc, propriul site și o aplicație cu AI</b>, făcute cu mâna lui.
+            Doar atât din timpul ăsta (o lecție de 90 de minute pe săptămână) e nevoie ca, într‑un an, să aibă <b>propriul joc, propriul site și o aplicație cu AI</b>, făcute cu mâna lui.
           </p>
         </div>
       </div>

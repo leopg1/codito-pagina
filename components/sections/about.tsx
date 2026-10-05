@@ -85,11 +85,11 @@ export function About() {
             </Reveal>
             <Reveal className="mt-6 grid max-w-[680px] gap-4 text-[1.08rem] leading-[1.75] text-ink-2">
               <p>Predau programare copiilor de peste un an și am observat un lucru: <strong className="text-ink">copiii învață enorm atunci când cineva are timp doar pentru ei</strong>. Când pot întreba orice fără să le fie rușine și când construiesc ceva care e al lor.</p>
-              <p>Într-o grupă, timpul ăsta nu există. De aceea am pornit Codito și lucrez doar unu la unu: 90 de minute în care copilul tău are toată atenția mea.</p>
+              <p>Într‑o grupă, timpul ăsta nu există. De aceea am pornit Codito și lucrez doar unu la unu: 90 de minute în care copilul tău are toată atenția mea.</p>
               <p className="border-l-[3px] border-coral pl-5 text-ink">
                 <E e="💬" className="mr-1.5" />Codito nu e o școală mare, cu profesori care se schimbă. Pe mine mă cunoaște copilul, eu îți trimit rapoartele, cu mine vorbești când ai o întrebare.
               </p>
-              <p>Sunt destul de tânăr cât copiii să mă simtă „de-al lor” și destul de pregătit cât să-i duc departe. Predau ce construiesc în fiecare zi, ca programator.</p>
+              <p>Sunt destul de tânăr cât copiii să mă simtă „de‑al lor” și destul de pregătit cât să‑i duc departe. Predau ce construiesc în fiecare zi, ca programator.</p>
               <p className="font-hand text-[2.3rem] leading-none text-coral-t">Leonard</p>
             </Reveal>
 
@@ -107,7 +107,7 @@ export function About() {
           </div>
         </div>
 
-        {/* realizări: listă, ca într-un CV */}
+        {/* realizări: listă, ca într‑un CV */}
         <Reveal className="mt-20 sm:mt-24">
           <h3 className="text-[1.3rem] font-semibold">Ce am construit eu, ca să știi cu cine lucrezi</h3>
           <Stagger as="ul" className="mt-4 grid gap-x-10 md:grid-cols-2">

@@ -47,7 +47,7 @@ export function Nav() {
           <LogoMark />
           <span className="flex min-w-0 flex-col gap-[5px] leading-none">
             <Wordmark className="block" />
-            <small className="block truncate text-[0.74rem] leading-tight text-muted sm:text-[0.78rem]">Programare & AI pentru copii și adolescenți</small>
+            <small className="block text-[0.7rem] leading-tight text-muted min-[380px]:text-[0.74rem] sm:text-[0.78rem]">Programare & AI pentru copii și adolescenți</small>
           </span>
         </a>
         <div className="ml-auto hidden items-center gap-7 text-[0.95rem] font-medium text-ink-2 lg:flex">

@@ -10,7 +10,7 @@ const caveat = Caveat({ subsets: ["latin", "latin-ext"], weight: ["600", "700"],
 const mono = JetBrains_Mono({ subsets: ["latin", "latin-ext"], weight: ["400", "600"], variable: "--font-jetbrains", display: "swap" });
 
 const description =
-  "Lecții online 1:1 de programare și inteligență artificială pentru copii și adolescenți de 9–17 ani. Copilul construiește jocuri, site-uri și aplicații reale. Prima lecție e gratuită.";
+  "Lecții online 1:1 de programare și inteligență artificială pentru copii și adolescenți de 9–17 ani. Copilul construiește jocuri, site‑uri și aplicații reale. Prima lecție e gratuită.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(CONFIG.siteUrl),

@@ -18,12 +18,12 @@ export const CONFIG = {
   photo: "/poza.jpg", // ex. "/poza.jpg" · poza ta (pune fișierul în /public)
   video: "", // ex. "/prezentare.mp4" · video de 60–90 s cu tine (pune fișierul în /public)
   videoPoster: "", // ex. "/prezentare.jpg" · imaginea afișată înainte de pornirea videoului
-  lessonClip: "", // ex. "/fragment-lectie.mp4" · 20–30 s dintr-o lecție reală, filmat de pe ecran
+  lessonClip: "", // ex. "/fragment-lectie.mp4" · 20–30 s dintr‑o lecție reală, filmat de pe ecran
   calUrl: "", // ex. "https://cal.com/codito/lectie-gratuita" · calendar pentru rezervare
   googleReviewsUrl: "", // linkul către recenziile Google Business
   whatsappChannel: "", // linkul canalului de WhatsApp (proiecte de făcut acasă)
-  workshop: { date: "sâmbătă, 10 octombrie, ora 11:00", note: "atelier online de 60 de minute pentru copii de 9–14 ani, doar 5 locuri" }, // ex. { date: "Sâmbătă, 15 noiembrie, 11:00", note: "atelier gratuit online, 8–10 copii" }
-  plausibleDomain: "", // ex. "codito.ro" · statistici fără cookie-uri (plausible.io)
+  workshop: { date: "sâmbătă, 10 octombrie, ora 11:00", note: "atelier online de 60 de minute pentru copii de 9\u2060–\u206014 ani, doar 5 locuri" }, // ex. { date: "Sâmbătă, 15 noiembrie, 11:00", note: "atelier gratuit online, 8–10 copii" }
+  plausibleDomain: "", // ex. "codito.ro" · statistici fără cookie‑uri (plausible.io)
 
   company: {
     name: "Pădurean Gabriel-Leonard PFA",
@@ -51,7 +51,7 @@ export const waLink = (text: string) =>
   `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export const WA_HELLO = waLink(
-  "Bună, Leonard! Am văzut site-ul Codito și aș vrea mai multe detalii despre lecțiile de programare pentru copilul meu."
+  "Bună, Leonard! Am văzut site‑ul Codito și aș vrea mai multe detalii despre lecțiile de programare pentru copilul meu."
 );
 
 export const telLink = `tel:${CONFIG.phone.replace(/\s/g, "")}`;

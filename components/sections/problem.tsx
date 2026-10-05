@@ -11,7 +11,7 @@ import { Calculator } from "./calculator";
 const PAIRS: [string, string][] = [
   ["Se joacă jocuri făcute de alții", "Își face propriul joc și îl dă prietenilor"],
   ["Se uită la clipuri, unul după altul", "Își construiește un site, cu link adevărat"],
-  ["Copiază răspunsuri de la AI", "Folosește AI-ul ca asistent, cu mintea lui"],
+  ["Copiază răspunsuri de la AI", "Folosește AI‑ul ca asistent, cu mintea lui"],
 ];
 
 export function Problem() {
@@ -70,7 +70,7 @@ export function Problem() {
 
           {/* de ce acum: text simplu, fără carduri */}
           <Stagger className="mt-12 grid gap-6 border-t border-line pt-8 md:grid-cols-3 md:gap-10">
-            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🤖" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">AI-ul intră în toate meseriile.</b>Medic, inginer sau designer: contează cine știe să-l folosească bine.</StaggerItem>
+            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🤖" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">AI‑ul intră în toate meseriile.</b>Medic, inginer sau designer: contează cine știe să‑l folosească bine.</StaggerItem>
             <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🧠" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Programarea învață gândirea.</b>Pași mici, răbdare, să cauți greșeala și să nu renunți.</StaggerItem>
             <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🌱" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Cu cât mai devreme, cu atât mai ușor.</b>La 12 ani, un copil învață asta jucându-se.</StaggerItem>
           </Stagger>

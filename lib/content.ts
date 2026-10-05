@@ -3,7 +3,7 @@ import { CONFIG } from "./config";
 export type AgeKey = "10" | "13" | "15";
 
 /** Cratimă care nu se rupe la capăt de rând („AI-ul”, „să-și”, „Joacă-te”). */
-export const nb = (t: string) => t.replace(/(\p{L})-(\p{L})/gu, "$1\u2011$2");
+export const nb = (t: string) => t.replace(/(\p{L})-(\p{L})/gu, "$1\u2011$2").replace(/(\d)–(\d)/g, "$1\u2060–\u2060$2");
 const nbDeep = <T,>(v: T): T =>
   (typeof v === "string" ? nb(v) : Array.isArray(v) ? v.map(nbDeep) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, nbDeep(x)])) : v) as T;
 

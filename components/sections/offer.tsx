@@ -7,9 +7,9 @@ import { E } from "../ui/emoji";
 import { KidSample } from "../kid-context";
 
 const TRIAL: [string, string, string][] = [
-  ["0–10 min", "Ne cunoaștem", "Aflu ce îi place, ce a mai încercat și ce l-ar entuziasma să construiască."],
+  ["0–10 min", "Ne cunoaștem", "Aflu ce îi place, ce a mai încercat și ce l‑ar entuziasma să construiască."],
   ["10–40 min", "Își face primul joc", "Scrie el codul, cu mâna lui. Eu îl ghidez pas cu pas."],
-  ["40–45 min", "Ți-l arată", "Intri și tu: copilul îți arată jocul și îți explică cum funcționează."],
+  ["40–45 min", "Ți‑l arată", "Intri și tu: copilul îți arată jocul și îți explică cum funcționează."],
 ];
 
 export function FreeLesson() {
@@ -41,7 +41,7 @@ export function FreeLesson() {
 
             <div className="grid md:grid-cols-2">
               <TicketCol emoji="🧒" title="Ce primește copilul" items={[<>Își construiește <b className="text-ink">primul program, care chiar funcționează</b></>, "Îl păstrează salvat pe calculatorul lui", "Vede că programarea e mai ușoară și mai distractivă decât credea"]} />
-              <TicketCol emoji="🙋" border title="Ce primești tu" items={[<>O <b className="text-ink">evaluare scrisă, în aceeași zi</b>: de unde pornește și ce i s-ar potrivi</>, "Un plan pentru prima lună, dacă vreți să continuați", "Răspunsuri la orice întrebare ai, despre lecții sau despre preț"]} />
+              <TicketCol emoji="🙋" border title="Ce primești tu" items={[<>O <b className="text-ink">evaluare scrisă, în aceeași zi</b>: de unde pornește și ce i s‑ar potrivi</>, "Un plan pentru prima lună, dacă vreți să continuați", "Răspunsuri la orice întrebare ai, despre lecții sau despre preț"]} />
             </div>
             <ol className="grid border-t border-line bg-cream md:grid-cols-3">
               {[["Răspunzi la 5 întrebări", "durează un minut"], ["Îți scriu în aceeași zi", "și alegem o oră comodă"], ["Vă conectați de acasă", "pe Google Meet, de pe laptop"]].map(([b, s], k) => (
@@ -88,14 +88,14 @@ function Evaluation() {
     <div className="relative rounded-xl bg-paper p-6 text-[0.92rem] leading-relaxed text-ink-2 shadow-lift ring-1 ring-line sm:p-7" aria-label="Exemplu de evaluare după lecția gratuită">
       <div className="flex items-start justify-between gap-4 border-b border-line pb-4">
         <div>
-          <span className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-coral-t">Evaluare · lecția gratuită</span>
+          <span className="text-[0.75rem] font-semibold uppercase tracking-[0.08em] text-coral-t">Evaluare scrisă</span>
           <b className="mt-1 block font-display text-[1.2rem] text-ink"><KidSample />, 10 ani</b>
         </div>
         <span className="rounded-md bg-mint px-2 py-1 text-[0.72rem] font-semibold text-green">exemplu</span>
       </div>
       <dl className="mt-4 grid gap-3">
         <div><dt className="font-semibold text-ink">De unde pornește</dt><dd>Nu a mai programat, dar înțelege repede ordinea pașilor. A scris un joc de ghicit în 25 de minute, fără ajutor.</dd></div>
-        <div><dt className="font-semibold text-ink">Ce l-a entuziasmat</dt><dd>Când jocul a început să răspundă la ce scria el. Vrea un joc cu personaje din Minecraft.</dd></div>
+        <div><dt className="font-semibold text-ink">Ce l‑a entuziasmat</dt><dd>Când jocul a început să răspundă la ce scria el. Vrea un joc cu personaje din Minecraft.</dd></div>
         <div><dt className="font-semibold text-ink">Recomandarea mea</dt><dd>Python de la zero, nivelul Explorator, câte o lecție pe săptămână.</dd></div>
         <div><dt className="font-semibold text-ink">Prima lună</dt><dd>Un joc cu scor și niveluri, pe care îl poate juca toată familia.</dd></div>
       </dl>
@@ -139,7 +139,7 @@ export function Price() {
           </div>
           <div className="rounded-xl border border-line bg-cream p-6 md:mt-2">
             <b className="flex items-center gap-2 font-display text-[1.15rem]"><E e="🌱" /> Familii fondatoare</b>
-            {FOUNDING_FREE === 0 && <p className="mt-2 text-[0.92rem] font-semibold text-coral-t">Toate cele {f.total} locuri s-au ocupat. Mulțumesc!</p>}
+            {FOUNDING_FREE === 0 && <p className="mt-2 text-[0.92rem] font-semibold text-coral-t">Toate cele {f.total} locuri s‑au ocupat. Mulțumesc!</p>}
             <ul className="mt-3 grid gap-2 text-[0.95rem] text-ink-2">
               <li className="flex gap-2"><Check className="mt-1 size-4 shrink-0 text-green" strokeWidth={3} aria-hidden />{PRICES.month} pe lună, blocat {f.lockMonths} luni</li>
               <li className="flex gap-2"><Check className="mt-1 size-4 shrink-0 text-green" strokeWidth={3} aria-hidden />Aceleași lecții, același profesor, nimic tăiat</li>
@@ -159,7 +159,7 @@ export function Price() {
         <div className="mt-20 sm:mt-24">
           <SectionHead center={false} title="Cât costă" />
           <Reveal className="mt-10 grid overflow-hidden rounded-2xl shadow-lift ring-1 ring-line md:grid-cols-2">
-            <div className="bg-paper p-7 sm:p-10">
+            <div className="bg-paper p-5 sm:p-10">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-peach px-3 py-1.5 text-[0.8rem] font-bold text-coral-t"><E e="🌱" /> {FOUNDING_FREE > 0 ? "Preț pentru familiile fondatoare" : "Abonament lunar"}</span>
               <h3 className="mt-4 text-[1.6rem] font-semibold">Abonament lunar</h3>
               <div className="mt-2 flex flex-wrap items-baseline gap-2">
@@ -173,24 +173,24 @@ export function Price() {
                   <li key={t} className="flex gap-2.5"><Check className="mt-1 size-[18px] shrink-0 text-green" strokeWidth={3} aria-hidden />{t}</li>
                 ))}
               </ul>
-              <ButtonLink href="#plan" arrow className="w-full">Începem cu lecția gratuită</ButtonLink>
+              <ButtonLink href="#plan" arrow className="w-full whitespace-nowrap">Începem cu lecția gratuită</ButtonLink>
             </div>
-            <div className="bg-ink p-7 text-white sm:p-10">
+            <div className="bg-ink p-5 text-white sm:p-10">
               <h3 className="text-[1.3rem] font-semibold text-white">Ca să ai o comparație</h3>
               <p className="mt-1 text-[0.9rem] text-[#a3aac4]">Prețuri obișnuite în România, pe oră de lecție.</p>
               <ul className="mt-5 grid gap-3">
                 {COMPARE.map(([name, who, len, hour, us]) => (
-                  <li key={name} className={`grid grid-cols-[1fr_auto] items-center gap-x-4 rounded-xl px-4 py-3 ${us ? "bg-white/10 ring-1 ring-[#5be3a7]/50" : "bg-white/[.04]"}`}>
-                    <span className="min-w-0">
-                      <b className={`block text-[0.98rem] ${us ? "text-white" : "text-[#d3d8ea]"}`}>{name}</b>
-                      <small className="text-[0.82rem] text-[#a3aac4]">{who} · {len}</small>
+                  <li key={name} className={`rounded-xl px-4 py-3 ${us ? "bg-white/10 ring-1 ring-[#5be3a7]/50" : "bg-white/[.04]"}`}>
+                    <b className={`block text-[0.98rem] leading-snug ${us ? "text-white" : "text-[#d3d8ea]"}`}>{name}</b>
+                    <span className="mt-1 flex items-baseline justify-between gap-3">
+                      <small className="min-w-0 text-[0.82rem] leading-snug text-[#a3aac4]">{who} · {len}</small>
+                      <span className={`whitespace-nowrap font-display text-[1.15rem] font-semibold tabular-nums ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="ml-1 font-sans text-[0.72rem] font-normal text-[#a3aac4]">/oră</small></span>
                     </span>
-                    <span className={`whitespace-nowrap text-right font-display text-[1.15rem] font-semibold tabular-nums ${us ? "text-[#5be3a7]" : "text-[#d3d8ea]"}`}>{hour}<small className="block font-sans text-[0.72rem] font-normal text-[#a3aac4]">pe oră</small></span>
                   </li>
                 ))}
               </ul>
               <div className="mt-7 border-t border-white/15 pt-6">
-                <b className="flex items-center gap-2 font-display text-[1.15rem] font-semibold text-sun"><E e="🛡️" /> Garanția „merită sau nu plătești”</b>
+                <b className="flex items-start gap-2 font-display text-[1.15rem] font-semibold text-sun"><E e="🛡️" className="mt-0.5" /> Garanția „merită sau nu plătești”</b>
                 <p className="mt-1.5 text-[0.95rem] text-[#d3d8ea]">Dacă după primele 2 lecții plătite simți că nu merită, îți dau banii înapoi pe ele. Integral, fără explicații.</p>
               </div>
             </div>
@@ -201,7 +201,7 @@ export function Price() {
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="👫" /> Frați</b><p className="mt-1 text-[0.93rem] text-ink-2">{CONFIG.discounts.sibling}% reducere pentru al doilea copil.</p></StaggerItem>
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="📅" /> Plată pe 3 luni</b><p className="mt-1 text-[0.93rem] text-ink-2">{CONFIG.discounts.prepay3}% reducere dacă plătești 3 luni deodată.</p></StaggerItem>
             <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🤝" /> Recomandare</b><p className="mt-1 text-[0.93rem] text-ink-2">Recomanzi o familie care începe: primiți amândoi o lecție gratuită.</p></StaggerItem>
-            <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🎁" /> Cadou</b><p className="mt-1 text-[0.93rem] text-ink-2">Voucher pentru o lună de lecții. <a href={VOUCHER} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-2">Cere-l pe WhatsApp</a></p></StaggerItem>
+            <StaggerItem className="border-t border-line pt-4"><b className="flex items-center gap-2"><E e="🎁" /> Cadou</b><p className="mt-1 text-[0.93rem] text-ink-2">Voucher pentru o lună de lecții. <a href={VOUCHER} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-2">Cere‑l pe WhatsApp</a></p></StaggerItem>
           </Stagger>
           <Reveal className="mt-8 text-[0.98rem] text-muted">
             <E e="💡" className="mr-1" /> Ai nevoie doar de ajutor punctual (informatică la școală, bac, un proiect)? Lecție individuală: <b className="text-ink">{PRICES.single}</b>.

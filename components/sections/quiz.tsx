@@ -28,7 +28,7 @@ const STEPS: { key: string; q: React.ReactNode; hint: string; opts: Opt[] }[] = 
     { v: "da, puțin cod", label: "Da, a scris puțin cod", e: "💻" }, { v: "nu știu", label: "Nu știu sigur", e: "❓" },
   ] },
   { key: "goal", q: "Ce îți dorești cel mai mult?", hint: "Alege ce contează cel mai mult pentru tine", opts: [
-    { v: "să-și folosească util timpul pe ecran", label: "Să-și folosească util timpul pe ecran", e: "⏳" },
+    { v: "să‑și folosească util timpul pe ecran", label: "Să‑și folosească util timpul pe ecran", e: "⏳" },
     { v: "să fie pregătit pentru viitor", label: "Să fie pregătit pentru viitor", e: "🚀" },
     { v: "ajutor la informatica de la școală / bac", label: "Ajutor la informatica de la școală / bac", e: "📚" },
     { v: "să capete încredere în el", label: "Să capete încredere în el", e: "💪" },
@@ -66,7 +66,7 @@ export function Quiz() {
   const young = /^9/.test(ans.age || "");
   const msg = useMemo(
     () =>
-      `Bună, Leonard! Am completat planul de pe site-ul Codito și aș vrea să programăm lecția gratuită.\n\n` +
+      `Bună, Leonard! Am completat planul de pe site‑ul Codito și aș vrea să programăm lecția gratuită.\n\n` +
       (kid.name ? `🧒 Copil: ${kid.name}\n` : "") +
       `🎂 Vârsta: ${ans.age || "-"}\n🎮 Îi place: ${LIKE_TXT[ans.like] || "-"}\n💻 A mai programat: ${ans.exp || "-"}\n🎯 Îmi doresc: ${ans.goal || "-"}\n📣 Am aflat de la: ${ans.src || "-"}\n\nCând ai disponibilitate?`,
     [ans, kid.name]
@@ -90,7 +90,7 @@ export function Quiz() {
           ))}
         </Reveal>
 
-        <Reveal className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-2xl bg-paper p-6 shadow-lift sm:p-9">
+        <Reveal className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-2xl bg-paper p-5 shadow-lift sm:p-9">
           <div className="mb-7 h-2 overflow-hidden rounded-full bg-sand" aria-hidden>
             <motion.div className="h-full rounded-full bg-coral" animate={{ width: `${(Math.min(step + 1, STEPS.length + 1) / (STEPS.length + 1)) * 100}%` }} transition={{ duration: 0.4, ease: EASE }} />
           </div>
@@ -120,7 +120,7 @@ export function Quiz() {
             ) : (
               <motion.div key="done" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, ease: EASE }}>
                 <h3 className="flex items-center gap-2 text-[1.45rem] font-semibold sm:text-[1.6rem]"><E e="🎉" /> Planul recomandat pentru <KidName /></h3>
-                <div className="my-5 grid gap-3 rounded-xl bg-cream p-5 sm:p-6">
+                <div className="my-5 grid gap-3 rounded-xl bg-cream p-4 sm:p-6">
                   {[
                     ["🎯", "Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
                     ["🧭", "Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
@@ -131,7 +131,7 @@ export function Quiz() {
                   ))}
                 </div>
                 <a href={waLink(msg)} target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2.5 rounded-full bg-wa px-6 py-4 font-semibold text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.65)] transition hover:-translate-y-0.5 hover:bg-[#1ebe5a]">
-                  <WaIcon /> Rezervă lecția gratuită pe WhatsApp
+                  <WaIcon className="size-5 shrink-0" /> <span className="sm:hidden">Rezervă pe WhatsApp</span><span className="hidden sm:inline">Rezervă lecția gratuită pe WhatsApp</span>
                 </a>
                 <p className="mt-3 text-center text-[0.86rem] text-muted">
                   Se deschide WhatsApp cu mesajul gata scris. Doar apeși „Trimite”. Trimițând mesajul, ești de acord cu <a href="/termeni/" className="text-coral-t underline">termenii</a> și <a href="/confidentialitate/" className="text-coral-t underline">politica de confidențialitate</a>.
@@ -156,8 +156,8 @@ export function Quiz() {
           </AnimatePresence>
         </Reveal>
         <p className="mt-5 text-center leading-relaxed text-ink-2">
-          Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie-mi pe WhatsApp</a>
-          {" "}sau sună-mă: <a href={telLink} className="whitespace-nowrap font-semibold text-coral-t underline underline-offset-4">{CONFIG.phone}</a>
+          Preferi să vorbim direct? <a href={WA_HELLO} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">Scrie‑mi pe WhatsApp</a>
+          {" "}sau sună‑mă: <a href={telLink} className="whitespace-nowrap font-semibold text-coral-t underline underline-offset-4">{CONFIG.phone}</a>
           {CONFIG.calUrl && <>. Sau <a href={CONFIG.calUrl} target="_blank" rel="noopener" className="font-semibold text-coral-t underline underline-offset-4">alege singur o oră în calendar</a></>}
         </p>
       </div>

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { CONFIG } from "@/lib/config";
 import { track } from "@/lib/track";
 
-/** Statistici fără cookie-uri (Plausible). Pornește doar dacă `plausibleDomain` e completat în config. */
+/** Statistici fără cookie‑uri (Plausible). Pornește doar dacă `plausibleDomain` e completat în config. */
 export function Analytics() {
   useEffect(() => {
     if (!CONFIG.plausibleDomain) return;

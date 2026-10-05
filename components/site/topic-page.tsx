@@ -19,7 +19,7 @@ export function TopicPage({ t }: { t: Topic }) {
       <nav className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-xl">
         <div className="wrap flex h-16 items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Codito, pagina principală"><LogoMark className="size-9 text-[1.3rem]" /><Wordmark className="text-[1.3rem]" /></Link>
-          <Link href="/" className="inline-flex items-center gap-1.5 whitespace-nowrap text-[0.92rem] font-semibold text-ink-2 hover:text-coral-t"><ArrowLeft className="size-4" /> Pagina principală</Link>
+          <Link href="/" className="-mr-2 inline-flex items-center gap-1.5 whitespace-nowrap px-2 py-3 text-[0.92rem] font-semibold text-ink-2 hover:text-coral-t"><ArrowLeft className="size-4" /> Pagina principală</Link>
         </div>
       </nav>
 
@@ -30,7 +30,7 @@ export function TopicPage({ t }: { t: Topic }) {
           <p className="mt-6 max-w-[680px] text-[1.15rem] leading-relaxed text-ink-2">{t.lead}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="/#plan" arrow>Vreau lecția gratuită 1:1</ButtonLink>
-            <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Întreabă-mă pe WhatsApp</ButtonLink>
+            <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Întreabă‑mă pe WhatsApp</ButtonLink>
           </div>
           <p className="mt-4 text-[0.92rem] text-muted">Prima lecție (45 de minute) e gratuită. Fără card, fără obligații.</p>
         </header>
@@ -64,14 +64,14 @@ export function TopicPage({ t }: { t: Topic }) {
             <div>
               <h2 className="text-[clamp(1.5rem,3vw,1.9rem)] font-semibold">Cine ține lecțiile</h2>
               <p className="mt-4 leading-relaxed text-ink-2">Sunt Leonard Pădurean, programator software de 5 ani și cercetător, student la inginerie în domeniul Calculatoare. Predau programare copiilor de peste un an și am pregătire în pedagogie. La Codito țin eu fiecare lecție, cu fiecare copil.</p>
-              <Link href="/#despre" className="mt-3 inline-block font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link>
+              <Link href="/#despre" className="mt-1 inline-block py-2.5 font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link>
             </div>
             <div className="rounded-2xl bg-paper p-6 ring-1 ring-line sm:p-7">
               <b className="block font-display text-[1.2rem]">Cât costă</b>
               <p className="mt-2 text-ink-2"><b className="font-display text-[2rem] text-ink">{PRICES.month}</b> / lună</p>
               <p className="text-[0.95rem] text-ink-2">4 lecții × 90 de minute · {PRICES.session} lecția</p>
               <p className="mt-1 text-[0.88rem] text-muted">Preț pentru primele {CONFIG.founding.total} familii, blocat {CONFIG.founding.lockMonths} luni. Fără contract, te oprești oricând.</p>
-              <Link href="/#pret" className="mt-3 inline-block text-[0.95rem] font-semibold text-coral-t underline underline-offset-4">Vezi tot ce include</Link>
+              <Link href="/#pret" className="mt-1 inline-block py-2.5 text-[0.95rem] font-semibold text-coral-t underline underline-offset-4">Vezi tot ce include</Link>
             </div>
           </div>
         </section>
@@ -97,15 +97,15 @@ export function TopicPage({ t }: { t: Topic }) {
             <h2 className="mx-auto max-w-[680px] text-[clamp(1.6rem,3.6vw,2.3rem)] font-semibold text-white">Vedeți cum e, la o lecție gratuită de 45 de minute</h2>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <ButtonLink href="/#plan" arrow>Programează lecția gratuită</ButtonLink>
-              <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Scrie-mi pe WhatsApp</ButtonLink>
+              <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Scrie‑mi pe WhatsApp</ButtonLink>
             </div>
           </div>
         </section>
 
         <nav aria-label="Alte pagini" className="wrap py-10">
           <b className="text-[0.8rem] font-semibold uppercase tracking-[0.08em] text-muted">Mai citește</b>
-          <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
-            {others.map((o) => <li key={o.slug}><Link href={`/${o.slug}/`} className="font-semibold text-ink-2 hover:text-coral-t">{o.eyebrow}</Link></li>)}
+          <ul className="mt-2 flex flex-wrap gap-x-6">
+            {others.map((o) => <li key={o.slug}><Link href={`/${o.slug}/`} className="inline-block py-2.5 font-semibold text-ink-2 hover:text-coral-t">{o.eyebrow}</Link></li>)}
           </ul>
         </nav>
       </main>

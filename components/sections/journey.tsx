@@ -24,14 +24,14 @@ export function Journey() {
         <div className="lg:sticky lg:top-24 lg:self-start">
           <Reveal>
             <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Ce va construi <KidName /> în primele 3 luni</h2>
-            <p className="mt-4 text-[1.1rem] leading-relaxed text-ink-2">Un plan concret, lună cu lună. Alege vârsta sau scrie-i prenumele și planul se potrivește cu el.</p>
+            <p className="mt-4 text-[1.1rem] leading-relaxed text-ink-2">Un plan concret, lună cu lună. Alege vârsta sau scrie‑i prenumele și planul se potrivește cu el.</p>
           </Reveal>
           <Personalizer />
-          <Reveal className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Vârsta">
+          <Reveal className="mt-6 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap" role="tablist" aria-label="Vârsta">
             {AGES.map(([k, l]) => (
               <button
                 key={k} role="tab" aria-selected={age === k} onClick={() => setAge(k)}
-                className={clsx("relative rounded-full px-5 py-2.5 text-[0.95rem] font-semibold transition-colors", age === k ? "text-white" : "bg-paper text-ink-2 ring-1 ring-line hover:ring-coral")}
+                className={clsx("relative whitespace-nowrap rounded-full px-3 py-2.5 text-[0.92rem] font-semibold transition-colors sm:px-5 sm:text-[0.95rem]", age === k ? "text-white" : "bg-paper text-ink-2 ring-1 ring-line hover:ring-coral")}
               >
                 {age === k && <motion.span layoutId="agePill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 400, damping: 34 }} />}
                 <span className="relative">{l}</span>
@@ -120,7 +120,7 @@ function Personalizer() {
                 <option value="">Vârsta…</option>
                 {AGES.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
               </select>
-              <button className="w-full rounded-full bg-coral py-3.5 font-semibold text-white transition hover:bg-coral-d">Arată-mi planul</button>
+              <button className="w-full rounded-full bg-coral py-3.5 font-semibold text-white transition hover:bg-coral-d">Arată‑mi planul</button>
             </motion.form>
           )}
         </AnimatePresence>

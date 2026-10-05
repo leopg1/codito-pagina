@@ -18,8 +18,8 @@ export function Closing() {
           </p>
         </Reveal>
         <Reveal delay={0.1} className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <ButtonLink href="#plan" arrow>Programează lecția gratuită 1:1</ButtonLink>
-          <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Scrie-mi pe WhatsApp</ButtonLink>
+          <ButtonLink href="#plan" arrow className="whitespace-nowrap">Programează lecția gratuită 1:1</ButtonLink>
+          <ButtonLink href={WA_HELLO} variant="wa" external><WaIcon /> Scrie‑mi pe WhatsApp</ButtonLink>
         </Reveal>
         <Reveal delay={0.15} className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[0.92rem] text-[#c3c8dd]">
           {["Gratuit", "Fără obligații", "Garanție de returnare a banilor"].map((t) => (
