@@ -93,30 +93,53 @@
 
 /* paginile legale */
 @layer components {
-  .legal .kicker { margin-bottom: 4px; }
-  .legal h1 { font: 700 clamp(1.8rem, 4vw, 2.5rem)/1.15 var(--font-display); margin: 12px 0 8px; }
-  .legal .upd { color: var(--color-muted); font-size: .9rem; margin: 0 0 24px; }
-  .legal .intro { background: var(--color-cream); border-radius: 16px; padding: 18px 20px; color: var(--color-ink-2); margin-bottom: 8px; }
-  .legal h2 { font: 600 1.3rem/1.3 var(--font-display); margin: 36px 0 10px; scroll-margin-top: 90px; }
-  .legal h3 { font: 600 1.05rem/1.4 var(--font-sans); margin: 20px 0 6px; }
-  .legal p { margin: 0 0 12px; color: var(--color-ink-2); }
-  .legal ul, .legal ol { margin: 0 0 14px; padding-left: 22px; color: var(--color-ink-2); list-style: disc; }
-  .legal li { margin-bottom: 6px; }
-  .legal strong { color: var(--color-ink); }
-  .legal a { color: var(--color-coral-t); text-decoration: underline; text-underline-offset: 3px; }
-  .legal .box { border: 1px dashed #e3d3bd; border-radius: 16px; padding: 18px 20px; margin: 14px 0; background: #fffdf9; }
-  .legal .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
-  .legal .toc a { font-size: .86rem; text-decoration: none; background: var(--color-cream); border: 1px solid var(--color-line); border-radius: 999px; padding: 9px 14px; color: var(--color-ink-2); display: inline-block; }
-  .legal .toc a:hover { border-color: var(--color-coral); color: var(--color-coral-t); }
-  .legal .field { display: flex; gap: 10px; align-items: flex-end; margin: 12px 0; flex-wrap: wrap; }
+  .legal { color: var(--color-ink-2); font-size: 1.04rem; line-height: 1.78; }
+  @media (min-width: 640px) { .legal { font-size: 1.08rem; } }
+  .legal > :first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .legal h2 { display: flex; align-items: baseline; gap: 0.8rem; font: 600 clamp(1.32rem, 2.6vw, 1.62rem)/1.25 var(--font-display); color: var(--color-ink); margin: 2em 0 0.7em; padding-top: 1.5em; border-top: 1px solid var(--color-line); scroll-margin-top: 96px; }
+  .legal h2 .n { flex-shrink: 0; min-width: 1.75rem; font: 600 0.82rem/1 var(--font-mono); color: var(--color-coral-t); letter-spacing: 0.02em; }
+  .legal h3 { font: 600 1.22rem/1.3 var(--font-display); color: var(--color-ink); margin: 0 0 0.6em; }
+  .legal p { margin: 0 0 1em; }
+  .legal ul, .legal ol { margin: 0 0 1.15em; padding: 0; list-style: none; }
+  .legal li { position: relative; padding-left: 1.4em; }
+  .legal li + li { margin-top: 0.6em; }
+  .legal li::before { content: ""; position: absolute; left: 0.15em; top: 0.72em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-coral); }
+  .legal strong { color: var(--color-ink); font-weight: 600; }
+  .legal a { color: var(--color-coral-t); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .legal a:hover { text-decoration-thickness: 2px; }
+  .legal .box { position: relative; margin: 1.6em 0 0.4em; padding: 26px 24px 18px; border: 1.5px dashed #dfcdb4; border-radius: 20px; background: var(--color-cream); scroll-margin-top: 96px; }
+  .legal .box p { font-size: 0.97em; }
+  .legal .field { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 12px; margin: 0.9em 0; }
   .legal .field span { color: var(--color-ink-2); white-space: nowrap; }
-  .legal .field i { flex: 1; min-width: 160px; border-bottom: 1.5px solid #cfc7b8; height: 1.4em; }
-  .legal .check { display: grid; grid-template-columns: 26px 1fr; gap: 10px; margin: 12px 0; color: var(--color-ink-2); }
-  .legal .check b.sq { width: 20px; height: 20px; border: 2px solid var(--color-ink); border-radius: 5px; margin-top: 4px; }
-  .legal .sig { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
-  .legal .note { font-size: .9rem; color: var(--color-muted); margin-top: 28px; border-top: 1px solid var(--color-line); padding-top: 18px; }
-  @media (max-width: 640px) { .legal .sig { grid-template-columns: 1fr; } .legal h2 { font-size: 1.18rem; margin-top: 28px; } .legal .field span { white-space: normal; } .legal .field i { min-width: 100%; } .legal .box { padding: 16px; } }
-  @media print { nav, footer, .legal .toc { display: none !important; } }
+  .legal .field i { flex: 1; min-width: 170px; height: 1.6em; border-bottom: 1.5px solid #c9bfae; }
+  .legal .check { display: grid; grid-template-columns: 30px 1fr; gap: 12px; margin: 0; padding: 16px 0; border-top: 1px solid var(--color-line); }
+  .legal .check:has(+ :not(.check)) { border-bottom: 1px solid var(--color-line); margin-bottom: 1.4em; }
+  .legal .check b.sq { width: 22px; height: 22px; margin-top: 0.22em; border: 2px solid var(--color-ink); border-radius: 6px; background: var(--color-paper); }
+  .legal .sig { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; margin-top: 2.2em; }
+  .legal .sig .field i { height: 2.4em; }
+  .legal .note { margin: 2.2em 0 0; padding-top: 1.2em; border-top: 1px solid var(--color-line); font-size: 0.9em; color: var(--color-muted); }
+  @media (max-width: 640px) {
+    .legal h2 { gap: 0.6rem; margin-top: 2em; padding-top: 1.4em; }
+    .legal .box { margin-inline: -4px; padding: 22px 16px 12px; }
+    .legal .sig { grid-template-columns: 1fr; }
+    .legal .field span { white-space: normal; }
+    .legal .field i { min-width: 100%; }
+  }
+  @media print {
+    .legal { max-width: none; font-size: 10.5pt; line-height: 1.5; color: #111; }
+    .legal h2 { margin: 1.2em 0 0.5em; padding-top: 0; border-top: 0; font-size: 13.5pt; break-after: avoid; }
+    .legal h3 { font-size: 12pt; }
+    .legal p, .legal li, .legal .field span { color: #111; }
+    .legal li, .legal .check, .legal .field, .legal .sig { break-inside: avoid; }
+    .legal a { color: inherit; text-decoration: none; }
+    .legal .check { padding: 7px 0; }
+    .legal .check:has(+ :not(.check)) { margin-bottom: 1em; }
+    .legal .field { margin: 0.7em 0; }
+    .legal .sig { margin-top: 1.6em; }
+    .legal .note { margin-top: 1.4em; }
+    .legal .check b.sq, .legal li::before { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .legal .box { background: none; }
+  }
 }
 
 /* emoji: Apple pe iPhone/Mac, stilul sistemului în rest */
@@ -184,27 +207,39 @@
 .qa [data-reveal], .qa [data-stagger] > * { transition: none !important; }
 
 /* ===== Text de articol (blog) ===== */
-.prose-codito { color: var(--color-ink-2); font-size: 1.09rem; line-height: 1.78; }
-@media (min-width: 640px) { .prose-codito { font-size: 1.14rem; } }
-.prose-codito > * + * { margin-top: 1.15em; }
-.prose-codito h2 { font-family: var(--font-display); color: var(--color-ink); font-weight: 600; font-size: clamp(1.45rem, 3.4vw, 1.8rem); line-height: 1.2; margin-top: 2.1em; scroll-margin-top: 96px; text-wrap: balance; }
-.prose-codito h3 { font-family: var(--font-display); color: var(--color-ink); font-weight: 600; font-size: 1.22rem; line-height: 1.3; margin-top: 1.7em; }
-.prose-codito h2 + *, .prose-codito h3 + * { margin-top: 0.6em; }
+.prose-codito { color: var(--color-ink-2); font-size: 1.09rem; line-height: 1.8; }
+@media (min-width: 640px) { .prose-codito { font-size: 1.15rem; } }
+.prose-codito > * + * { margin-top: 1.2em; }
+/* primul paragraf: intrare mai mare, ca un lead */
+.prose-codito > p:first-child { color: var(--color-ink); font-size: 1.05em; line-height: 1.7; }
+@media (min-width: 640px) { .prose-codito > p:first-child { font-size: 1.12em; line-height: 1.65; } }
+.prose-codito h2 { font-family: var(--font-display); color: var(--color-ink); font-weight: 600; font-size: clamp(1.55rem, 3.6vw, 2rem); line-height: 1.18; margin-top: 2.2em; scroll-margin-top: 100px; text-wrap: balance; }
+.prose-codito h2::before { content: ""; display: block; width: 36px; height: 3px; border-radius: 3px; background: var(--color-coral); margin-bottom: 0.7em; }
+.prose-codito h3 { font-family: var(--font-display); color: var(--color-ink); font-weight: 600; font-size: 1.25rem; line-height: 1.3; margin-top: 1.8em; scroll-margin-top: 100px; }
+.prose-codito h2 + *, .prose-codito h3 + * { margin-top: 0.65em; }
 .prose-codito strong { color: var(--color-ink); font-weight: 600; }
-.prose-codito :where(p, li) a { color: var(--color-coral-t); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.prose-codito :where(p, li) a:hover { text-decoration-thickness: 2px; }
-.prose-codito ul, .prose-codito ol { padding-left: 1.3em; }
-.prose-codito ul { list-style: none; padding-left: 0; }
-.prose-codito ul > li { position: relative; padding-left: 1.35em; }
-.prose-codito ul > li::before { content: ""; position: absolute; left: 0.2em; top: 0.72em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-coral); }
-.prose-codito ol { list-style: decimal; }
-.prose-codito ol > li::marker { color: var(--color-coral-t); font-weight: 600; }
-.prose-codito li + li { margin-top: 0.45em; }
-.prose-codito blockquote { border-left: 3px solid var(--color-coral); padding-left: 1.1em; color: var(--color-ink); font-family: var(--font-display); font-size: 1.15em; line-height: 1.5; }
-.prose-codito .not-prose { font-size: 1rem; }
+.prose-codito :where(p, li) a { color: var(--color-coral-t); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgb(188 67 29 / 0.45); transition: text-decoration-color .2s; }
+.prose-codito :where(p, li) a:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
+/* liste: puncte coral, numere mono, ca minutele de pe pagina principală */
+.prose-codito ul, .prose-codito ol { list-style: none; padding-left: 0; }
+.prose-codito ul > li { position: relative; padding-left: 1.5em; }
+.prose-codito ul > li::before { content: ""; position: absolute; left: 0.25em; top: 0.7em; width: 8px; height: 8px; border-radius: 50%; background: var(--color-coral); box-shadow: 0 0 0 3px var(--color-peach); }
+.prose-codito ol { counter-reset: li; }
+.prose-codito ol > li { counter-increment: li; position: relative; padding-left: 2.6em; }
+.prose-codito ol > li::before { content: counter(li, decimal-leading-zero); position: absolute; left: 0; top: 0.3em; font: 600 0.78rem/1.6 var(--font-mono); color: var(--color-coral-t); background: var(--color-peach); border-radius: 6px; padding: 0 0.45em; }
+.prose-codito li + li { margin-top: 0.6em; }
+/* citat: bordură coral, Fraunces, ca citatul din „Despre mine” */
+.prose-codito blockquote { margin-block: 1.8em; border-left: 3px solid var(--color-coral); padding: 0.2em 0 0.2em 1.1em; color: var(--color-ink); font-family: var(--font-display); font-size: 1.22em; font-weight: 500; line-height: 1.45; text-wrap: pretty; }
+.prose-codito blockquote p + p { margin-top: 0.6em; }
+/* cod */
+.prose-codito code { font-family: var(--font-mono); font-size: 0.86em; background: var(--color-sand); border: 1px solid var(--color-line); border-radius: 6px; padding: 0.08em 0.38em; color: var(--color-ink); }
+.prose-codito pre { position: relative; margin-block: 1.6em; background: var(--color-night); color: #d8def5; border-radius: 18px; padding: 46px 20px 20px; overflow-x: auto; font-size: 0.86rem; line-height: 1.75; box-shadow: 0 30px 60px -30px rgb(30 36 66 / .55); }
+.prose-codito pre::before { content: attr(data-lang); position: absolute; top: 14px; left: 20px; right: 20px; padding-left: 52px; font: 500 0.75rem/1 var(--font-mono); color: #8b93b5; text-transform: lowercase;
+  background: radial-gradient(circle at 5px 50%, #ff5f57 5px, transparent 5.5px), radial-gradient(circle at 23px 50%, #febc2e 5px, transparent 5.5px), radial-gradient(circle at 41px 50%, #28c840 5px, transparent 5.5px); background-repeat: no-repeat; height: 12px; display: flex; align-items: center; }
+.prose-codito pre code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; }
+@media (min-width: 640px) { .prose-codito pre { font-size: 0.9rem; padding: 50px 26px 24px; } .prose-codito pre::before { left: 26px; top: 16px; } }
+/* căsuța „:::cta” din text */
+.prose-codito .not-prose { font-size: 1rem; line-height: 1.65; }
+.prose-codito .cta-box { margin-block: 2.6em; }
+.prose-codito .cta-box + h2 { margin-top: 1.6em; }
 
-@media (max-width: 640px) { .legal .intro { background: var(--color-sand); } }
-
-.prose-codito code { font-family: var(--font-mono); font-size: 0.88em; background: var(--color-sand); border-radius: 6px; padding: 0.12em 0.4em; color: var(--color-ink); }
-.prose-codito pre { background: var(--color-night); color: #d8def5; border-radius: 14px; padding: 18px 20px; overflow-x: auto; font-size: 0.92rem; line-height: 1.7; }
-.prose-codito pre code { background: none; padding: 0; color: inherit; font-size: inherit; }

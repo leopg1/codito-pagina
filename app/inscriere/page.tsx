@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { CONFIG } from "@/lib/config";
-import { LogoMark, Wordmark } from "@/components/site/logo";
+import { Check } from "lucide-react";
+import { CONFIG, waLink } from "@/lib/config";
+import { SiteHeader } from "@/components/site/site-header";
 import { Footer } from "@/components/site/footer";
 import { Countdown, SignupForm } from "@/components/signup/signup-form";
+import { GameWindow } from "@/components/signup/game-window";
+import { LessonTimeline } from "@/components/signup/lesson-timeline";
+import { ButtonLink, WaIcon } from "@/components/ui/button";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import { E } from "@/components/ui/emoji";
 import { Photo } from "@/components/ui/photo";
 
 const W = CONFIG.workshop;
@@ -18,24 +23,26 @@ export const metadata: Metadata = {
   openGraph: { type: "website", url: "/inscriere/", siteName: "Codito", locale: "ro_RO", title: `Lecție gratuită de programare · ${W.date}`, description, images: ["/og.png"] },
 };
 
-const FACTS: [string, string][] = [
-  ["Unde", `Online, de acasă, pe Google Meet`],
-  ["Durată", `${W.minutes} de minute`],
-  ["Pentru cine", W.ages ? `Copii de ${W.ages}, fără experiență` : "Copii și adolescenți, fără experiență"],
-  ["Grupă", `Maximum ${W.total} copii`],
-  ["Ce îi trebuie", "Un laptop sau calculator cu internet"],
-];
+/* data, din config: „10”, „oct”, „sâmbătă”, „14:00” */
+const fmt = (o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat("ro-RO", { timeZone: "Europe/Bucharest", ...o }).format(new Date(W.start));
+const DAY = fmt({ day: "numeric" });
+const MONTH = fmt({ month: "short" }).replace(".", "");
+const WEEKDAY = fmt({ weekday: "long" });
+const TIME = fmt({ hour: "2-digit", minute: "2-digit" });
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+const LEFT = Math.max(0, W.total - W.taken);
 
-const STEPS: [string, string][] = [
-  ["Te contactez în aceeași zi", "ca să confirm locul și să‑ți spun ce urmează."],
-  ["Cu o zi înainte primești linkul", "de conectare și un pas mic de pregătire, de 2 minute."],
-  ["Sâmbătă, copilul se conectează", "și își face jocul. În ultimele minute vi‑l arată."],
+const AFTER: [string, string, string][] = [
+  ["În aceeași zi", "Te contactez eu", "ca să confirm locul și să‑ți spun ce urmează."],
+  ["Cu o zi înainte", "Primești linkul de Google Meet", "și un pas mic de pregătire, de 2 minute."],
+  [`${cap(WEEKDAY)}, ${TIME}`, "Copilul se conectează", "și își face jocul. În ultimele minute vi‑l arată."],
 ];
 
 const FAQ: [string, string][] = [
   ["Chiar e gratuit?", "Da. Nu plătești nimic și nu ți se cere cardul. Dacă după lecție vreți să continuați, vorbim. Dacă nu, nu insist."],
   ["Copilul n‑a mai programat niciodată. E o problemă?", "Deloc. Lecția e făcută exact pentru începători. Explic pas cu pas, iar copilul scrie singur codul."],
-  ["De ce doar 5 copii?", "Ca să am timp pentru fiecare. Cu mai mulți copii, unii ar rămâne în urmă."],
+  [`De ce doar ${W.total} copii?`, "Ca să am timp pentru fiecare. Cu mai mulți copii, unii ar rămâne în urmă."],
+  ["Ce îi trebuie copilului?", "Un laptop sau un calculator cu internet. Linkul de Google Meet îl primești cu o zi înainte."],
   ["Trebuie să stau lângă copil?", "Nu e nevoie. Dacă vrei, poți sta lângă el, iar în ultimele minute vă invit pe toți să vedeți jocul."],
 ];
 
@@ -62,93 +69,157 @@ const eventLd = {
 export default function Page() {
   return (
     <>
-      <nav className="sticky top-0 z-50 border-b border-line bg-cream/90 backdrop-blur-xl">
-        <div className="wrap flex h-16 items-center justify-between gap-3 [@media(max-height:480px)]:h-14">
-          <Link href="/" className="flex min-h-11 items-center gap-2.5" aria-label="Codito, pagina principală"><LogoMark className="size-9 text-[1.3rem]" /><Wordmark className="text-[1.3rem]" /></Link>
-          <Link href="/" className="-mr-2 inline-flex items-center gap-1.5 whitespace-nowrap px-2 py-3 text-[0.92rem] font-semibold text-ink-2 hover:text-coral-t"><ArrowLeft className="size-4" /> Despre lecții</Link>
-        </div>
-      </nav>
+      <SiteHeader cta={{ href: "#formular", label: "Rezervă locul" }} />
 
       <main>
-        <section className="wrap grid items-start gap-6 pb-16 pt-6 sm:gap-8 sm:pt-14 lg:grid-cols-[1.05fr_.95fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8 lg:pb-24">
-          <div className="min-w-0 md:mx-auto md:w-full md:max-w-[560px] lg:mx-0 lg:max-w-none lg:col-start-1 lg:row-start-1">
-            <p className="text-[0.95rem] font-semibold text-coral-t">Lecție gratuită de programare</p>
-            <h1 className="mt-3 text-[clamp(2.1rem,6vw,3.5rem)] font-semibold leading-[1.06]">
-              Sâmbătă, copilul tău își face <em className="not-italic text-coral">primul joc</em> pe calculator.
-            </h1>
-            <p className="mt-5 max-w-[34rem] text-[1.12rem] leading-relaxed text-ink-2">
-              De la zero, scris de el, în {W.minutes} de minute. La final vi‑l arată și îl puteți juca împreună.
-            </p>
-            <p className="mt-4 border-l-[3px] border-coral pl-4 sm:mt-6 text-[1.05rem] leading-snug">
-              <b className="block text-ink first-letter:uppercase">{W.date}</b>
-              <span className="text-ink-2">Online · gratuit</span>
-            </p>
-          </div>
-
-          {/* formularul: pe telefon vine imediat după titlu */}
-          <div id="formular" className="w-full md:mx-auto md:max-w-[560px] lg:mx-0 lg:max-w-none lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <div className="rounded-2xl bg-paper p-5 shadow-lift ring-1 ring-line sm:p-8">
-              <SignupForm />
-            </div>
-          </div>
-
-          <div className="min-w-0 md:mx-auto md:w-full md:max-w-[560px] lg:mx-0 lg:max-w-none lg:col-start-1 lg:row-start-2">
-            <h2 className="text-[1.15rem] font-semibold">Pe scurt</h2>
-            <dl className="mt-3 border-t border-line">
-              {FACTS.map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[8.5rem_1fr] gap-x-4 border-b border-line py-3 max-[380px]:grid-cols-1">
-                  <dt className="text-[0.95rem] text-muted">{k}</dt>
-                  <dd className="font-semibold leading-snug text-ink">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-8"><Countdown /></div>
-          </div>
-        </section>
-
-        <section className="border-t border-line bg-sand py-14 sm:py-20">
-          <div className="wrap">
-            <h2 className="text-[clamp(1.6rem,3.6vw,2.2rem)] font-semibold">Ce se întâmplă după ce te înscrii</h2>
-            <ol className="mt-8 grid gap-x-8 gap-y-6 md:grid-cols-3">
-              {STEPS.map(([b, t], k) => (
-                <li key={b} className="border-t-2 border-ink/80 pt-4">
-                  <span className="font-display text-[1.6rem] font-bold text-coral-t">{k + 1}</span>
-                  <p className="mt-1 leading-relaxed text-ink-2"><b className="text-ink">{b}</b> {t}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="py-14 sm:py-20">
-          <div className="wrap grid items-start gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-16">
-            <div className="flex flex-col items-start gap-4 min-[380px]:flex-row min-[380px]:gap-5">
-              <span className="relative grid size-20 shrink-0 place-items-center overflow-hidden rounded-full bg-coral font-display text-[1.8rem] font-bold text-white ring-4 ring-peach">
-                L<Photo className="scale-[1.5] object-[50%_42%]" />
+        {/* ===== hero: ce, când, formularul ===== */}
+        <section className="pb-16 pt-7 sm:pt-14 lg:pb-24">
+          <div className="wrap grid items-start gap-9 lg:grid-cols-[1.08fr_.92fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-14">
+            <div className="min-w-0 md:mx-auto md:w-full md:max-w-[580px] lg:col-start-1 lg:row-start-1 lg:mx-0 lg:max-w-none">
+              <span className="rise block font-hand text-[1.35rem] font-bold leading-tight text-coral-t min-[380px]:text-[1.5rem] sm:text-[1.65rem]">
+                Lecție gratuită de programare, online
               </span>
-              <div>
-                <h2 className="text-[1.35rem] font-semibold">Cine ține lecția</h2>
-                <p className="mt-2 leading-relaxed text-ink-2">Sunt Leonard Pădurean, programator software de 5 ani și cercetător. Predau programare copiilor de peste un an și am pregătire în pedagogie.</p>
-                <Link href="/#despre" className="mt-1 inline-block py-2 font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link>
+              <h1 style={{ "--d": ".08s" } as React.CSSProperties} className="rise mt-2.5 text-[clamp(2.2rem,5.4vw,3.7rem)] font-semibold">
+                {cap(WEEKDAY)}, copilul tău își face <em className="not-italic text-coral">primul joc</em> pe calculator.
+              </h1>
+              <p style={{ "--d": ".18s" } as React.CSSProperties} className="rise mt-5 max-w-[34em] text-[1.08rem] leading-relaxed text-ink-2 sm:text-[1.18rem]">
+                De la zero, scris de el, în {W.minutes} de minute. La final vi‑l arată și îl puteți juca împreună.
+              </p>
+
+              {/* data, ca pe o invitație */}
+              <div style={{ "--d": ".26s" } as React.CSSProperties} className="rise mt-7 flex max-w-full items-center gap-4 sm:gap-5">
+                <div className="w-[66px] shrink-0 overflow-hidden rounded-xl bg-paper text-center shadow-soft ring-1 ring-line sm:w-[74px]" aria-hidden>
+                  <span className="block bg-cta py-1 text-[0.75rem] font-bold uppercase tracking-[0.14em] text-white">{MONTH}</span>
+                  <b className="block py-1.5 font-display text-[2rem] leading-none sm:py-2 sm:text-[2.3rem]">{DAY}</b>
+                </div>
+                <p className="min-w-0 leading-snug">
+                  <b className="block text-[1.08rem] text-ink first-letter:uppercase sm:text-[1.15rem]">{W.date}</b>
+                  <span className="mt-0.5 block text-[0.95rem] text-muted">{W.minutes} de minute · pe Google Meet · maximum {W.total} copii</span>
+                </p>
               </div>
             </div>
-            <div className="border-t border-line">
-              {FAQ.map(([q, a]) => (
-                <details key={q} className="group border-b border-line">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[1.04rem] font-semibold [&::-webkit-details-marker]:hidden">
-                    {q}<span className="text-[1.4rem] leading-none text-coral transition-transform group-open:rotate-45" aria-hidden>+</span>
-                  </summary>
-                  <p className="max-w-[62ch] pb-6 leading-relaxed text-ink-2">{a}</p>
-                </details>
-              ))}
+
+            {/* formularul: pe telefon vine imediat după titlu */}
+            <div id="formular" style={{ "--d": ".2s" } as React.CSSProperties} className="rise w-full md:mx-auto md:max-w-[580px] lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none">
+              <div className="rounded-[22px] bg-paper p-5 shadow-lift ring-1 ring-line min-[380px]:p-6 sm:p-8">
+                <SignupForm />
+              </div>
+            </div>
+
+            <div className="min-w-0 pt-2 md:mx-auto md:w-full md:max-w-[580px] lg:col-start-1 lg:row-start-2 lg:mx-0 lg:max-w-none lg:pt-0">
+              <GameWindow minutes={W.minutes} />
             </div>
           </div>
         </section>
 
-        <section className="border-b border-white/10 bg-ink py-14 text-center text-white sm:py-16">
+        {/* ===== cele 60 de minute ===== */}
+        <section className="section border-y border-line bg-paper">
           <div className="wrap">
-            <h2 className="mx-auto max-w-[620px] text-[clamp(1.6rem,3.6vw,2.2rem)] font-semibold text-white">{W.taken > 0 && W.taken < W.total ? `Mai sunt ${W.total - W.taken} locuri.` : `Grupa are doar ${W.total} locuri.`} Înscrierea durează 30 de secunde.</h2>
-            <a href="#formular" className="mt-7 inline-flex items-center gap-2 rounded-full bg-cta px-7 py-4 font-semibold text-white shadow-coral transition hover:bg-cta-d">Rezervă locul gratuit</a>
+            <Reveal className="max-w-[680px]">
+              <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Ce se întâmplă în cele {W.minutes} de minute</h2>
+              <p className="mt-5 text-[1.12rem] leading-relaxed text-ink-2 sm:text-[1.2rem]">Online, de acasă, cu camera pornită. Cel mai mult timp îl petrece scriind cod, cu mâna lui.</p>
+            </Reveal>
+            <div className="mt-12">
+              <LessonTimeline />
+            </div>
+            <Stagger className="mt-12 grid gap-4 md:grid-cols-2">
+              <StaggerItem className="flex gap-3.5 rounded-2xl bg-mint/60 p-5 ring-1 ring-[#c6e9d6] sm:p-6">
+                <E e="💻" className="mt-0.5 text-[1.4rem]" />
+                <p className="leading-relaxed text-ink-2"><b className="text-ink">Îi trebuie doar un laptop sau un calculator cu internet.</b> Linkul îl primești cu o zi înainte.</p>
+              </StaggerItem>
+              <StaggerItem className="flex gap-3.5 rounded-2xl bg-peach p-5 ring-1 ring-[#f9d3c0] sm:p-6">
+                <E e="🧒" className="mt-0.5 text-[1.4rem]" />
+                <p className="leading-relaxed text-ink-2"><b className="text-ink">Nu e nevoie de experiență.</b> Lecția e făcută pentru începători, iar grupa are maximum {W.total} copii.</p>
+              </StaggerItem>
+            </Stagger>
+          </div>
+        </section>
+
+        {/* ===== după înscriere ===== */}
+        <section className="section bg-sand">
+          <div className="wrap grid items-start gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+            <Reveal>
+              <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">După ce te înscrii</h2>
+              <p className="mt-5 max-w-[30em] text-[1.12rem] leading-relaxed text-ink-2">Nu trebuie să pregătești nimic special. Te țin eu la curent, pas cu pas.</p>
+            </Reveal>
+            <Stagger as="ol" className="border-t border-[#e3d3bd]">
+              {AFTER.map(([when, b, t], k) => (
+                <StaggerItem as="li" key={b} className="grid gap-x-6 gap-y-1 border-b border-[#e3d3bd] py-5 sm:grid-cols-[10.5rem_1fr]">
+                  <span className="flex items-baseline gap-2.5 font-mono text-[0.85rem] font-semibold text-coral-t">
+                    <span className="font-display text-[1.05rem] font-bold">{k + 1}.</span>{when}
+                  </span>
+                  <p className="leading-relaxed text-ink-2"><b className="text-ink">{b}</b> {t}</p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        {/* ===== profesorul + întrebări ===== */}
+        <section className="section">
+          <div className="wrap grid items-start gap-14 lg:grid-cols-[.85fr_1.15fr] lg:gap-16">
+            <Reveal className="rounded-2xl bg-paper p-6 shadow-lift ring-1 ring-line sm:p-8 lg:sticky lg:top-24">
+              <div className="flex items-center gap-4">
+                <span className="relative grid size-20 shrink-0 place-items-center overflow-hidden rounded-full bg-coral font-display text-[1.8rem] font-bold text-white ring-4 ring-peach sm:size-24">
+                  L<Photo className="scale-[1.5] object-[50%_42%]" />
+                </span>
+                <div className="min-w-0">
+                  <span className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-coral-t">Cine ține lecția</span>
+                  <h2 className="mt-1 text-[1.4rem] font-semibold leading-tight sm:text-[1.55rem]">Leonard Pădurean</h2>
+                </div>
+              </div>
+              <p className="mt-5 leading-relaxed text-ink-2">Sunt programator software de 5 ani și cercetător. Predau programare copiilor de peste un an și am pregătire în pedagogie.</p>
+              <p className="mt-4 border-l-[3px] border-coral pl-4 leading-relaxed text-ink">
+                Lucrez cu maximum {W.total} copii odată, ca să am timp să mă uit pe ecranul fiecăruia.
+              </p>
+              <div className="mt-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t border-line pt-4">
+                <span className="font-hand text-[2rem] leading-none text-coral-t">Leonard</span>
+                <Link href="/#despre" className="py-2 text-[0.95rem] font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link>
+              </div>
+            </Reveal>
+
+            <div>
+              <Reveal>
+                <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Întrebări de la părinți</h2>
+              </Reveal>
+              <Reveal delay={0.08} className="mt-8 border-t border-line">
+                {FAQ.map(([q, a]) => (
+                  <details key={q} className="group border-b border-line">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[1.05rem] font-semibold leading-snug [&::-webkit-details-marker]:hidden">
+                      {q}
+                      <span className="grid size-8 shrink-0 place-items-center rounded-full bg-cream text-[1.3rem] leading-none text-coral-t ring-1 ring-line transition-transform group-open:rotate-45" aria-hidden>+</span>
+                    </summary>
+                    <p className="max-w-[62ch] pb-6 leading-relaxed text-ink-2">{a}</p>
+                  </details>
+                ))}
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== final ===== */}
+        <section className="section bg-ink text-center text-white">
+          <div className="wrap">
+            <Reveal>
+              <h2 className="mx-auto max-w-[760px] text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold text-white">
+                {W.taken > 0 && LEFT > 0 ? (LEFT === 1 ? "A mai rămas un singur loc." : `Mai sunt ${LEFT} locuri.`) : `Grupa are doar ${W.total} locuri.`} Înscrierea durează 30 de secunde.
+              </h2>
+              <p className="mx-auto mt-5 max-w-[560px] text-[1.12rem] text-[#c3c8dd]">
+                <span className="first-letter:uppercase inline-block">{W.date}</span>, online. Te contactez în aceeași zi ca să confirm locul.
+              </p>
+            </Reveal>
+            <Reveal delay={0.08} className="mx-auto mt-9 max-w-[460px]">
+              <Countdown dark />
+            </Reveal>
+            <Reveal delay={0.12} className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+              <ButtonLink href="#formular" arrow>Rezervă locul gratuit</ButtonLink>
+              <ButtonLink href={waLink(`Bună, Leonard! Am o întrebare despre lecția gratuită din ${W.date}.`)} variant="wa" external><WaIcon /> Întreabă‑mă pe WhatsApp</ButtonLink>
+            </Reveal>
+            <Reveal delay={0.16} className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[0.92rem] text-[#c3c8dd]">
+              {["Gratuit", "Fără card", "Fără obligații"].map((t) => (
+                <span key={t} className="inline-flex items-center gap-1.5"><Check className="size-4 text-[#5be3a7]" strokeWidth={3} aria-hidden />{t}</span>
+              ))}
+            </Reveal>
           </div>
         </section>
       </main>

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 import { CONFIG } from "@/lib/config";
 import { formatDate, getPost, getPosts } from "@/lib/blog";
 import { SiteHeader } from "@/components/site/site-header";
 import { Footer } from "@/components/site/footer";
 import { Markdown } from "@/components/blog/markdown";
-import { ButtonLink } from "@/components/ui/button";
-import { Photo } from "@/components/ui/photo";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import { E } from "@/components/ui/emoji";
+import { Avatar, cat, nb } from "@/components/blog/bits";
+import { EndCta } from "@/components/blog/end-cta";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -32,19 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-function Author({ big = false }: { big?: boolean }) {
-  return (
-    <span className="flex items-center gap-3">
-      <span className={`relative grid shrink-0 place-items-center overflow-hidden rounded-full bg-coral font-display font-bold text-white ${big ? "size-16 text-[1.4rem]" : "size-11 text-[1rem]"}`}>
-        L<Photo className="scale-[1.5] object-[50%_42%]" />
-      </span>
-      <span className="leading-tight">
-        <b className="block text-ink">Leonard Pădurean</b>
-        <span className="text-[0.9rem] text-muted">Programator și profesor Codito</span>
-      </span>
-    </span>
-  );
-}
+const d = (v: string) => ({ "--d": v }) as React.CSSProperties;
 
 export default async function Article({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -52,6 +43,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
   if (!post) notFound();
   const others = getPosts().filter((p) => p.slug !== post.slug).sort((a, b) => Number(b.category === post.category) - Number(a.category === post.category)).slice(0, 3);
   const url = `${CONFIG.siteUrl}/blog/${post.slug}/`;
+  const c = cat(post.category);
+  const toc = post.headings.length > 2;
 
   const ld = {
     "@context": "https://schema.org",
@@ -85,76 +78,139 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
 
   return (
     <>
-      <SiteHeader active="blog" />
+      <SiteHeader active="blog" progress />
       <main>
         <article>
-          <header className="wrap pb-8 pt-8 sm:pb-12 sm:pt-14">
-            <nav aria-label="Navigare" className="text-[0.9rem] text-muted">
-              <Link href="/" className="inline-block py-2.5 hover:text-coral-t">Codito</Link>
-              <span className="mx-2" aria-hidden>/</span>
-              <Link href="/blog/" className="inline-block py-2.5 hover:text-coral-t">Blog</Link>
-            </nav>
-            <p className="mt-6 text-[0.95rem] font-semibold text-coral-t">{post.category}</p>
-            <h1 className="mt-3 max-w-[820px] text-[clamp(2rem,5vw,3.2rem)] font-semibold leading-[1.08]">{post.title}</h1>
-            <p className="mt-5 max-w-[680px] text-[1.15rem] leading-relaxed text-ink-2">{post.description}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-6">
-              <Author />
-              <p className="text-[0.92rem] text-muted">
-                <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.minutes} min de citit
-                {post.updated !== post.date && <> · actualizat <time dateTime={post.updated}>{formatDate(post.updated)}</time></>}
-              </p>
+          {/* antetul articolului */}
+          <header className="border-b border-line">
+            <div className="wrap pb-10 pt-6 sm:pb-14 sm:pt-10">
+              <nav aria-label="Navigare" className="rise text-[0.9rem] text-muted">
+                <Link href="/" className="inline-block py-2.5 hover:text-coral-t">Codito</Link>
+                <span className="mx-2 text-line" aria-hidden>/</span>
+                <Link href="/blog/" className="inline-block py-2.5 hover:text-coral-t">Blog</Link>
+              </nav>
+              <div className="mt-5 grid items-end gap-8 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+                <div>
+                  <p style={d(".05s")} className="rise flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="inline-flex items-center gap-2 text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-coral-t"><E e={c.e} className="text-[1.15rem]" />{post.category}</span>
+                    <span className="font-mono text-[0.8rem] text-muted">{post.minutes} min de citit</span>
+                  </p>
+                  <h1 style={d(".1s")} className="rise mt-4 max-w-[860px] text-[clamp(2.2rem,5.4vw,3.7rem)] font-semibold leading-[1.06]">{nb(post.title)}</h1>
+                  <p style={d(".2s")} className="rise mt-6 max-w-[640px] text-[1.12rem] leading-relaxed text-ink-2 sm:text-[1.2rem]">{nb(post.description)}</p>
+                </div>
+                <div style={d(".3s")} className="rise flex items-center gap-3.5 border-t border-line pt-6 lg:block lg:rounded-2xl lg:border-0 lg:bg-paper lg:p-6 lg:shadow-soft lg:ring-1 lg:ring-line">
+                  <Avatar ring className="size-14 text-[1.2rem] lg:size-16" />
+                  <div className="min-w-0 leading-snug lg:mt-4">
+                    <p className="font-semibold text-ink">Leonard Pădurean</p>
+                    <p className="text-[0.9rem] text-muted">Programator, profesorul de la fiecare lecție</p>
+                    <p className="mt-1.5 text-[0.88rem] text-ink-2 lg:mt-3 lg:border-t lg:border-line lg:pt-3">
+                      <time dateTime={post.date}>{formatDate(post.date)}</time>
+                      {post.updated !== post.date && <span className="block text-muted">actualizat <time dateTime={post.updated}>{formatDate(post.updated)}</time></span>}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </header>
 
-          <div className="wrap grid gap-12 pb-16 lg:grid-cols-[minmax(0,680px)_1fr] lg:gap-16 xl:gap-24">
+          <div className="wrap grid gap-12 pb-20 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,690px)_1fr] lg:gap-16 xl:gap-24">
             <div className="min-w-0">
-              <Markdown source={post.body} />
-
-              <div className="mt-14 rounded-2xl bg-ink p-6 text-white sm:p-9">
-                <p className="font-display text-[1.45rem] font-semibold leading-snug text-white">Prima lecție e gratuită</p>
-                <p className="mt-2 leading-relaxed text-[#c3c8dd]">45 de minute, unu la unu, online. Copilul își face primul program, iar tu primești o evaluare scrisă: de unde pornește și ce i s‑ar potrivi.</p>
-                <ButtonLink href="/#plan" arrow className="mt-6 w-full sm:w-auto">Vreau lecția gratuită</ButtonLink>
-              </div>
-
-              <div className="mt-12 border-t border-line pt-8">
-                <Author big />
-                <p className="mt-4 max-w-[60ch] leading-relaxed text-ink-2">Sunt programator software de 5 ani și predau programare copiilor de peste un an. La Codito țin eu fiecare lecție, unu la unu. <Link href="/#despre" className="font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link></p>
-              </div>
-            </div>
-
-            {post.headings.length > 2 && (
-              <aside className="hidden lg:block">
-                <nav aria-label="Cuprins" className="sticky top-24">
-                  <p className="text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-muted">În acest articol</p>
-                  <ol className="mt-4 grid gap-1 border-l border-line">
-                    {post.headings.map((h) => (
-                      <li key={h.id}><a href={`#${h.id}`} className="-ml-px block border-l-2 border-transparent py-1.5 pl-4 text-[0.95rem] leading-snug text-ink-2 transition-colors hover:border-coral hover:text-ink">{h.text}</a></li>
+              {toc && (
+                <details className="group mb-10 rounded-2xl bg-paper ring-1 ring-line lg:hidden">
+                  <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 text-[0.95rem] font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                    <span className="flex items-center gap-2.5"><span className="font-mono text-[0.8rem] text-coral-t">{String(post.headings.length).padStart(2, "0")}</span> părți în acest articol</span>
+                    <span aria-hidden className="grid size-7 place-items-center rounded-full bg-cream text-[1.1rem] leading-none text-ink-2 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <ol className="border-t border-line px-5 pb-2">
+                    {post.headings.map((h, i) => (
+                      <li key={h.id} className="border-b border-line last:border-0">
+                        <a href={`#${h.id}`} className="grid grid-cols-[2rem_1fr] py-3 text-[0.95rem] leading-snug text-ink-2">
+                          <span className="pt-px font-mono text-[0.78rem] font-semibold text-coral-t">{String(i + 1).padStart(2, "0")}</span>
+                          <span>{nb(h.text.replace(/^\d+\.\s*/, ""))}</span>
+                        </a>
+                      </li>
                     ))}
                   </ol>
-                </nav>
+                </details>
+              )}
+              <Markdown source={post.body} />
+
+              {/* despre autor */}
+              <Reveal className="mt-16 rounded-2xl bg-paper p-6 shadow-soft ring-1 ring-line sm:p-8">
+                <div className="flex items-center gap-4">
+                  <Avatar ring className="size-16 text-[1.4rem] sm:size-[72px]" />
+                  <div className="min-w-0 leading-snug">
+                    <p className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-coral-t">Cine scrie</p>
+                    <p className="mt-1 font-display text-[1.3rem] font-semibold text-ink">Leonard Pădurean</p>
+                  </div>
+                </div>
+                <p className="mt-5 leading-relaxed text-ink-2">Sunt programator software de 5 ani și predau programare copiilor de peste un an. La Codito țin eu fiecare lecție, unu la unu, iar aici scriu despre întrebările pe care le aud de la părinți.</p>
+                <div className="mt-5 flex flex-wrap items-end justify-between gap-4">
+                  <Link href="/#despre" className="inline-flex items-center gap-1.5 py-2 font-semibold text-coral-t underline decoration-1 underline-offset-4 hover:decoration-2">Mai multe despre mine <ArrowRight className="size-4" aria-hidden /></Link>
+                  <span className="font-hand text-[2.1rem] leading-none text-coral-t" aria-hidden>Leonard</span>
+                </div>
+              </Reveal>
+            </div>
+
+            {toc && (
+              <aside className="hidden lg:block">
+                <div className="sticky top-28">
+                  <nav aria-label="Cuprins">
+                    <p className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-muted">În acest articol</p>
+                    <ol className="mt-4 border-t-2 border-ink/80">
+                      {post.headings.map((h, i) => (
+                        <li key={h.id} className="border-b border-line">
+                          <a href={`#${h.id}`} className="group grid grid-cols-[2rem_1fr] py-3 text-[0.95rem] leading-snug text-ink-2 transition-colors hover:text-coral-t">
+                            <span className="pt-px font-mono text-[0.78rem] font-semibold text-coral-t">{String(i + 1).padStart(2, "0")}</span>
+                            <span>{nb(h.text.replace(/^\d+\.\s*/, ""))}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </nav>
+                  <a href="/#plan" className="group mt-8 block rounded-2xl bg-ink p-5 text-white transition hover:-translate-y-0.5 hover:shadow-lift">
+                    <span className="flex items-center gap-2 text-[0.92rem] font-semibold"><E e="🎁" className="text-[1.2rem]" /> Prima lecție e gratuită</span>
+                    <span className="mt-1.5 block text-[0.88rem] leading-snug text-[#c3c8dd]">45 de minute, unu la unu, online. Fără obligații.</span>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-[#ffb08f]">Programează <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden /></span>
+                  </a>
+                </div>
               </aside>
             )}
           </div>
         </article>
 
         {others.length > 0 && (
-          <section className="border-t border-line bg-sand py-14 sm:py-20" aria-label="Alte articole">
+          <section className="section border-t border-line bg-sand" aria-labelledby="mai-citeste">
             <div className="wrap">
-              <h2 className="text-[clamp(1.5rem,3.2vw,2rem)] font-semibold">Mai citește</h2>
-              <ul className="mt-8 grid gap-x-10 md:grid-cols-3">
+              <Reveal className="flex items-end justify-between gap-6">
+                <h2 id="mai-citeste" className="text-[clamp(1.6rem,3.4vw,2.2rem)] font-semibold">Mai citește</h2>
+                <Link href="/blog/" className="inline-flex shrink-0 items-center gap-1.5 py-2 text-[0.95rem] font-semibold text-ink-2 hover:text-coral-t">Toate articolele <ArrowRight className="size-4" aria-hidden /></Link>
+              </Reveal>
+              <Stagger as="ul" className="mt-8 grid gap-x-8 md:grid-cols-3">
                 {others.map((p) => (
-                  <li key={p.slug} className="border-t-2 border-ink/80">
-                    <Link href={`/blog/${p.slug}/`} className="group block py-5">
-                      <p className="text-[0.88rem] font-semibold text-coral-t">{p.category}</p>
-                      <p className="mt-2 font-display text-[1.2rem] font-semibold leading-snug text-ink transition-colors group-hover:text-coral-t">{p.title}</p>
-                      <p className="mt-2 text-[0.9rem] text-muted">{p.minutes} min de citit</p>
+                  <StaggerItem as="li" key={p.slug} className="border-t-2 border-ink/80">
+                    <Link href={`/blog/${p.slug}/`} className="group flex h-full flex-col py-5 sm:py-6">
+                      <span className="flex items-center justify-between">
+                        <span className="text-[0.8rem] font-semibold uppercase tracking-[0.06em] text-coral-t">{p.category}</span>
+                        <E e={cat(p.category).e} className="text-[1.4rem]" />
+                      </span>
+                      <span className="mt-2 font-display text-[1.25rem] font-semibold leading-snug text-ink transition-colors group-hover:text-coral-t">{nb(p.title)}</span>
+                      <span className="mt-2 text-[0.95rem] leading-relaxed text-ink-2">{nb(p.excerpt)}</span>
+                      <span className="mt-auto flex items-center gap-2 pt-4 font-mono text-[0.8rem] text-muted">
+                        {p.minutes} min
+                        <ArrowRight className="size-4 text-coral-t opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" aria-hidden />
+                      </span>
                     </Link>
-                  </li>
+                  </StaggerItem>
                 ))}
-              </ul>
+              </Stagger>
             </div>
           </section>
         )}
+
+        <EndCta title={<>Vrei să vezi cum ar fi pentru <span className="text-[#ffb08f]">copilul tău</span>?</>}>
+          Prima lecție e gratuită: 45 de minute, unu la unu, online. Copilul își face primul program, iar tu primești de la mine o evaluare scrisă: de unde pornește și ce i s‑ar potrivi.
+        </EndCta>
       </main>
       <Footer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />

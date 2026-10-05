@@ -48,20 +48,20 @@ export function Seats({ dark = false }: { dark?: boolean }) {
 }
 
 /** Numărătoare inversă până la începutul lecției (dată reală, din config). */
-export function Countdown() {
+export function Countdown({ dark = false }: { dark?: boolean }) {
   const { now, past } = useWorkshopState();
   if (now == null || past) return null;
-  if (now >= START) return <p className="font-semibold text-green">Lecția e în desfășurare acum.</p>;
+  if (now >= START) return <p className={clsx("font-semibold", dark ? "text-[#5be3a7]" : "text-green")}>Lecția e în desfășurare acum.</p>;
   const s = Math.floor((START - now) / 1000);
   const parts: [number, string][] = [[Math.floor(s / 86400), "zile"], [Math.floor((s % 86400) / 3600), "ore"], [Math.floor((s % 3600) / 60), "minute"], [s % 60, "secunde"]];
   return (
     <div aria-label="Timp rămas până la lecție">
-      <p className="text-[0.86rem] font-semibold uppercase tracking-[0.08em] text-muted">Începe în</p>
-      <div className="mt-2 grid grid-cols-4 gap-2">
+      <p className={clsx("text-[0.8rem] font-semibold uppercase tracking-[0.1em]", dark ? "text-[#a3aac4]" : "text-muted")}>Începe în</p>
+      <div className="mt-2.5 grid grid-cols-4 gap-2 sm:gap-3">
         {parts.map(([v, l]) => (
-          <div key={l} className="rounded-xl bg-paper px-2 py-2.5 text-center ring-1 ring-line">
-            <b className="block font-display text-[1.6rem] leading-none tabular-nums text-ink">{String(v).padStart(2, "0")}</b>
-            <small className="mt-1 block text-[0.78rem] text-muted">{l}</small>
+          <div key={l} className={clsx("rounded-xl px-1 py-3 text-center", dark ? "bg-white/[.06] ring-1 ring-white/10" : "bg-paper ring-1 ring-line")}>
+            <b className={clsx("block font-display text-[1.6rem] leading-none tabular-nums sm:text-[2rem]", dark ? "text-white" : "text-ink")}>{String(v).padStart(2, "0")}</b>
+            <small className={clsx("mt-1.5 block text-[0.78rem]", dark ? "text-[#a3aac4]" : "text-muted")}>{l}</small>
           </div>
         ))}
       </div>
@@ -162,12 +162,12 @@ export function SignupForm() {
 
   return (
     <>
+    <div className="mb-5">
+      <h2 className="text-[1.55rem] font-semibold leading-tight sm:text-[1.75rem]">{waitlist ? "Lasă\u2011mi datele pentru următoarea lecție" : "Înscrie\u2011ți copilul"}</h2>
+      <p className="mt-1.5 text-[0.95rem] text-muted">Durează 30 de secunde. Te contactez eu.</p>
+    </div>
     <Seats />
     <form onSubmit={submit} noValidate className="mt-6 grid gap-5">
-      <div>
-        <h2 className="text-[1.45rem] font-semibold leading-tight">{waitlist ? "Lasă\u2011mi datele pentru următoarea lecție" : "Înscrie\u2011ți copilul"}</h2>
-        <p className="mt-1 text-[0.95rem] text-muted">Durează 30 de secunde. Te contactez eu.</p>
-      </div>
 
       <label className="grid gap-1.5">
         <span className="text-[0.95rem] font-semibold">Prenumele tău</span>
