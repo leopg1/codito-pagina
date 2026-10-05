@@ -6,10 +6,10 @@ import { ButtonLink, WaIcon } from "../ui/button";
 import { Photo } from "../ui/photo";
 
 const FACTS = [
-  [Users, "Predau programare copiilor de aproape un an: blocuri, Python și C/C++"],
-  [ScrollText, "Certificat psihopedagogic pentru predare (DSPP)"],
-  [GraduationCap, "Student în anul 3 la Calculatoare, Universitatea „Ștefan cel Mare” Suceava"],
-  [Laptop, "Programator: fac site-uri și aplicații cu AI pentru firme"],
+  [Users, "Predau programare copiilor de peste un an. Construim împreună aplicații reale, nu doar teorie"],
+  [ScrollText, "Pregătire în pedagogie: știu cum învață copiii și cum să le explic pe înțelesul lor"],
+  [GraduationCap, "Student la inginerie, în domeniul Calculatoare"],
+  [Laptop, "Programator și cercetător: dezvolt proiecte reale, folosite zilnic de firme și de oamenii lor"],
   [MapPin, "Lucrez online cu familii din toată țara și din diaspora"],
 ] as const;
 
@@ -84,7 +84,7 @@ export function About() {
               <h2 className="text-[clamp(1.9rem,4.2vw,2.95rem)] font-semibold">Bună, sunt Leonard <E e="👋" className="text-[0.85em]" /><br />Eu țin fiecare lecție.</h2>
             </Reveal>
             <Reveal className="mt-6 grid max-w-[680px] gap-4 text-[1.08rem] leading-[1.75] text-ink-2">
-              <p>Predau programare copiilor de aproape un an și am observat un lucru: <strong className="text-ink">copiii învață enorm atunci când cineva are timp doar pentru ei</strong>. Când pot întreba orice fără să le fie rușine și când construiesc ceva care e al lor.</p>
+              <p>Predau programare copiilor de peste un an și am observat un lucru: <strong className="text-ink">copiii învață enorm atunci când cineva are timp doar pentru ei</strong>. Când pot întreba orice fără să le fie rușine și când construiesc ceva care e al lor.</p>
               <p>Într-o grupă, timpul ăsta nu există. De aceea am pornit Codito și lucrez doar unu la unu: 90 de minute în care copilul tău are toată atenția mea.</p>
               <p className="border-l-[3px] border-coral pl-5 text-ink">
                 <E e="💬" className="mr-1.5" />Codito nu e o școală mare, cu profesori care se schimbă. Pe mine mă cunoaște copilul, eu îți trimit rapoartele, cu mine vorbești când ai o întrebare.

@@ -63,7 +63,7 @@ export function TopicPage({ t }: { t: Topic }) {
           <div className="wrap grid items-start gap-10 md:grid-cols-[1.1fr_.9fr]">
             <div>
               <h2 className="text-[clamp(1.5rem,3vw,1.9rem)] font-semibold">Cine ține lecțiile</h2>
-              <p className="mt-4 leading-relaxed text-ink-2">Sunt Leonard Pădurean, student în anul 3 la Calculatoare și programator. Predau programare copiilor de aproape un an și am certificat psihopedagogic pentru predare. La Codito țin eu fiecare lecție, cu fiecare copil.</p>
+              <p className="mt-4 leading-relaxed text-ink-2">Sunt Leonard Pădurean, student la inginerie în domeniul Calculatoare, programator și cercetător. Predau programare copiilor de peste un an și am pregătire în pedagogie. La Codito țin eu fiecare lecție, cu fiecare copil.</p>
               <Link href="/#despre" className="mt-3 inline-block font-semibold text-coral-t underline underline-offset-4">Mai multe despre mine</Link>
             </div>
             <div className="rounded-2xl bg-paper p-6 ring-1 ring-line sm:p-7">
