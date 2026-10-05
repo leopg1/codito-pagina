@@ -1,0 +1,51 @@
+<!doctype html><html lang="ro"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@500;600;700&family=Caveat:wght@700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;background:#FFF9F1;font-family:Inter,sans-serif;color:#1E2442;position:relative;overflow:hidden}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(30,36,66,.09) 1.2px,transparent 1.2px);background-size:24px 24px;-webkit-mask-image:radial-gradient(ellipse at 75% 40%,#000 15%,transparent 70%)}
+.b1{position:absolute;right:-160px;top:-180px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(240,100,58,.22),transparent 65%)}
+.b2{position:absolute;left:-200px;bottom:-240px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,224,138,.45),transparent 65%)}
+.wrap{position:relative;padding:62px 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;height:100%}
+.logo{display:flex;align-items:center;gap:14px}
+.mark{width:58px;height:58px;border-radius:16px;background:#F0643A;color:#fff;font:700 36px/1 Fraunces,serif;display:grid;place-items:center;padding-right:10px;position:relative;box-shadow:0 10px 22px -8px rgba(240,100,58,.6)}
+.mark i{position:absolute;right:10px;bottom:16px;width:12px;height:4px;border-radius:2px;background:#FFE08A}
+.word{font:700 40px/1 Fraunces,serif;letter-spacing:-.02em;font-variation-settings:"opsz" 30}.word span{color:#F0643A}
+.sub{font-size:17px;color:#727791;margin-top:4px}
+.hand{font:700 34px Caveat,cursive;color:#BC431D;margin-top:44px}
+.old{font:600 34px Fraunces,serif;color:#727791;margin-top:8px;position:relative;width:fit-content}
+.old:after{content:"";position:absolute;left:-4px;right:-4px;top:54%;height:4px;background:#F0643A;border-radius:3px;transform:rotate(-2deg)}
+h1{font:600 64px/1.06 Fraunces,serif;letter-spacing:-.02em;margin-top:6px}
+h1 em{font-style:normal;color:#F0643A}
+.pill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#F0643A;color:#fff;font:700 22px Inter;padding:14px 24px;border-radius:999px;box-shadow:0 14px 28px -10px rgba(240,100,58,.6)}
+.right{display:flex;align-items:center;justify-content:center}
+.call{width:420px;background:#1E2442;border-radius:28px;padding:14px;box-shadow:0 40px 80px -28px rgba(30,36,66,.6);transform:rotate(2deg)}
+.top{display:flex;justify-content:space-between;color:#fff;font:600 15px Inter;padding:4px 6px 14px}
+.top b{display:flex;align-items:center;gap:8px}.top b i{width:9px;height:9px;border-radius:50%;background:#FF5A4F}
+.scr{background:#0F1430;border-radius:18px;padding:20px;font:400 16px/1.75 "JetBrains Mono",monospace;color:#D8DEF5}
+.c{color:#6E7AA3}.k{color:#FF9E7A}.s{color:#9BE7BE}.n{color:#93B6FF}
+.out{margin-top:10px;padding-top:10px;border-top:1px dashed #2A3156;color:#9BE7BE}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.t{background:#2A3156;border-radius:16px;aspect-ratio:16/9;display:grid;place-items:center;position:relative}
+.t span{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:700 22px Fraunces,serif;color:#fff}
+.t em{position:absolute;left:8px;bottom:8px;background:rgba(15,20,48,.7);color:#fff;font:600 13px Inter;font-style:normal;padding:4px 8px;border-radius:6px}
+.foot{position:absolute;left:70px;bottom:40px;font:600 18px Inter;color:#454C68;display:flex;gap:22px}
+.foot b{color:#1E2442}
+</style></head><body>
+<div class="dots"></div><div class="b1"></div><div class="b2"></div>
+<div class="wrap">
+ <div>
+  <div class="logo"><svg viewBox="0 0 64 64" style="width:58px;height:58px;filter:drop-shadow(0 10px 14px rgba(240,100,58,.35))"><rect width="64" height="64" rx="18" fill="#F0643A"/><path d="M35 22.5a12 12 0 1 0 0 19" fill="none" stroke="#fff" stroke-width="7.5" stroke-linecap="round"/><rect x="42" y="39" width="12" height="6" rx="3" fill="#FFE08A"/></svg><div><div class="word">Codit<span>o</span></div><div class="sub">Programare &amp; AI pentru copii și adolescenți</div></div></div>
+  <div class="hand">Lecții online 1:1 · 9–17 ani</div>
+  <div class="old">„Iar stă pe telefon…”</div>
+  <h1>„Mama, <em>uite ce am construit!</em>”</h1>
+  <div class="pill">🎁 Prima lecție e gratuită</div>
+ </div>
+ <div class="right"><div class="call">
+  <div class="top"><b><i></i>Lecția 6 · Python</b><span>52:14</span></div>
+  <div class="scr"><div class="c"># Jocul lui Andrei</div><div>numar = random.randint(<span class="n">1</span>, <span class="n">100</span>)</div><div>ghicit = int(input(<span class="s">"Ghicește: "</span>))</div><div><span class="k">if</span> ghicit &lt; numar:</div><div>&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="s">"Mai mare! ⬆️"</span>)</div><div class="out">▶ Ghicește: 40 → Mai mare! ⬆️</div></div>
+  <div class="tiles"><div class="t"><span style="background:#F0643A">L</span><em>Leonard</em></div><div class="t"><span style="background:#5B7FE0">🙂</span><em>Andrei</em></div></div>
+ </div></div>
+</div>
+<div class="foot"><span><b>codito.ro</b></span><span>Jocuri · Site-uri · Aplicații cu AI</span></div>
+</body></html>
