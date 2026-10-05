@@ -8,6 +8,7 @@ import { LEVELS, TRACKS, type AgeKey } from "@/lib/content";
 import { KidName, useKid } from "../kid-context";
 import { EASE, Reveal } from "../ui/motion";
 import { CtaInline } from "../ui/cta-inline";
+import { E } from "../ui/emoji";
 
 const AGES: [AgeKey, string][] = [["10", "9–12 ani"], ["13", "13–14 ani"], ["15", "15–17 ani"]];
 
@@ -92,7 +93,7 @@ function Personalizer() {
 
   return (
     <Reveal className="mt-8 rounded-2xl bg-ink p-5 text-white sm:p-6">
-      <h3 className="text-[1.15rem] font-semibold text-white">Vezi planul pentru copilul tău</h3>
+      <h3 className="flex items-center gap-2 text-[1.15rem] font-semibold text-white"><E e="✨" /> Vezi planul pentru copilul tău</h3>
       <div className="mt-4">
         <AnimatePresence mode="wait">
           {kid.name ? (
@@ -143,7 +144,7 @@ function Curriculum() {
               <button onClick={() => setOpen(isOpen ? null : l.n)} aria-expanded={isOpen} className="flex w-full items-center gap-3.5 px-4 py-4 text-left sm:px-5">
                 <span className={clsx("grid size-9 shrink-0 place-items-center rounded-full font-display font-bold text-white transition-colors", isOpen ? "bg-coral" : "bg-ink")}>{l.n}</span>
                 <span className="min-w-0">
-                  <b className="block font-display text-[1.15rem] font-semibold">{l.name}</b>
+                  <b className="block font-display text-[1.15rem] font-semibold">{l.name} <E e={["🧭", "🔨", "🚀"][l.n - 1]} className="ml-0.5 text-[1rem]" /></b>
                   <small className="text-[0.86rem] text-muted">{l.meta}</small>
                 </span>
                 <motion.span animate={{ rotate: isOpen ? 45 : 0 }} className="ml-auto text-coral"><Plus className="size-6" aria-hidden /></motion.span>
@@ -167,7 +168,7 @@ function Curriculum() {
         })}
       </div>
       <p className="mt-5 text-[0.98rem] leading-relaxed text-ink-2">
-        <b className="text-ink">La fiecare nivel, mereu:</b> gândire logică · AI folosit corect · prezentarea proiectului în fața familiei · raport pentru părinte după fiecare lecție
+        <E e="💚" className="mr-1.5" /><b className="text-ink">La fiecare nivel, mereu:</b> gândire logică · AI folosit corect · prezentarea proiectului în fața familiei · raport pentru părinte după fiecare lecție
       </p>
     </Reveal>
   );

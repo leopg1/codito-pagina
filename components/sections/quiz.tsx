@@ -9,7 +9,7 @@ import { KidName, useKid } from "../kid-context";
 import { SectionHead } from "../ui/section-head";
 import { EASE, Reveal } from "../ui/motion";
 import { WaIcon } from "../ui/button";
-import { EBadge } from "../ui/emoji";
+import { E, EBadge } from "../ui/emoji";
 
 type Opt = { v: string; label: string; e: string };
 const STEPS: { key: string; q: React.ReactNode; hint: string; opts: Opt[] }[] = [
@@ -80,9 +80,10 @@ export function Quiz() {
         />
 
         <Reveal className="mx-auto mt-8 grid max-w-[720px] gap-3 sm:grid-cols-2">
-          {[["Când țin lecții", CONFIG.schedule], ["Cât de repede răspund", CONFIG.reply]].map(([b, t]) => (
-            <div key={b} className="text-center text-[0.92rem] leading-snug text-ink-2 sm:text-left">
-              <b className="block text-[0.95rem] text-ink">{b}</b>{t.split(" · ").map((x) => <span key={x} className="block">{x}</span>)}
+          {[["🗓️", "Când țin lecții", CONFIG.schedule], ["⚡", "Cât de repede răspund", CONFIG.reply]].map(([e, b, t]) => (
+            <div key={b} className="flex items-start gap-3 text-[0.92rem] leading-snug text-ink-2">
+              <E e={e} className="mt-0.5 text-[1.25rem]" />
+              <span><b className="block text-[0.95rem] text-ink">{b}</b>{t.split(" · ").map((x) => <span key={x} className="block">{x}</span>)}</span>
             </div>
           ))}
         </Reveal>
@@ -116,15 +117,15 @@ export function Quiz() {
               </motion.div>
             ) : (
               <motion.div key="done" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, ease: EASE }}>
-                <h3 className="text-[1.45rem] font-semibold sm:text-[1.6rem]">Planul recomandat pentru <KidName /></h3>
+                <h3 className="flex items-center gap-2 text-[1.45rem] font-semibold sm:text-[1.6rem]"><E e="🎉" /> Planul recomandat pentru <KidName /></h3>
                 <div className="my-5 grid gap-3 rounded-xl bg-cream p-5 sm:p-6">
                   {[
-                    ["Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
-                    ["Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
-                    ["Ritm recomandat", `o lecție pe săptămână, ${young ? "de 60 de minute" : "de 90 de minute"}.`],
-                    ["Ce urmărim", `${ans.goal || "progres vizibil"}, cu un raport pentru tine după fiecare lecție.`],
-                  ].map(([b, t]) => (
-                    <p key={b} className="leading-normal"><b>{b}:</b> {t}</p>
+                    ["🎯", "Primul proiect", `${FIRST[ans.like] || FIRST.nustiu}.`],
+                    ["🧭", "Punct de pornire", ans.exp === "deloc" || ans.exp === "nu știu" ? "de la zero, cu pași mici și un program care merge chiar din prima lecție." : "vedem în lecția gratuită ce știe deja și continuăm de acolo, fără repetări plictisitoare."],
+                    ["⏱️", "Ritm recomandat", `o lecție pe săptămână, ${young ? "de 60 de minute" : "de 90 de minute"}.`],
+                    ["💡", "Ce urmărim", `${ans.goal || "progres vizibil"}, cu un raport pentru tine după fiecare lecție.`],
+                  ].map(([e, b, t]) => (
+                    <div key={b} className="flex gap-3 leading-normal"><E e={e} className="mt-0.5 text-[1.2rem]" /><span><b>{b}:</b> {t}</span></div>
                   ))}
                 </div>
                 <a href={waLink(msg)} target="_blank" rel="noopener" className="flex w-full items-center justify-center gap-2.5 rounded-full bg-wa px-6 py-4 font-semibold text-white shadow-[0_12px_28px_-10px_rgb(37_211_102/.65)] transition hover:-translate-y-0.5 hover:bg-[#1ebe5a]">

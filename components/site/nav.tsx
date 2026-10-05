@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 import { LogoMark, Wordmark } from "./logo";
+import { E } from "../ui/emoji";
 
 const LINKS = [
   ["#traseu", "Ce construiește"],
@@ -15,6 +16,7 @@ const LINKS = [
 export function TopBar() {
   return (
     <div className="bg-ink px-4 py-2.5 text-center text-[0.88rem] text-white">
+      <E e="🎁" className="mr-1.5" />
       Prima lecție 1:1 e <b className="text-sun">gratuită</b>
       <span className="hidden sm:inline"> · 45 de minute, online, fără obligații</span>
     </div>

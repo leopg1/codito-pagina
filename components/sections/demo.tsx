@@ -6,6 +6,7 @@ import { RotateCcw } from "lucide-react";
 import { KidGen } from "../kid-context";
 import { SectionHead } from "../ui/section-head";
 import { Reveal } from "../ui/motion";
+import { E } from "../ui/emoji";
 
 const rnd = () => 1 + Math.floor(Math.random() * 100);
 
@@ -42,7 +43,7 @@ export function Demo() {
             </div>
             <div className="flex flex-1 flex-col justify-center p-7 sm:p-9">
             <h3 className="flex items-center justify-center gap-2 text-[1.3rem] font-semibold text-white">
-              Jocul <KidGen />
+              <E e="🎯" /> Jocul <KidGen />
             </h3>
             <p className="mt-1 text-[#c3c8dd]">M-am gândit la un număr între 1 și 100. Îl ghicești?</p>
             <div className="my-5 grid min-h-[3.4em] place-items-center rounded-2xl bg-night/60 px-4 py-3 font-mono text-[1rem] text-[#9be7be]" aria-live="polite">

@@ -4,6 +4,7 @@ import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
 import { KidName } from "../kid-context";
 import { Reveal } from "../ui/motion";
+import { E } from "../ui/emoji";
 
 function AnimatedNumber({ value, format }: { value: number; format: (n: number) => string }) {
   const mv = useMotionValue(value);
@@ -23,7 +24,7 @@ export function Calculator() {
 
   return (
     <Reveal className="relative mt-16 overflow-hidden rounded-2xl border border-line bg-paper p-6 sm:p-10">
-      <h3 className="text-[1.35rem] font-semibold sm:text-[1.55rem]">Un calcul rapid</h3>
+      <h3 className="text-[1.35rem] font-semibold sm:text-[1.55rem]"><E e="⏳" className="mr-2" />Un calcul rapid</h3>
       <p className="mt-1.5 text-ink-2">Câte ore pe zi crezi că stă <KidName /> pe telefon, tabletă sau calculator?</p>
 
       <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:gap-6">

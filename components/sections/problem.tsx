@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { BUBBLES, BUBBLE_EMOJI } from "@/lib/content";
 import { KidGen } from "../kid-context";
 import { E } from "../ui/emoji";
-import { Reveal } from "../ui/motion";
+import { Reveal, Stagger, StaggerItem } from "../ui/motion";
 import { CtaInline } from "../ui/cta-inline";
 import { Calculator } from "./calculator";
 
@@ -26,9 +26,9 @@ export function Problem() {
               Sunt lucrurile pe care le aud cel mai des de la părinți, înainte de prima lecție.
             </p>
           </Reveal>
-          <Reveal className="grid gap-3" delay={0.05}>
+          <Stagger className="grid gap-3">
             {BUBBLES.map((b, i) => (
-              <p
+              <StaggerItem as="p"
                 key={b}
                 className={`flex w-fit max-w-[34rem] items-start gap-3 rounded-[20px] border border-line bg-paper px-4 py-3.5 text-[1.02rem] leading-snug text-ink-2 sm:px-5 ${
                   i % 2 ? "ml-auto rounded-br-md" : "rounded-bl-md"
@@ -36,9 +36,9 @@ export function Problem() {
               >
                 <E e={BUBBLE_EMOJI[i]} className="mt-0.5 text-[1.15rem]" />
                 <span>{b}</span>
-              </p>
+              </StaggerItem>
             ))}
-          </Reveal>
+          </Stagger>
         </div>
 
         {/* 2 · ideea centrală + comparația */}
@@ -54,8 +54,8 @@ export function Problem() {
 
           <Reveal className="mt-10 overflow-hidden rounded-2xl border border-line bg-paper">
             <div className="grid grid-cols-2 border-b border-line text-[0.82rem] font-semibold uppercase tracking-[0.08em]">
-              <div className="px-4 py-3 text-muted sm:px-6">Acum</div>
-              <div className="border-l border-line bg-mint/60 px-4 py-3 text-green sm:px-6">Cu lecții Codito</div>
+              <div className="px-4 py-3 text-muted sm:px-6"><E e="📱" className="mr-1.5 text-[1rem]" />Acum</div>
+              <div className="border-l border-line bg-mint/60 px-4 py-3 text-green sm:px-6"><E e="🛠️" className="mr-1.5 text-[1rem]" />Cu lecții Codito</div>
             </div>
             {PAIRS.map(([a, b], k) => (
               <div key={a} className={`grid grid-cols-2 ${k ? "border-t border-line" : ""}`}>
@@ -69,14 +69,14 @@ export function Problem() {
           </Reveal>
 
           {/* de ce acum: text simplu, fără carduri */}
-          <Reveal className="mt-12 grid gap-6 border-t border-line pt-8 md:grid-cols-3 md:gap-10">
-            <p className="text-[1rem] leading-relaxed text-ink-2"><b className="block text-ink">AI-ul intră în toate meseriile.</b>Medic, inginer sau designer: contează cine știe să-l folosească bine.</p>
-            <p className="text-[1rem] leading-relaxed text-ink-2"><b className="block text-ink">Programarea învață gândirea.</b>Pași mici, răbdare, să cauți greșeala și să nu renunți.</p>
-            <p className="text-[1rem] leading-relaxed text-ink-2"><b className="block text-ink">Cu cât mai devreme, cu atât mai ușor.</b>La 12 ani, un copil învață asta jucându-se.</p>
-          </Reveal>
+          <Stagger className="mt-12 grid gap-6 border-t border-line pt-8 md:grid-cols-3 md:gap-10">
+            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🤖" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">AI-ul intră în toate meseriile.</b>Medic, inginer sau designer: contează cine știe să-l folosească bine.</StaggerItem>
+            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🧠" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Programarea învață gândirea.</b>Pași mici, răbdare, să cauți greșeala și să nu renunți.</StaggerItem>
+            <StaggerItem as="p" className="text-[1rem] leading-relaxed text-ink-2"><E e="🌱" className="mb-2 block text-[1.6rem]" /><b className="block text-ink">Cu cât mai devreme, cu atât mai ușor.</b>La 12 ani, un copil învață asta jucându-se.</StaggerItem>
+          </Stagger>
 
           <Reveal className="mt-10 max-w-[760px] border-l-[3px] border-coral pl-5 sm:pl-7">
-            <p className="font-display text-[1.3rem] font-semibold leading-snug text-ink">„Dar dacă nu vrea să se facă programator?”</p>
+            <p className="font-display text-[1.3rem] font-semibold leading-snug text-ink"><E e="🤔" className="mr-2" />„Dar dacă nu vrea să se facă programator?”</p>
             <p className="mt-2 text-[1.06rem] leading-relaxed text-ink-2">
               Nu trebuie. Ce învață aici, să gândească logic, să caute singur o greșeală și să nu se oprească la primul obstacol, îi folosește în orice meserie ar alege.
             </p>
