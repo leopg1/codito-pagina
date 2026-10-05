@@ -31,7 +31,7 @@ export const CONFIG = {
     taken: 0, // actualizează cinstit, după fiecare înscriere confirmată
     note: "atelier online de 60 de minute pentru copii de 9\u2060–\u206014 ani, doar 5 locuri",
   },
-  formspree: "", // ex. "https://formspree.io/f/abcdwxyz" · unde ajung înscrierile (pe email). Gol = se trimit pe WhatsApp
+  formspree: "https://formspree.io/f/mlgzkzpr", // ex. "https://formspree.io/f/abcdwxyz" · unde ajung înscrierile (pe email). Gol = se trimit pe WhatsApp
   plausibleDomain: "", // ex. "codito.ro" · statistici fără cookie‑uri (plausible.io)
 
   company: {
