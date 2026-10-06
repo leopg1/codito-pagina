@@ -134,8 +134,8 @@ export function Price() {
         <Reveal className="grid items-start gap-8 md:grid-cols-[1.15fr_.85fr] md:gap-14">
           <div>
             <h2 className="text-[clamp(1.7rem,3.6vw,2.35rem)] font-semibold">De ce nu vezi aici zeci de recenzii?</h2>
-            <p className="mt-4 text-[1.06rem] leading-relaxed text-ink-2">Pentru că abia acum pornesc lecțiile individuale. Am experiență cu copiii, dar nu o să inventez păreri ca să par mai mare decât sunt.</p>
-            <p className="mt-3 text-[1.06rem] leading-relaxed text-ink-2">În schimb, primele {f.total} familii devin <strong className="text-ink">familii fondatoare</strong>: păstrează prețul de început {f.lockMonths} luni. Tot ce îți cer la schimb e o părere sinceră după prima lună, bună sau rea.</p>
+            <p className="mt-4 text-[1.06rem] leading-relaxed text-ink-2">Pentru că lecțiile Codito abia acum pornesc. Nu o să inventez păreri ca să par mai mare decât sunt: aici vor apărea doar păreri reale, de la familiile care lucrează cu mine.</p>
+            <p className="mt-3 text-[1.06rem] leading-relaxed text-ink-2">Primele {f.total} familii devin <strong className="text-ink">familii fondatoare</strong>: plătesc {PRICES.month} pe lună, iar prețul rămâne neschimbat {f.lockMonths} luni, chiar dacă după ele crește. Tot ce îți cer la schimb e o părere sinceră după prima lună, bună sau rea.</p>
           </div>
           <div className="rounded-xl border border-line bg-cream p-6 md:mt-2">
             <b className="flex items-center gap-2 font-display text-[1.15rem]"><E e="🌱" /> Familii fondatoare</b>
